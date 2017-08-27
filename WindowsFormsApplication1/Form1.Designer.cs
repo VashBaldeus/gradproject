@@ -693,7 +693,7 @@
             "Class B",
             "Class A",
             "Global"});
-            this.wageClass.Location = new System.Drawing.Point(38, 453);
+            this.wageClass.Location = new System.Drawing.Point(32, 448);
             this.wageClass.Name = "wageClass";
             this.wageClass.Size = new System.Drawing.Size(294, 21);
             this.wageClass.TabIndex = 54;

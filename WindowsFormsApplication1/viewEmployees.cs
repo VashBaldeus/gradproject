@@ -17,6 +17,7 @@ namespace WindowsFormsApplication1
         private string columnName = "";
         private string searchParametrString = "";
         private string query = "";
+        public static string eidStatic = "";
         DataTable dt = new DataTable();
        
         public viewEmployees()
@@ -24,6 +25,7 @@ namespace WindowsFormsApplication1
             InitializeComponent();
             comboBox1.Visible = false;
             textBox1.Visible = false;
+            searchPar.SelectedIndex = 9;
         }
 
         private void ImportTable(string query)
@@ -178,7 +180,7 @@ namespace WindowsFormsApplication1
 
                 foreach (DataRow rdr in dt.Rows)
                 {
-                  dataGridView1.Rows.Add(rdr[0].ToString(), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), rdr[4].ToString(), rdr[5].ToString(), rdr[6].ToString(), rdr[7].ToString(), rdr[8].ToString(), rdr[9].ToString(), rdr[10].ToString(), rdr[11].ToString(), rdr[12].ToString(), rdr[13].ToString(), rdr[14].ToString(), rdr[15].ToString(), rdr[16].ToString(), rdr[17].ToString());
+                    dataGridView1.Rows.Add(rdr[0].ToString(), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), rdr[4].ToString(), rdr[5].ToString(), rdr[6].ToString(), rdr[7].ToString(), rdr[8].ToString(), rdr[9].ToString(), rdr[10].ToString(), rdr[11].ToString(), rdr[12].ToString(), rdr[13].ToString(), rdr[14].ToString(), rdr[15].ToString(), rdr[16].ToString(), rdr[17].ToString(),"Edit");
                 }
                 conn.Close();
             }
@@ -188,6 +190,18 @@ namespace WindowsFormsApplication1
         {
             searchParametrString = textBox1.Text;
             label3.Text = searchParametrString;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 18)
+            {
+                eidStatic = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                //MessageBox.Show(eidStatic);
+                editEmployees eE1 = new editEmployees();
+                this.Close();
+                eE1.Show();
+            }
         }
     }
 }

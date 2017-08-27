@@ -24,12 +24,12 @@ namespace WindowsFormsApplication1
         MySqlConnection connection = new MySqlConnection(dbString);
         DataSet ds = new DataSet();
         DataTable dt = new DataTable();
+        DateTime dob_date, sdate, emdate, endate;
 
         public Form1()
         {
             InitializeComponent();
-                       //swdklmghnsdljkghsadljk;hg;jkldwhg  
-        }
+         }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -39,12 +39,10 @@ namespace WindowsFormsApplication1
                 {
                   //string query = "INSERT INTO testing (id, fname, lname) VALUES ('" + eid.Text + "', '" + id.Text + "', '" + fname.Text + "');";
                     //string query = "INSERT INTO employees (eid, id, fname, lname, gender, dob, address, zip, city, country, cob, mdate, married, children, sdate, endate) VALUES ('" + eid.Text + "', '" + id.Text + "','" + fname.Text + "', '" + lname.Text+"', '" + gender.Text.ToString() + "', '" + dob.Text + "', '" + cob.Text + "', '" + emdate.Text + "', '" + sdate.Text + "', '" + endate.Text + "', '" + address.Text + "', '" + city.Text + "', '" + country.Text + "', '" + zip.Text + "', '" + marital.Text.ToString() + "', '" + children.Text + "'); ";
-                     string query = "INSERT INTO employees (eid, id, fname, lname, gender, dob, address, zip, city, country, cob, mdate, married, children, sdate, endate, department, wageClass) VALUES (@eid, @id, @fname, @lname, @gender, @dob, @address, @zip, @city, @country, @cob, @mdate, @married, @children, @sdate, @endate, @department, @wageClass);";
+                    string query = "INSERT INTO employees (eid, id, fname, lname, gender, dob, address, zip, city, country, cob, mdate, married, children, sdate, endate, department, wageClass) VALUES (@eid, @id, @fname, @lname, @gender, @dob, @address, @zip, @city, @country, @cob, @mdate, @married, @children, @sdate, @endate, @department, @wageClass);";
                     string queryUsers = "INSERT INTO users (eid, id, passwd) VALUES (@eidu, @idu, @passwd);";
                     connection.Open();
-
-                    
-
+                        
                     using (MySqlCommand cmd = new MySqlCommand(query, connection))
                     {
                         if (checkBox1.Checked == false)
@@ -79,10 +77,19 @@ namespace WindowsFormsApplication1
                             cmdu.Parameters.AddWithValue("@eidu", eid.Text);
                             cmdu.Parameters.AddWithValue("@idu", id.Text);
                             cmdu.Parameters.AddWithValue("@passwd", Membership.GeneratePassword(7, 2));
-                            cmdu.ExecuteNonQuery();
-                        }
 
-                        cmd.ExecuteNonQuery();
+                            if (!checkEmptyFields())
+                                throw new Exception("Some required fields are empty.");
+
+                            if (checkDates())
+                            {
+                                cmdu.ExecuteNonQuery();
+                                cmd.ExecuteNonQuery();
+                            }
+
+                            else
+                                throw new Exception("Dates don't match!");
+                        }
                     }
                     DialogResult result = MessageBox.Show("Employee added successfully!", "Operation completed", MessageBoxButtons.OK);
                     if (result == DialogResult.OK)
@@ -92,6 +99,7 @@ namespace WindowsFormsApplication1
 
                     connection.Close();
                 }
+
                 catch (Exception err)
                 {
                     MessageBox.Show(err.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -99,12 +107,55 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private bool checkAge()
+        private bool checkDates()
         {
-            if (int.Parse(dob_year.Text) > DateTime.Now.Year || int.Parse(sdate_year.Text) > DateTime.Now.Year)
-                return false;
-            else
-                return true;
+          dob_date = DateTime.Parse(dob_year.Text+"-" + dob_month.Text + "-" + dob_day.Text);
+          sdate = DateTime.Parse(sdate_year.Text + "-" + sdate_month.Text + "-" + sdate_day.Text);
+                    
+            //DOB Year > Current year OR older than 70 OR younger than 18
+            if (dob_date.Date > sdate.Date ||
+                dob_date.Date > DateTime.Today ||
+                dob_date.Date < DateTime.Today.AddYears(-70) ||
+                sdate.Date > DateTime.Today ||
+                dob_date.AddYears(18) > DateTime.Today) 
+                    return false;
+
+            if (checkBox1.Checked) //endate.Enabled
+            {
+                endate = DateTime.Parse(endate_year.Text + "-" + endate_month.Text + "-" + endate_day.Text);
+                if (endate.Date > dob_date.Date ||
+                    endate.Date < sdate.Date ||
+                    endate.Date > DateTime.Today)
+                    return false;
+                if (checkBox2.Checked) //emdate.Enabled
+                {
+                    if (emdate > endate)
+                        return false;
+                }
+            }
+            if (checkBox2.Checked) //emdate >? stdate
+            {
+                emdate = DateTime.Parse(emdate_year.Text + "-" + emdate_month.Text + "-" + emdate_day.Text);
+                if (emdate.Date < dob_date.Date)
+                    return false;
+            }
+            return true;
+        
+        }
+
+        private bool checkEmptyFields()
+        {
+            foreach (var tb in this.Controls.OfType<TextBox>())
+            {
+                if (tb.Enabled==true && tb.Text == "")
+                   return false;
+            }
+            foreach (var cb in this.Controls.OfType<ComboBox>())
+            {
+                if (cb.Enabled == true && cb.SelectedIndex == -1)
+                    return false;
+            }
+            return true;
         }
 
         private void ClearText()
@@ -157,7 +208,7 @@ namespace WindowsFormsApplication1
 
         private void wageClass_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (wageClass.SelectedIndex == 4)
+            if (wageClass.SelectedIndex == 4) //Global Scale
                 wageInput.Enabled = true;
             else
                 wageInput.Enabled = false;
