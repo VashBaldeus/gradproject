@@ -10,19 +10,16 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class LoginMenu : Form
+    public partial class MainMenu : Form
     {
-        public LoginMenu()
+        public MainMenu()
         {
             InitializeComponent();
         }
 
-        private void buttonLogin_Click(object sender, EventArgs e)
+        private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
         {
-            MainMenu M = new MainMenu();
-            
-            M.Show();
-            this.Dispose();
+            Application.Exit();
         }
     }
 }
