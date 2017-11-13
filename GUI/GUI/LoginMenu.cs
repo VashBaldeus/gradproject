@@ -20,9 +20,8 @@ namespace GUI
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             MainMenu M = new MainMenu();
-            
             M.Show();
-            this.Dispose();
+            this.Hide();
         }
     }
 }

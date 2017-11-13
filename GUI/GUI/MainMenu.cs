@@ -15,6 +15,8 @@ namespace GUI
         public MainMenu()
         {
             InitializeComponent();
+            LoginMenu LM = new LoginMenu();
+            LM.Close();
         }
 
         private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
