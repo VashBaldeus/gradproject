@@ -45,6 +45,7 @@
             resources.ApplyResources(this.buttonNewEmployee, "buttonNewEmployee");
             this.buttonNewEmployee.Name = "buttonNewEmployee";
             this.buttonNewEmployee.UseVisualStyleBackColor = true;
+            this.buttonNewEmployee.Click += new System.EventHandler(this.buttonNewEmployee_Click);
             // 
             // buttonCalcSalary
             // 
@@ -75,6 +76,7 @@
             resources.ApplyResources(this.buttonEditEmployee, "buttonEditEmployee");
             this.buttonEditEmployee.Name = "buttonEditEmployee";
             this.buttonEditEmployee.UseVisualStyleBackColor = true;
+            this.buttonEditEmployee.Click += new System.EventHandler(this.buttonEditEmployee_Click);
             // 
             // buttonEditUser
             // 
@@ -93,6 +95,7 @@
             resources.ApplyResources(this.buttonPrintHourLog, "buttonPrintHourLog");
             this.buttonPrintHourLog.Name = "buttonPrintHourLog";
             this.buttonPrintHourLog.UseVisualStyleBackColor = true;
+            this.buttonPrintHourLog.Click += new System.EventHandler(this.buttonPrintHourLog_Click);
             // 
             // MainMenu
             // 
