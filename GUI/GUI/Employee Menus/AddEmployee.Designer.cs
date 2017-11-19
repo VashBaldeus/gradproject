@@ -30,38 +30,38 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEmployee));
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxFName = new System.Windows.Forms.TextBox();
+            this.textBoxLName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.comboBoxGender = new System.Windows.Forms.ComboBox();
+            this.dateTimePickerDOB = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBoxStreet = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBoxID = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBoxZIP = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBoxCity = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboBoxCountry = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBoxCOB = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.dateTimePickerMigration = new System.Windows.Forms.DateTimePicker();
+            this.comboBoxMarital = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.comboBoxChildren = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerJStart = new System.Windows.Forms.DateTimePicker();
             this.label15 = new System.Windows.Forms.Label();
-            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.dateTimePickerJEnd = new System.Windows.Forms.DateTimePicker();
+            this.comboBoxDeptCode = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
+            this.comboBoxJType = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -75,19 +75,19 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "שם פרטי:";
             // 
-            // textBox1
+            // textBoxFName
             // 
-            this.textBox1.Location = new System.Drawing.Point(149, 38);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 1;
+            this.textBoxFName.Location = new System.Drawing.Point(149, 38);
+            this.textBoxFName.Name = "textBoxFName";
+            this.textBoxFName.Size = new System.Drawing.Size(100, 20);
+            this.textBoxFName.TabIndex = 1;
             // 
-            // textBox2
+            // textBoxLName
             // 
-            this.textBox2.Location = new System.Drawing.Point(149, 64);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 3;
+            this.textBoxLName.Location = new System.Drawing.Point(149, 64);
+            this.textBoxLName.Name = "textBoxLName";
+            this.textBoxLName.Size = new System.Drawing.Size(100, 20);
+            this.textBoxLName.TabIndex = 3;
             // 
             // label2
             // 
@@ -109,20 +109,20 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "מין:";
             // 
-            // comboBox1
+            // comboBoxGender
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(128, 90);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 5;
+            this.comboBoxGender.FormattingEnabled = true;
+            this.comboBoxGender.Location = new System.Drawing.Point(128, 90);
+            this.comboBoxGender.Name = "comboBoxGender";
+            this.comboBoxGender.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxGender.TabIndex = 5;
             // 
-            // dateTimePicker1
+            // dateTimePickerDOB
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(49, 116);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 6;
+            this.dateTimePickerDOB.Location = new System.Drawing.Point(49, 116);
+            this.dateTimePickerDOB.Name = "dateTimePickerDOB";
+            this.dateTimePickerDOB.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerDOB.TabIndex = 6;
             // 
             // label4
             // 
@@ -134,12 +134,12 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "תאריך לידה:";
             // 
-            // textBox3
+            // textBoxStreet
             // 
-            this.textBox3.Location = new System.Drawing.Point(59, 142);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(190, 20);
-            this.textBox3.TabIndex = 9;
+            this.textBoxStreet.Location = new System.Drawing.Point(59, 142);
+            this.textBoxStreet.Name = "textBoxStreet";
+            this.textBoxStreet.Size = new System.Drawing.Size(190, 20);
+            this.textBoxStreet.TabIndex = 9;
             // 
             // label5
             // 
@@ -151,12 +151,12 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "רחוב:";
             // 
-            // textBox4
+            // textBoxID
             // 
-            this.textBox4.Location = new System.Drawing.Point(149, 12);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 11;
+            this.textBoxID.Location = new System.Drawing.Point(149, 12);
+            this.textBoxID.Name = "textBoxID";
+            this.textBoxID.Size = new System.Drawing.Size(100, 20);
+            this.textBoxID.TabIndex = 11;
             // 
             // label6
             // 
@@ -168,12 +168,12 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "תעודת זהות:";
             // 
-            // textBox5
+            // textBoxZIP
             // 
-            this.textBox5.Location = new System.Drawing.Point(180, 168);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(69, 20);
-            this.textBox5.TabIndex = 13;
+            this.textBoxZIP.Location = new System.Drawing.Point(180, 168);
+            this.textBoxZIP.Name = "textBoxZIP";
+            this.textBoxZIP.Size = new System.Drawing.Size(69, 20);
+            this.textBoxZIP.TabIndex = 13;
             // 
             // label7
             // 
@@ -185,13 +185,13 @@
             this.label7.TabIndex = 12;
             this.label7.Text = "מיקוד:";
             // 
-            // comboBox2
+            // comboBoxCity
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(128, 194);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 15;
+            this.comboBoxCity.FormattingEnabled = true;
+            this.comboBoxCity.Location = new System.Drawing.Point(128, 194);
+            this.comboBoxCity.Name = "comboBoxCity";
+            this.comboBoxCity.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxCity.TabIndex = 15;
             // 
             // label8
             // 
@@ -203,13 +203,13 @@
             this.label8.TabIndex = 14;
             this.label8.Text = "עיר:";
             // 
-            // comboBox3
+            // comboBoxCountry
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(128, 220);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
-            this.comboBox3.TabIndex = 17;
+            this.comboBoxCountry.FormattingEnabled = true;
+            this.comboBoxCountry.Location = new System.Drawing.Point(128, 220);
+            this.comboBoxCountry.Name = "comboBoxCountry";
+            this.comboBoxCountry.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxCountry.TabIndex = 17;
             // 
             // label9
             // 
@@ -221,12 +221,12 @@
             this.label9.TabIndex = 16;
             this.label9.Text = "ארץ:";
             // 
-            // textBox6
+            // textBoxCOB
             // 
-            this.textBox6.Location = new System.Drawing.Point(149, 246);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 19;
+            this.textBoxCOB.Location = new System.Drawing.Point(149, 246);
+            this.textBoxCOB.Name = "textBoxCOB";
+            this.textBoxCOB.Size = new System.Drawing.Size(100, 20);
+            this.textBoxCOB.TabIndex = 19;
             // 
             // label10
             // 
@@ -248,20 +248,20 @@
             this.label11.TabIndex = 21;
             this.label11.Text = "תאריך עלייה:";
             // 
-            // dateTimePicker2
+            // dateTimePickerMigration
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(49, 272);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 20;
+            this.dateTimePickerMigration.Location = new System.Drawing.Point(49, 272);
+            this.dateTimePickerMigration.Name = "dateTimePickerMigration";
+            this.dateTimePickerMigration.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerMigration.TabIndex = 20;
             // 
-            // comboBox4
+            // comboBoxMarital
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(128, 298);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(121, 21);
-            this.comboBox4.TabIndex = 23;
+            this.comboBoxMarital.FormattingEnabled = true;
+            this.comboBoxMarital.Location = new System.Drawing.Point(128, 298);
+            this.comboBoxMarital.Name = "comboBoxMarital";
+            this.comboBoxMarital.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxMarital.TabIndex = 23;
             // 
             // label12
             // 
@@ -273,13 +273,13 @@
             this.label12.TabIndex = 22;
             this.label12.Text = "מצב משפחתי:";
             // 
-            // comboBox5
+            // comboBoxChildren
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(128, 324);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(121, 21);
-            this.comboBox5.TabIndex = 25;
+            this.comboBoxChildren.FormattingEnabled = true;
+            this.comboBoxChildren.Location = new System.Drawing.Point(128, 324);
+            this.comboBoxChildren.Name = "comboBoxChildren";
+            this.comboBoxChildren.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxChildren.TabIndex = 25;
             // 
             // label13
             // 
@@ -301,12 +301,12 @@
             this.label14.TabIndex = 27;
             this.label14.Text = "תאריך תחילת עבודה:";
             // 
-            // dateTimePicker3
+            // dateTimePickerJStart
             // 
-            this.dateTimePicker3.Location = new System.Drawing.Point(10, 351);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker3.TabIndex = 26;
+            this.dateTimePickerJStart.Location = new System.Drawing.Point(10, 351);
+            this.dateTimePickerJStart.Name = "dateTimePickerJStart";
+            this.dateTimePickerJStart.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerJStart.TabIndex = 26;
             // 
             // label15
             // 
@@ -318,20 +318,20 @@
             this.label15.TabIndex = 29;
             this.label15.Text = "תאריך סיום עבודה:";
             // 
-            // dateTimePicker4
+            // dateTimePickerJEnd
             // 
-            this.dateTimePicker4.Location = new System.Drawing.Point(10, 381);
-            this.dateTimePicker4.Name = "dateTimePicker4";
-            this.dateTimePicker4.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker4.TabIndex = 28;
+            this.dateTimePickerJEnd.Location = new System.Drawing.Point(10, 381);
+            this.dateTimePickerJEnd.Name = "dateTimePickerJEnd";
+            this.dateTimePickerJEnd.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerJEnd.TabIndex = 28;
             // 
-            // comboBox6
+            // comboBoxDeptCode
             // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(89, 407);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(121, 21);
-            this.comboBox6.TabIndex = 31;
+            this.comboBoxDeptCode.FormattingEnabled = true;
+            this.comboBoxDeptCode.Location = new System.Drawing.Point(89, 407);
+            this.comboBoxDeptCode.Name = "comboBoxDeptCode";
+            this.comboBoxDeptCode.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxDeptCode.TabIndex = 31;
             // 
             // label16
             // 
@@ -343,13 +343,13 @@
             this.label16.TabIndex = 30;
             this.label16.Text = "קוד מחלקה:";
             // 
-            // comboBox7
+            // comboBoxJType
             // 
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(89, 434);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(121, 21);
-            this.comboBox7.TabIndex = 33;
+            this.comboBoxJType.FormattingEnabled = true;
+            this.comboBoxJType.Location = new System.Drawing.Point(89, 434);
+            this.comboBoxJType.Name = "comboBoxJType";
+            this.comboBoxJType.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxJType.TabIndex = 33;
             // 
             // label17
             // 
@@ -366,39 +366,39 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(336, 620);
-            this.Controls.Add(this.comboBox7);
+            this.Controls.Add(this.comboBoxJType);
             this.Controls.Add(this.label17);
-            this.Controls.Add(this.comboBox6);
+            this.Controls.Add(this.comboBoxDeptCode);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.dateTimePicker4);
+            this.Controls.Add(this.dateTimePickerJEnd);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.dateTimePicker3);
-            this.Controls.Add(this.comboBox5);
+            this.Controls.Add(this.dateTimePickerJStart);
+            this.Controls.Add(this.comboBoxChildren);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.comboBox4);
+            this.Controls.Add(this.comboBoxMarital);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.dateTimePickerMigration);
+            this.Controls.Add(this.textBoxCOB);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.comboBoxCountry);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.comboBoxCity);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.textBoxZIP);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.textBoxID);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBoxStreet);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.dateTimePickerDOB);
+            this.Controls.Add(this.comboBoxGender);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBoxLName);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxFName);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -414,38 +414,38 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxFName;
+        private System.Windows.Forms.TextBox textBoxLName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.ComboBox comboBoxGender;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDOB;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBoxStreet;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBoxID;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBoxZIP;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBoxCity;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comboBoxCountry;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBoxCOB;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.DateTimePicker dateTimePickerMigration;
+        private System.Windows.Forms.ComboBox comboBoxMarital;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ComboBox comboBoxChildren;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private System.Windows.Forms.DateTimePicker dateTimePickerJStart;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.DateTimePicker dateTimePicker4;
-        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.DateTimePicker dateTimePickerJEnd;
+        private System.Windows.Forms.ComboBox comboBoxDeptCode;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.ComboBox comboBox7;
+        private System.Windows.Forms.ComboBox comboBoxJType;
         private System.Windows.Forms.Label label17;
     }
 }

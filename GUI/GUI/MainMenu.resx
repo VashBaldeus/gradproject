@@ -127,9 +127,6 @@
   <data name="button3.Text" xml:space="preserve">
     <value>B3</value>
   </data>
-  <data name="buttonCalcSalary.Text" xml:space="preserve">
-    <value>חישוב שכר</value>
-  </data>
   <data name="button5.Location" type="System.Drawing.Point, System.Drawing">
     <value>270, 83</value>
   </data>
@@ -258,6 +255,9 @@
   <data name="&gt;&gt;buttonEditEmployee.Name" xml:space="preserve">
     <value>buttonEditEmployee</value>
   </data>
+  <data name="&gt;&gt;button3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="buttonCalcSalary.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
@@ -327,8 +327,8 @@
   <data name="button3.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 12</value>
   </data>
-  <data name="&gt;&gt;button3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="buttonCalcSalary.Text" xml:space="preserve">
+    <value>חישוב שכר</value>
   </data>
   <data name="&gt;&gt;button8.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
