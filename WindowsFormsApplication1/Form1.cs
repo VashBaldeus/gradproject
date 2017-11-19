@@ -69,7 +69,8 @@ namespace WindowsFormsApplication1
                         cmd.Parameters.AddWithValue("@married", marital.Text.ToString());
                         cmd.Parameters.AddWithValue("@children", children.Text);
                         cmd.Parameters.AddWithValue("@sdate", sdate_year.Text + "-" + sdate_month.Text + "-" + sdate_day.Text);
-                        cmd.Parameters.AddWithValue("@department", departments.Text.ToString());
+                       // cmd.Parameters.AddWithValue("@department", departments.Text.ToString());
+                        cmd.Parameters.AddWithValue("@department", departmentNumber(departments.Text.ToString()));
                         cmd.Parameters.AddWithValue("@wageClass", wageClass.Text.ToString());
 
                         using (MySqlCommand cmdu = new MySqlCommand(queryUsers, connection))
@@ -83,6 +84,7 @@ namespace WindowsFormsApplication1
 
                             if (checkDates())
                             {
+                                connection.Open();
                                 cmdu.ExecuteNonQuery();
                                 cmd.ExecuteNonQuery();
                             }
@@ -105,6 +107,27 @@ namespace WindowsFormsApplication1
                     MessageBox.Show(err.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private string departmentNumber(string department)
+        {
+            string departmentCode = "";
+            using (connection)
+            {
+                string queryDepartments = "SELECT * FROM dept WHERE dname = '" + department + "';";
+               
+                using (MySqlCommand cmdDepartment = new MySqlCommand(queryDepartments, connection))
+                {
+                    MySqlDataReader rdr = cmdDepartment.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        departmentCode = rdr[0].ToString();
+                    }
+                    rdr.Close();
+          
+                }
+            }
+            return departmentCode;
         }
 
         private bool checkDates()
