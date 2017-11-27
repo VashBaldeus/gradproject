@@ -54,19 +54,28 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainMenu.cs">
+    <Compile Include="HRMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainMenu.Designer.cs">
-      <DependentUpon>MainMenu.cs</DependentUpon>
+    <Compile Include="HRMenu.Designer.cs">
+      <DependentUpon>HRMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MngMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MngMenu.Designer.cs">
+      <DependentUpon>MngMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainMenu.resx">
-      <DependentUpon>MainMenu.cs</DependentUpon>
+    <EmbeddedResource Include="HRMenu.resx">
+      <DependentUpon>HRMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MngMenu.resx">
+      <DependentUpon>MngMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -76,6 +85,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -90,11 +100,72 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\1471127 - document .png" />
+    <None Include="Resources\1471126 - document .png" />
+    <None Include="Resources\1471125 - document .png" />
+    <None Include="Resources\1471124 - document .png" />
+    <None Include="Resources\1471123 - award cha.png" />
+    <None Include="Resources\1471122 - document .png" />
+    <None Include="Resources\1471121 - document .png" />
+    <None Include="Resources\1471120 - office pi.png" />
+    <None Include="Resources\1471119 - art brush.png" />
+    <None Include="Resources\1471118 - compose c.png" />
+    <None Include="Resources\1471117 - bookmark .png" />
+    <None Include="Resources\1471116 - attach at.png" />
+    <None Include="Resources\1471115 - employee .png" />
+    <None Include="Resources\1471114 - access ge.png" />
+    <None Include="Resources\1471113 - calendar .png" />
+    <None Include="Resources\1471112 - general k.png" />
+    <None Include="Resources\1471111 - alarm clo.png" />
+    <None Include="Resources\1471110 - general o.png" />
+    <None Include="Resources\1471109 - general o.png" />
+    <None Include="Resources\1471108 - crest cro.png" />
+    <None Include="Resources\1471107 - general h.png" />
+    <None Include="Resources\1471106 - general h.png" />
+    <None Include="Resources\1471105 - business .png" />
+    <None Include="Resources\1471104 - align emp.png" />
+    <None Include="Resources\1471103 - cog gear .png" />
+    <None Include="Resources\1471102 - cam camer.png" />
+    <None Include="Resources\1471101 - average i.png" />
+    <None Include="Resources\1471100 - compose c.png" />
+    <None Include="Resources\1471099 - demolish .png" />
+    <None Include="Resources\1471098 - document .png" />
+    <None Include="Resources\1471097 - award cha.png" />
+    <None Include="Resources\1471096 - cog gear .png" />
+    <None Include="Resources\1471095 - general r.png" />
+    <None Include="Resources\1471094 - general o.png" />
+    <None Include="Resources\1471093 - general o.png" />
+    <None Include="Resources\1471092 - general k.png" />
+    <None Include="Resources\1471091 - clock flo.png" />
+    <None Include="Resources\1471090 - calendar .png" />
+    <None Include="Resources\1471089 - alarm ala.png" />
+    <None Include="Resources\1471088 - compass d.png" />
+    <None Include="Resources\1471087 - general o.png" />
+    <None Include="Resources\1471086 - airplane .png" />
+    <None Include="Resources\1471085 - add user .png" />
+    <None Include="Resources\1471084 - avatar ge.png" />
+    <None Include="Resources\1471083 - general g.png" />
+    <None Include="Resources\1471082 - base data.png" />
+    <None Include="Resources\1471081 - compose c.png" />
+    <None Include="Resources\1471080 - burger ge.png" />
+    <None Include="Resources\1471079 - attach at.png" />
+    <None Include="Resources\1471078 - general g.png" />
+    <None Include="Resources\1471077 - accountin.png" />
+    <None Include="Resources\1471076 - garbage c.png" />
+    <None Include="Resources\1471075 - align arr.png" />
+    <None Include="Resources\1471074 - align ali.png" />
+    <None Include="Resources\1471073 - document .png" />
+    <None Include="Resources\1471072 - align arr.png" />
+    <None Include="Resources\1471071 - align cen.png" />
+    <None Include="Resources\1471070 - align ali.png" />
+    <None Include="Resources\1471069 - bag brief.png" />
+    <None Include="Resources\1471068 - general g.png" />
+    <None Include="Resources\1471067 - general i.png" />
+    <None Include="Resources\1471066 - document .png" />
+    <None Include="Resources\1471065 - documents.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

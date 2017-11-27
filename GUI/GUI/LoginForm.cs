@@ -15,12 +15,13 @@ namespace GUI
         public LoginForm()
         {
             InitializeComponent();
+            this.Text = "";
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             //for obvious reasons I did not require a login for now.
-            MainMenu main = new MainMenu();
+            HRMenu main = new HRMenu();
             main.Show();
             this.Hide();
         }
