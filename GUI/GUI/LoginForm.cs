@@ -10,18 +10,29 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class LoginMenu : Form
+    public partial class LoginForm : Form
     {
-        public LoginMenu()
+        public LoginForm()
         {
             InitializeComponent();
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            MainMenu M = new MainMenu();
-            M.Show();
+            //for obvious reasons I did not require a login for now.
+            MainMenu main = new MainMenu();
+            main.Show();
             this.Hide();
+        }
+
+        private void buttonTKEenter_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonTKExit_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
