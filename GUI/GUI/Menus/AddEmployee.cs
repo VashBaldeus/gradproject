@@ -8,21 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GUI
+namespace GUI.Menus
 {
-    public partial class HRMenu : Form
+    public partial class AddEmployee : Form
     {
-        public HRMenu()
+        public AddEmployee()
         {
             InitializeComponent();
-
-            LoginForm LM = new LoginForm();
-            LM.Close();
-        }
-
-        private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
         }
     }
 }

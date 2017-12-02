@@ -21,7 +21,7 @@ namespace GUI
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             //for obvious reasons I did not require a login for now.
-            HRMenu main = new HRMenu();
+            MainMenu main = new MainMenu();
             main.Show();
             this.Hide();
         }
