@@ -12,9 +12,30 @@ namespace GUI.Menus
 {
     public partial class AddEmployee : Form
     {
+        MainMenu main = new MainMenu();
+
         public AddEmployee()
         {
             InitializeComponent();
+
+            //DataTable city = main.GetCity();
+            DataTable country = main.GetCountry();
+
+            foreach(DataRow dr in country.Rows)
+            {
+                comboBoxCountry.Items.Add(dr["country_name"].ToString());
+                comboBoxCOB.Items.Add(dr["country_name"].ToString());
+            }
+        }
+
+        private void buttonAddEmployee_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonResetForm_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -13,18 +13,34 @@ namespace GUI
 {
     public partial class MainMenu : Form
     {
-        
+        DataHandler dh = new DataHandler();
+        public DataTable city = new DataTable();
+        public DataTable country = new DataTable();
+
         public MainMenu()
         {
             InitializeComponent();
 
             /*tabControl1.TabPages.Remove(tabPage1);
             tabControl1.TabPages.Add(tabPage1);*/
+
+            //city = dh.GetTable("select * from city_codes");
+            country = dh.GetTable("select * from country_codes");
         }
 
         private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        public DataTable GetCity()
+        {
+            return city;
+        }
+
+        public DataTable GetCountry()
+        {
+            return country;
         }
 
         private void buttonAddEmployee_Click(object sender, EventArgs e)
