@@ -14,6 +14,7 @@ namespace GUI
     public partial class MainMenu : Form
     {
         DataHandler dh = new DataHandler();
+        LoadCityCountry lcc = new LoadCityCountry();
         public DataTable city = new DataTable();
         public DataTable country = new DataTable();
 
@@ -24,8 +25,8 @@ namespace GUI
             /*tabControl1.TabPages.Remove(tabPage1);
             tabControl1.TabPages.Add(tabPage1);*/
 
-            //city = dh.GetTable("select * from city_codes");
-            country = dh.GetTable("select * from country_codes");
+            city = lcc.exceldata("city.xlsx");
+            country = lcc.exceldata("country.xlsx");
         }
 
         private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)

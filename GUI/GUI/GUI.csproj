@@ -51,7 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataHandler.cs" />
+    <Compile Include="Classes\DataHandler.cs" />
+    <Compile Include="Classes\LoadCityCountry.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +70,36 @@
     </Compile>
     <Compile Include="Menus\AddEmployee.Designer.cs">
       <DependentUpon>AddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menus\Departments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menus\Departments.Designer.cs">
+      <DependentUpon>Departments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menus\EditEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menus\EditEmployee.Designer.cs">
+      <DependentUpon>EditEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menus\HourReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menus\HourReport.Designer.cs">
+      <DependentUpon>HourReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menus\Salary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menus\Salary.Designer.cs">
+      <DependentUpon>Salary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menus\UserProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menus\UserProfile.Designer.cs">
+      <DependentUpon>UserProfile.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -63,11 +63,11 @@ namespace GUI
 
         public bool LoginAuthentication(string username, string password)
         {
-            ImportTable("SELECT * FROM users");
+            ImportTable($"SELECT * FROM users where eid={username} or id={username}");
 
             foreach (DataRow dr in dt.Rows)
             {
-                if (dr["username"].ToString() == username)
+                if (dr["eid"].ToString() == username || dr["id"].ToString() == username)
                 {
                     if (dr["password"].ToString() == password)
                         return true;
@@ -77,64 +77,6 @@ namespace GUI
             }
             return false;
         }
-
-        /*#region Permissions
-        public int MngPermissionAuth()
-        {
-            ImportTable($"select manage from users where username='{Properties.Settings.Default.usrname}'");
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                return int.Parse(dr["manage"].ToString());
-            }
-            return 0;
-        }
-
-        public int addPermissionAuth()
-        {
-            ImportTable($"select add from users where username='{Properties.Settings.Default.usrname}'");
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                return int.Parse(dr["add"].ToString());
-            }
-            return 0;
-        }
-
-        public int viewPermissionAuth()
-        {
-            ImportTable($"select view from users where username='{Properties.Settings.Default.usrname}'");
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                return int.Parse(dr["view"].ToString());
-            }
-            return 0;
-        }
-
-        public int editPermissionAuth()
-        {
-            ImportTable($"select edit from users where username='{Properties.Settings.Default.usrname}'");
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                return int.Parse(dr["edit"].ToString());
-            }
-            return 0;
-        }
-
-        public int removePermissionAuth()
-        {
-            ImportTable($"select remove from users where username='{Properties.Settings.Default.usrname}'");
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                return int.Parse(dr["remove"].ToString());
-            }
-            return 0;
-        }
-        #endregion*/
-
 
     }
 }

@@ -18,13 +18,18 @@ namespace GUI.Menus
         {
             InitializeComponent();
 
-            //DataTable city = main.GetCity();
+            DataTable city = main.GetCity();
             DataTable country = main.GetCountry();
+
+            foreach(DataRow dr in city.Rows)
+            {
+                comboBoxCity.Items.Add(dr["name"].ToString());
+            }
 
             foreach(DataRow dr in country.Rows)
             {
-                comboBoxCountry.Items.Add(dr["country_name"].ToString());
-                comboBoxCOB.Items.Add(dr["country_name"].ToString());
+                comboBoxCountry.Items.Add(dr["name"].ToString());
+                comboBoxCOB.Items.Add(dr["name"].ToString());
             }
         }
 

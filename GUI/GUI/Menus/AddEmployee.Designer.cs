@@ -153,6 +153,8 @@
             // 
             // comboBoxGender
             // 
+            this.comboBoxGender.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.comboBoxGender.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxGender.FormattingEnabled = true;
             this.comboBoxGender.Items.AddRange(new object[] {
             "זכר",
@@ -189,6 +191,8 @@
             // 
             // comboBoxCity
             // 
+            this.comboBoxCity.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.comboBoxCity.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxCity.FormattingEnabled = true;
             this.comboBoxCity.Location = new System.Drawing.Point(71, 60);
             this.comboBoxCity.Name = "comboBoxCity";
@@ -206,6 +210,8 @@
             // 
             // comboBoxCountry
             // 
+            this.comboBoxCountry.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.comboBoxCountry.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxCountry.FormattingEnabled = true;
             this.comboBoxCountry.Location = new System.Drawing.Point(71, 87);
             this.comboBoxCountry.Name = "comboBoxCountry";
@@ -223,6 +229,8 @@
             // 
             // comboBoxCOB
             // 
+            this.comboBoxCOB.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.comboBoxCOB.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxCOB.FormattingEnabled = true;
             this.comboBoxCOB.Location = new System.Drawing.Point(71, 115);
             this.comboBoxCOB.Name = "comboBoxCOB";
@@ -240,12 +248,14 @@
             // 
             // comboBoxMarital
             // 
+            this.comboBoxMarital.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.comboBoxMarital.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxMarital.FormattingEnabled = true;
             this.comboBoxMarital.Items.AddRange(new object[] {
-            "רווק\\ה",
-            "נשוי\\אה",
-            "גרוש\\ה",
-            "עלמנ\\ה"});
+            "רווק/ה",
+            "נשוי/אה",
+            "גרוש/ה",
+            "עלמנ/ה"});
             this.comboBoxMarital.Location = new System.Drawing.Point(281, 138);
             this.comboBoxMarital.Name = "comboBoxMarital";
             this.comboBoxMarital.Size = new System.Drawing.Size(121, 21);
@@ -280,6 +290,8 @@
             // 
             // comboBoxChildren
             // 
+            this.comboBoxChildren.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.comboBoxChildren.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxChildren.FormattingEnabled = true;
             this.comboBoxChildren.Items.AddRange(new object[] {
             "0",
@@ -345,6 +357,8 @@
             // 
             // comboBoxJType
             // 
+            this.comboBoxJType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.comboBoxJType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxJType.FormattingEnabled = true;
             this.comboBoxJType.Location = new System.Drawing.Point(247, 218);
             this.comboBoxJType.Name = "comboBoxJType";
@@ -362,6 +376,8 @@
             // 
             // comboBoxSalary
             // 
+            this.comboBoxSalary.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.comboBoxSalary.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxSalary.FormattingEnabled = true;
             this.comboBoxSalary.Location = new System.Drawing.Point(42, 218);
             this.comboBoxSalary.Name = "comboBoxSalary";
@@ -379,6 +395,8 @@
             // 
             // comboBoxDept
             // 
+            this.comboBoxDept.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.comboBoxDept.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxDept.FormattingEnabled = true;
             this.comboBoxDept.Location = new System.Drawing.Point(152, 245);
             this.comboBoxDept.Name = "comboBoxDept";
