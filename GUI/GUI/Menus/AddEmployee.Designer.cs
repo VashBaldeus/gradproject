@@ -81,13 +81,16 @@
             // textBoxID
             // 
             this.textBoxID.Location = new System.Drawing.Point(281, 8);
+            this.textBoxID.MaxLength = 9;
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(121, 20);
             this.textBoxID.TabIndex = 0;
+            this.textBoxID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxID_KeyPress);
             // 
             // textBoxFName
             // 
             this.textBoxFName.Location = new System.Drawing.Point(281, 34);
+            this.textBoxFName.MaxLength = 35;
             this.textBoxFName.Name = "textBoxFName";
             this.textBoxFName.Size = new System.Drawing.Size(121, 20);
             this.textBoxFName.TabIndex = 1;
@@ -104,6 +107,7 @@
             // textBoxLName
             // 
             this.textBoxLName.Location = new System.Drawing.Point(281, 60);
+            this.textBoxLName.MaxLength = 35;
             this.textBoxLName.Name = "textBoxLName";
             this.textBoxLName.Size = new System.Drawing.Size(121, 20);
             this.textBoxLName.TabIndex = 2;
@@ -309,6 +313,7 @@
             this.comboBoxChildren.Name = "comboBoxChildren";
             this.comboBoxChildren.Size = new System.Drawing.Size(121, 21);
             this.comboBoxChildren.TabIndex = 12;
+            this.comboBoxChildren.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxID_KeyPress);
             // 
             // label13
             // 

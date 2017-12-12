@@ -27,6 +27,8 @@ namespace GUI
 
             city = lcc.exceldata("city.xlsx");
             country = lcc.exceldata("country.xlsx");
+
+
         }
 
         private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
@@ -52,27 +54,32 @@ namespace GUI
 
         private void buttonEditEmployee_Click(object sender, EventArgs e)
         {
-
+            EditEmployee ee = new EditEmployee();
+            ee.ShowDialog();
         }
 
         private void buttonHourReport_Click(object sender, EventArgs e)
         {
-
+            HourReport hr = new HourReport();
+            hr.ShowDialog();
         }
 
         private void buttonDepartments_Click(object sender, EventArgs e)
         {
-
+            Departments dpt = new Departments();
+            dpt.ShowDialog();
         }
 
         private void buttonSalary_Click(object sender, EventArgs e)
         {
-
+            Salary sal = new Salary();
+            sal.ShowDialog();
         }
 
         private void buttonUserProfile_Click(object sender, EventArgs e)
         {
-
+            UserProfile up = new UserProfile();
+            up.ShowDialog();
         }
     }
 }

@@ -23,13 +23,13 @@ namespace GUI.Menus
 
             foreach(DataRow dr in city.Rows)
             {
-                comboBoxCity.Items.Add(dr["name"].ToString());
+                comboBoxCity.Items.Add(dr["city_name"].ToString());
             }
 
             foreach(DataRow dr in country.Rows)
             {
-                comboBoxCountry.Items.Add(dr["name"].ToString());
-                comboBoxCOB.Items.Add(dr["name"].ToString());
+                comboBoxCountry.Items.Add(dr["country_name"].ToString());
+                comboBoxCOB.Items.Add(dr["country_name"].ToString());
             }
         }
 
@@ -41,6 +41,14 @@ namespace GUI.Menus
         private void buttonResetForm_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBoxID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

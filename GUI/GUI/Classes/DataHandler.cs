@@ -5,34 +5,33 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace GUI
 {
     class DataHandler
     {
-        private static string dbHost = "vps.vashbaldeus.pw";
+        #region Manual Connection Strings
+        /*private static string dbHost = "vps.vashbaldeus.pw";
         private static string dbUsername = "hr";
         private static string dbPassword = "3d1*M7dS4&Gy5f";
-        /*
+
         private static string dbHost = "localhost";
         private static string dbUsername = "root";
         private static string dbPassword = "password";
-        */
+
         private static string dbName = "hr";
 
         private static string dbString = $"Server={dbHost}; database={dbName}; UID={dbUsername}; password={dbPassword}";
 
-        MySqlConnection connection = new MySqlConnection(dbString);
-        DataSet ds = new DataSet();
-        DataTable dt = new DataTable();
+        MySqlConnection connection = new MySqlConnection(dbString);*/
+        #endregion
+        HR dataset = new HR();
+        DataTable datatable = new DataTable();
 
-        public string GetDBString()
+        /*private void ImportTable(string query)
         {
-            return dbString;
-        }
-
-        private void ImportTable(string query)
-        {
+            //dt.PrimaryKey = null;
             dt.Rows.Clear();
             dt.Columns.Clear();
 
@@ -48,6 +47,34 @@ namespace GUI
             ImportTable(query);
 
             return dt;
+        }*/
+
+        private void LoadUsers()
+        {
+            hrDataSetTableAdapters.usersTableAdapter usersTable = new hrDataSetTableAdapters.usersTableAdapter();
+            datatable.Clear();
+            datatable = usersTable.GetData();
+        }
+
+        private void LoadEmployees()
+        {
+            hrDataSetTableAdapters.employeesTableAdapter employeesTable = new hrDataSetTableAdapters.employeesTableAdapter();
+            datatable.Clear();
+            datatable = employeesTable.GetData();
+        }
+
+        public DataTable LoadCityCodes()
+        {
+            hrDataSetTableAdapters.city_codesTableAdapter city_codesTable = new hrDataSetTableAdapters.city_codesTableAdapter();
+            datatable.Clear();
+            return city_codesTable.GetData();
+        }
+
+        public DataTable LoadCountryCodes()
+        {
+            hrDataSetTableAdapters.country_codesTableAdapter country_codesTable = new hrDataSetTableAdapters.country_codesTableAdapter();
+            datatable.Clear();
+            return country_codesTable.GetData();
         }
 
         public string Hash512(string password)
@@ -63,14 +90,15 @@ namespace GUI
 
         public bool LoginAuthentication(string username, string password)
         {
-            ImportTable($"SELECT * FROM users where eid={username} or id={username}");
-
-            foreach (DataRow dr in dt.Rows)
+            LoadUsers();
+            foreach(DataRow dr in datatable.Rows)
             {
-                if (dr["eid"].ToString() == username || dr["id"].ToString() == username)
+                if (dr["id"].ToString() == username)
                 {
-                    if (dr["password"].ToString() == password)
+                    if (dr["passwd"].ToString() == password)
+                    {
                         return true;
+                    }
                     else return false;
                 }
                 else return false;
