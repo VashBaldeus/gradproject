@@ -25,8 +25,8 @@ namespace GUI
             /*tabControl1.TabPages.Remove(tabPage1);
             tabControl1.TabPages.Add(tabPage1);*/
 
-            city = lcc.exceldata("city.xlsx");
-            country = lcc.exceldata("country.xlsx");
+            city = dh.LoadCityCodes();//lcc.exceldata("city.xlsx");
+            country = dh.LoadCountryCodes();//lcc.exceldata("country.xlsx");
 
 
         }

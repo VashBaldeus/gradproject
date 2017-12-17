@@ -12,24 +12,25 @@ namespace GUI
     class DataHandler
     {
         #region Manual Connection Strings
-        /*private static string dbHost = "vps.vashbaldeus.pw";
+        private static string dbHost = "vps.vashbaldeus.pw";
         private static string dbUsername = "hr";
         private static string dbPassword = "3d1*M7dS4&Gy5f";
-
+        /*
         private static string dbHost = "localhost";
         private static string dbUsername = "root";
         private static string dbPassword = "password";
-
+        */
         private static string dbName = "hr";
 
         private static string dbString = $"Server={dbHost}; database={dbName}; UID={dbUsername}; password={dbPassword}";
-
-        MySqlConnection connection = new MySqlConnection(dbString);*/
+    
+        MySqlConnection connection = new MySqlConnection(dbString);
         #endregion
-        HR dataset = new HR();
-        DataTable datatable = new DataTable();
+        //HR dataset = new HR();
+        DataTable dt = new DataTable();
+        DataTable datatable = new DataTable(); 
 
-        /*private void ImportTable(string query)
+        private void ImportTable(string query)
         {
             //dt.PrimaryKey = null;
             dt.Rows.Clear();
@@ -40,21 +41,21 @@ namespace GUI
                 da.FillSchema(dt, SchemaType.Source);
                 da.Fill(dt);
             }
+
         }
 
         public DataTable GetTable(string query)
         {
             ImportTable(query);
-
             return dt;
-        }*/
+        }
 
-        private void LoadUsers()
+        /*private void LoadUsers()
         {
             hrDataSetTableAdapters.usersTableAdapter usersTable = new hrDataSetTableAdapters.usersTableAdapter();
             datatable.Clear();
             datatable = usersTable.GetData();
-        }
+        }*/
 
         private void LoadEmployees()
         {
@@ -90,8 +91,19 @@ namespace GUI
 
         public bool LoginAuthentication(string username, string password)
         {
-            LoadUsers();
-            foreach(DataRow dr in datatable.Rows)
+            //LoadUsers();
+            //ImportTable($"select * from employees where id='{username}' or eid='{username}'");
+            //DataSet ds = new DataSet() { EnforceConstraints = false };
+
+            hrDataSetTableAdapters.employeesTableAdapter employees = new hrDataSetTableAdapters.employeesTableAdapter();
+
+            DataSet ds = new DataSet() { EnforceConstraints = false };
+            ds.Tables.Add(dt);
+
+            datatable.Clear();
+            datatable = employees.GetData();
+
+            foreach (DataRow dr in datatable.Rows)
             {
                 if (dr["id"].ToString() == username)
                 {

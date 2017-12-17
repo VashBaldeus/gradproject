@@ -73,13 +73,10 @@
     <Compile Include="Classes\DataHandler.cs" />
     <Compile Include="Classes\HourCalcReport.cs" />
     <Compile Include="Classes\LoadCityCountry.cs" />
-    <Compile Include="HR.cs">
-      <DependentUpon>HR.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="HR.Designer.cs">
+    <Compile Include="hrDataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HR.xsd</DependentUpon>
+      <DependentUpon>hrDataSet1.xsd</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -163,16 +160,16 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Reports\HourReportPrint.rdlc" />
-    <None Include="HR.xsc">
-      <DependentUpon>HR.xsd</DependentUpon>
+    <None Include="hrDataSet1.xsc">
+      <DependentUpon>hrDataSet1.xsd</DependentUpon>
     </None>
-    <None Include="HR.xsd">
+    <None Include="hrDataSet1.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>HR.Designer.cs</LastGenOutput>
+      <LastGenOutput>hrDataSet1.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="HR.xss">
-      <DependentUpon>HR.xsd</DependentUpon>
+    <None Include="hrDataSet1.xss">
+      <DependentUpon>hrDataSet1.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
