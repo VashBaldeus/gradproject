@@ -18,8 +18,7 @@ namespace GUI
             InitializeComponent();
             this.Text = "";
 
-            //MessageBox.Show("Username: 1234\nPassword: 1234");
-            //MessageBox.Show(dh.Hash512("1234"));
+            textBoxPassword.PasswordChar = '*';
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -27,31 +26,46 @@ namespace GUI
             try
             {
                 if (textBoxUsername.Text == "" || textBoxPassword.Text == "")
-                    throw new Exception("השארת שדות ריקים!");
+                    throw new Exception("השארת שדות ריקים.");
 
-                //MessageBox.Show($"Username: {textBoxUsername.Text}\nPass: {textBoxPassword.Text}\nHash512: {dh.Hash512(textBoxPassword.Text)}\nResult: {dh.LoginAuthentication(textBoxUsername.Text, dh.Hash512(textBoxPassword.Text)).ToString()}");
+                if (dh.UserLoginPermissionChk(textBoxUsername.Text, dh.Hash512(textBoxPassword.Text)) != true)
+                    throw new Exception("אין לך הרשאה להתחבר למערכת.");
+
                 if (dh.LoginAuthentication(textBoxUsername.Text, dh.Hash512(textBoxPassword.Text))){
                     MainMenu main = new MainMenu();
                     main.Show();
                     this.Hide();
                 }
-                else throw new Exception("שם משתמש או סיסמה שגויים, נסה שוב!");
+                else throw new Exception("שם משתמש או סיסמה שגויים, נסה שוב.");
             }
             catch (Exception err)
             {
                 MessageBox.Show(err.Message, "שגיאה", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void buttonTKEenter_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "שגיאה", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void buttonTKExit_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "שגיאה", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

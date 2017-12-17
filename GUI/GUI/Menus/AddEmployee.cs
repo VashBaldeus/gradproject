@@ -35,12 +35,37 @@ namespace GUI.Menus
 
         private void buttonAddEmployee_Click(object sender, EventArgs e)
         {
+            try
+            {
 
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "שגיאה", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void buttonResetForm_Click(object sender, EventArgs e)
         {
-
+            textBoxFName.Clear();
+            textBoxLName.Clear();
+            textBoxID.Clear();
+            textBoxStreet.Clear();
+            textBoxZIP.Clear();
+            comboBoxGender.ResetText();
+            dateTimePickerDOB.ResetText();
+            dateTimePickerJStart.ResetText();
+            dateTimePickerJEnd.ResetText();
+            dateTimePickerMigDate.ResetText();
+            comboBoxChildren.ResetText();
+            comboBoxCity.ResetText();
+            comboBoxCOB.ResetText();
+            comboBoxCountry.ResetText();
+            comboBoxDept.ResetText();
+            comboBoxGender.ResetText();
+            comboBoxJType.ResetText();
+            comboBoxMarital.ResetText();
+            comboBoxSalary.ResetText();
         }
 
         private void textBoxID_KeyPress(object sender, KeyPressEventArgs e)

@@ -11,26 +11,27 @@ namespace GUI
 {
     class DataHandler
     {
-        #region Manual Connection Strings
-        private static string dbHost = "vps.vashbaldeus.pw";
+        #region Manual Connection Strings (commented out)
+        /*private static string dbHost = "vps.vashbaldeus.pw";
         private static string dbUsername = "hr";
         private static string dbPassword = "3d1*M7dS4&Gy5f";
-        /*
+
         private static string dbHost = "localhost";
         private static string dbUsername = "root";
         private static string dbPassword = "password";
-        */
+        
         private static string dbName = "hr";
 
         private static string dbString = $"Server={dbHost}; database={dbName}; UID={dbUsername}; password={dbPassword}";
     
-        MySqlConnection connection = new MySqlConnection(dbString);
+        MySqlConnection connection = new MySqlConnection(dbString);*/
         #endregion
-        //HR dataset = new HR();
-        DataTable dt = new DataTable();
-        DataTable datatable = new DataTable(); 
 
-        private void ImportTable(string query)
+        DataTable dt = new DataTable();
+        DataTable datatable = new DataTable();
+
+        #region Manual Table Loading (commented out)
+        /*private void ImportTable(string query)
         {
             //dt.PrimaryKey = null;
             dt.Rows.Clear();
@@ -48,14 +49,8 @@ namespace GUI
         {
             ImportTable(query);
             return dt;
-        }
-
-        /*private void LoadUsers()
-        {
-            hrDataSetTableAdapters.usersTableAdapter usersTable = new hrDataSetTableAdapters.usersTableAdapter();
-            datatable.Clear();
-            datatable = usersTable.GetData();
         }*/
+        #endregion
 
         private DataTable LoadEmployees()
         {
@@ -66,14 +61,12 @@ namespace GUI
         public DataTable LoadCityCodes()
         {
             hrDataSetTableAdapters.city_codesTableAdapter city_codesTable = new hrDataSetTableAdapters.city_codesTableAdapter();
-            datatable.Clear();
             return city_codesTable.GetData();
         }
 
         public DataTable LoadCountryCodes()
         {
             hrDataSetTableAdapters.country_codesTableAdapter country_codesTable = new hrDataSetTableAdapters.country_codesTableAdapter();
-            datatable.Clear();
             return country_codesTable.GetData();
         }
 
@@ -81,6 +74,7 @@ namespace GUI
         {
             var bytes = new UTF8Encoding().GetBytes(password);
             byte[] hashBytes;
+
             using (var algorithm = new System.Security.Cryptography.SHA512Managed())
             {
                 hashBytes = algorithm.ComputeHash(bytes);
@@ -88,22 +82,29 @@ namespace GUI
             return Convert.ToBase64String(hashBytes);
         }
 
-        public bool LoginAuthentication(string username, string password)
+        #region LoginAuth
+        public bool UserLoginPermissionChk(string username, string password)
         {
             foreach (DataRow dr in LoadEmployees().Rows)
             {
-                if (dr["id"].ToString() == username)
-                {
-                    if (dr["passwd"].ToString() == password)
-                    {
-                        return true;
-                    }
-                    else return false;
-                }
+                if (dr["id"].ToString() == username && dr["userlogin"].ToString() == "1")
+                    return true;
                 else return false;
             }
             return false;
         }
+
+        public bool LoginAuthentication(string username, string password)
+        {
+            foreach (DataRow dr in LoadEmployees().Rows)
+            {
+                if (dr["id"].ToString() == username && dr["passwd"].ToString() == password)
+                    return true;
+                else return false;
+            }
+            return false;
+        }
+        #endregion
 
     }
 }
