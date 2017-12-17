@@ -24,8 +24,11 @@ namespace GUI
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            /*try
-            {*/
+            try
+            {
+                if (textBoxUsername.Text == "" || textBoxPassword.Text == "")
+                    throw new Exception("השארת שדות ריקים!");
+
                 //MessageBox.Show($"Username: {textBoxUsername.Text}\nPass: {textBoxPassword.Text}\nHash512: {dh.Hash512(textBoxPassword.Text)}\nResult: {dh.LoginAuthentication(textBoxUsername.Text, dh.Hash512(textBoxPassword.Text)).ToString()}");
                 if (dh.LoginAuthentication(textBoxUsername.Text, dh.Hash512(textBoxPassword.Text))){
                     MainMenu main = new MainMenu();
@@ -33,11 +36,11 @@ namespace GUI
                     this.Hide();
                 }
                 else throw new Exception("שם משתמש או סיסמה שגויים, נסה שוב!");
-            /*}
+            }
             catch (Exception err)
             {
                 MessageBox.Show(err.Message, "שגיאה", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }*/
+            }
 
         }
 

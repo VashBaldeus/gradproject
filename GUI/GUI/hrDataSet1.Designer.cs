@@ -34,6 +34,12 @@ namespace GUI {
         
         private reportsDataTable tablereports;
         
+        private global::System.Data.DataRelation relationemployees_ibfk_1;
+        
+        private global::System.Data.DataRelation relationemployees_ibfk_2;
+        
+        private global::System.Data.DataRelation relationemployees_ibfk_3;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -290,6 +296,9 @@ namespace GUI {
                     this.tablereports.InitVars();
                 }
             }
+            this.relationemployees_ibfk_1 = this.Relations["employees_ibfk_1"];
+            this.relationemployees_ibfk_2 = this.Relations["employees_ibfk_2"];
+            this.relationemployees_ibfk_3 = this.Relations["employees_ibfk_3"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -310,6 +319,18 @@ namespace GUI {
             base.Tables.Add(this.tableemployees);
             this.tablereports = new reportsDataTable();
             base.Tables.Add(this.tablereports);
+            this.relationemployees_ibfk_1 = new global::System.Data.DataRelation("employees_ibfk_1", new global::System.Data.DataColumn[] {
+                        this.tablecity_codes.cityColumn}, new global::System.Data.DataColumn[] {
+                        this.tableemployees.cityColumn}, false);
+            this.Relations.Add(this.relationemployees_ibfk_1);
+            this.relationemployees_ibfk_2 = new global::System.Data.DataRelation("employees_ibfk_2", new global::System.Data.DataColumn[] {
+                        this.tablecountry_codes.countryColumn}, new global::System.Data.DataColumn[] {
+                        this.tableemployees.countryColumn}, false);
+            this.Relations.Add(this.relationemployees_ibfk_2);
+            this.relationemployees_ibfk_3 = new global::System.Data.DataRelation("employees_ibfk_3", new global::System.Data.DataColumn[] {
+                        this.tablecountry_codes.countryColumn}, new global::System.Data.DataColumn[] {
+                        this.tableemployees.cobColumn}, false);
+            this.Relations.Add(this.relationemployees_ibfk_3);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1643,11 +1664,11 @@ namespace GUI {
                         System.DateTime dob, 
                         string address, 
                         long zip, 
-                        int city, 
-                        int country, 
-                        int cob, 
+                        city_codesRow parentcity_codesRowByemployees_ibfk_1, 
+                        country_codesRow parentcountry_codesRowByemployees_ibfk_2, 
+                        country_codesRow parentcountry_codesRowByemployees_ibfk_3, 
                         System.DateTime mdate, 
-                        string married, 
+                        int married, 
                         int children, 
                         System.DateTime sdate, 
                         System.DateTime endate, 
@@ -1671,9 +1692,9 @@ namespace GUI {
                         dob,
                         address,
                         zip,
-                        city,
-                        country,
-                        cob,
+                        null,
+                        null,
+                        null,
                         mdate,
                         married,
                         children,
@@ -1682,9 +1703,25 @@ namespace GUI {
                         job_type,
                         wage_class,
                         dcode};
+                if ((parentcity_codesRowByemployees_ibfk_1 != null)) {
+                    columnValuesArray[15] = parentcity_codesRowByemployees_ibfk_1[0];
+                }
+                if ((parentcountry_codesRowByemployees_ibfk_2 != null)) {
+                    columnValuesArray[16] = parentcountry_codesRowByemployees_ibfk_2[0];
+                }
+                if ((parentcountry_codesRowByemployees_ibfk_3 != null)) {
+                    columnValuesArray[17] = parentcountry_codesRowByemployees_ibfk_3[0];
+                }
                 rowemployeesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowemployeesRow);
                 return rowemployeesRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public employeesRow FindByeid(long eid) {
+                return ((employeesRow)(this.Rows.Find(new object[] {
+                            eid})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1773,7 +1810,7 @@ namespace GUI {
                 base.Columns.Add(this.columncob);
                 this.columnmdate = new global::System.Data.DataColumn("mdate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnmdate);
-                this.columnmarried = new global::System.Data.DataColumn("married", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnmarried = new global::System.Data.DataColumn("married", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnmarried);
                 this.columnchildren = new global::System.Data.DataColumn("children", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnchildren);
@@ -1787,13 +1824,16 @@ namespace GUI {
                 base.Columns.Add(this.columnwage_class);
                 this.columndcode = new global::System.Data.DataColumn("dcode", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndcode);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columneid}, true));
                 this.columneid.AutoIncrement = true;
                 this.columneid.AutoIncrementSeed = -1;
                 this.columneid.AutoIncrementStep = -1;
                 this.columneid.AllowDBNull = false;
+                this.columneid.Unique = true;
                 this.columnid.AllowDBNull = false;
                 this.columnpasswd.AllowDBNull = false;
-                this.columnpasswd.MaxLength = 63;
+                this.columnpasswd.MaxLength = 16383;
                 this.columnuserlogin.AllowDBNull = false;
                 this.columnuserprofile.AllowDBNull = false;
                 this.columnishr.AllowDBNull = false;
@@ -1806,7 +1846,6 @@ namespace GUI {
                 this.columnlname.MaxLength = 35;
                 this.columngender.AllowDBNull = false;
                 this.columngender.MaxLength = 6;
-                this.columndob.AllowDBNull = false;
                 this.columnaddress.AllowDBNull = false;
                 this.columnaddress.MaxLength = 50;
                 this.columnzip.AllowDBNull = false;
@@ -1814,9 +1853,7 @@ namespace GUI {
                 this.columncountry.AllowDBNull = false;
                 this.columncob.AllowDBNull = false;
                 this.columnmarried.AllowDBNull = false;
-                this.columnmarried.MaxLength = 10;
                 this.columnchildren.AllowDBNull = false;
-                this.columnsdate.AllowDBNull = false;
                 this.columnjob_type.AllowDBNull = false;
                 this.columnwage_class.AllowDBNull = false;
                 this.columndcode.AllowDBNull = false;
@@ -2330,6 +2367,17 @@ namespace GUI {
                     this[this.tablecity_codes.city_nameColumn] = value;
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public employeesRow[] GetemployeesRows() {
+                if ((this.Table.ChildRelations["employees_ibfk_1"] == null)) {
+                    return new employeesRow[0];
+                }
+                else {
+                    return ((employeesRow[])(base.GetChildRows(this.Table.ChildRelations["employees_ibfk_1"])));
+                }
+            }
         }
         
         /// <summary>
@@ -2365,6 +2413,28 @@ namespace GUI {
                 }
                 set {
                     this[this.tablecountry_codes.country_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public employeesRow[] GetemployeesRowsByemployees_ibfk_2() {
+                if ((this.Table.ChildRelations["employees_ibfk_2"] == null)) {
+                    return new employeesRow[0];
+                }
+                else {
+                    return ((employeesRow[])(base.GetChildRows(this.Table.ChildRelations["employees_ibfk_2"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public employeesRow[] GetemployeesRowsByemployees_ibfk_3() {
+                if ((this.Table.ChildRelations["employees_ibfk_3"] == null)) {
+                    return new employeesRow[0];
+                }
+                else {
+                    return ((employeesRow[])(base.GetChildRows(this.Table.ChildRelations["employees_ibfk_3"])));
                 }
             }
         }
@@ -2589,7 +2659,12 @@ namespace GUI {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public System.DateTime dob {
                 get {
-                    return ((global::System.DateTime)(this[this.tableemployees.dobColumn]));
+                    try {
+                        return ((global::System.DateTime)(this[this.tableemployees.dobColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'dob\' in table \'employees\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableemployees.dobColumn] = value;
@@ -2669,9 +2744,9 @@ namespace GUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string married {
+            public int married {
                 get {
-                    return ((string)(this[this.tableemployees.marriedColumn]));
+                    return ((int)(this[this.tableemployees.marriedColumn]));
                 }
                 set {
                     this[this.tableemployees.marriedColumn] = value;
@@ -2693,7 +2768,12 @@ namespace GUI {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public System.DateTime sdate {
                 get {
-                    return ((global::System.DateTime)(this[this.tableemployees.sdateColumn]));
+                    try {
+                        return ((global::System.DateTime)(this[this.tableemployees.sdateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'sdate\' in table \'employees\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableemployees.sdateColumn] = value;
@@ -2751,6 +2831,51 @@ namespace GUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public city_codesRow city_codesRow {
+                get {
+                    return ((city_codesRow)(this.GetParentRow(this.Table.ParentRelations["employees_ibfk_1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["employees_ibfk_1"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public country_codesRow country_codesRowByemployees_ibfk_2 {
+                get {
+                    return ((country_codesRow)(this.GetParentRow(this.Table.ParentRelations["employees_ibfk_2"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["employees_ibfk_2"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public country_codesRow country_codesRowByemployees_ibfk_3 {
+                get {
+                    return ((country_codesRow)(this.GetParentRow(this.Table.ParentRelations["employees_ibfk_3"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["employees_ibfk_3"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsdobNull() {
+                return this.IsNull(this.tableemployees.dobColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetdobNull() {
+                this[this.tableemployees.dobColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsmdateNull() {
                 return this.IsNull(this.tableemployees.mdateColumn);
             }
@@ -2759,6 +2884,18 @@ namespace GUI {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetmdateNull() {
                 this[this.tableemployees.mdateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IssdateNull() {
+                return this.IsNull(this.tableemployees.sdateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetsdateNull() {
+                this[this.tableemployees.sdateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4362,7 +4499,7 @@ namespace GUI.hrDataSetTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `employees` WHERE ((`eid` = @p1) AND (`id` = @p2) AND (`passwd` = @p3) AND (`userlogin` = @p4) AND (`userprofile` = @p5) AND (`ishr` = @p6) AND (`add` = @p7) AND (`alter` = @p8) AND (`hours` = @p9) AND (`fname` = @p10) AND (`lname` = @p11) AND (`gender` = @p12) AND (`dob` = @p13) AND (`address` = @p14) AND (`zip` = @p15) AND (`city` = @p16) AND (`country` = @p17) AND (`cob` = @p18) AND ((@p19 = 1 AND `mdate` IS NULL) OR (`mdate` = @p20)) AND (`married` = @p21) AND (`children` = @p22) AND (`sdate` = @p23) AND ((@p24 = 1 AND `endate` IS NULL) OR (`endate` = @p25)) AND (`job_type` = @p26) AND (`wage_class` = @p27) AND (`dcode` = @p28))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `employees` WHERE ((`eid` = @p1) AND (`id` = @p2) AND (`userlogin` = @p3) AND (`userprofile` = @p4) AND (`ishr` = @p5) AND (`add` = @p6) AND (`alter` = @p7) AND (`hours` = @p8) AND (`fname` = @p9) AND (`lname` = @p10) AND (`gender` = @p11) AND ((@p12 = 1 AND `dob` IS NULL) OR (`dob` = @p13)) AND (`address` = @p14) AND (`zip` = @p15) AND (`city` = @p16) AND (`country` = @p17) AND (`cob` = @p18) AND ((@p19 = 1 AND `mdate` IS NULL) OR (`mdate` = @p20)) AND (`married` = @p21) AND (`children` = @p22) AND ((@p23 = 1 AND `sdate` IS NULL) OR (`sdate` = @p24)) AND ((@p25 = 1 AND `endate` IS NULL) OR (`endate` = @p26)) AND (`job_type` = @p27) AND (`wage_class` = @p28) AND (`dcode` = @p29))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -4382,13 +4519,6 @@ namespace GUI.hrDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p3";
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Text;
-            param.IsNullable = true;
-            param.SourceColumn = "passwd";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p4";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -4396,7 +4526,7 @@ namespace GUI.hrDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p5";
+            param.ParameterName = "@p4";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -4404,7 +4534,7 @@ namespace GUI.hrDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p6";
+            param.ParameterName = "@p5";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -4412,7 +4542,7 @@ namespace GUI.hrDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p7";
+            param.ParameterName = "@p6";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -4420,7 +4550,7 @@ namespace GUI.hrDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p8";
+            param.ParameterName = "@p7";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -4428,7 +4558,7 @@ namespace GUI.hrDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p9";
+            param.ParameterName = "@p8";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -4436,7 +4566,7 @@ namespace GUI.hrDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p10";
+            param.ParameterName = "@p9";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -4444,7 +4574,7 @@ namespace GUI.hrDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p11";
+            param.ParameterName = "@p10";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -4452,12 +4582,21 @@ namespace GUI.hrDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p12";
+            param.ParameterName = "@p11";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
             param.SourceColumn = "gender";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p12";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "dob";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p13";
@@ -4526,8 +4665,8 @@ namespace GUI.hrDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p21";
-            param.DbType = global::System.Data.DbType.String;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
             param.SourceColumn = "married";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
@@ -4542,6 +4681,15 @@ namespace GUI.hrDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p23";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "sdate";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p24";
             param.DbType = global::System.Data.DbType.Date;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
             param.IsNullable = true;
@@ -4549,7 +4697,7 @@ namespace GUI.hrDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p24";
+            param.ParameterName = "@p25";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -4558,7 +4706,7 @@ namespace GUI.hrDataSetTableAdapters {
             param.SourceColumnNullMapping = true;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p25";
+            param.ParameterName = "@p26";
             param.DbType = global::System.Data.DbType.Date;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
             param.IsNullable = true;
@@ -4566,7 +4714,7 @@ namespace GUI.hrDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p26";
+            param.ParameterName = "@p27";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -4574,7 +4722,7 @@ namespace GUI.hrDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p27";
+            param.ParameterName = "@p28";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -4582,7 +4730,7 @@ namespace GUI.hrDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p28";
+            param.ParameterName = "@p29";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -4720,8 +4868,8 @@ namespace GUI.hrDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p19";
-            param.DbType = global::System.Data.DbType.String;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
             param.SourceColumn = "married";
             this._adapter.InsertCommand.Parameters.Add(param);
@@ -4769,7 +4917,7 @@ namespace GUI.hrDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE `employees` SET `id` = @p1, `passwd` = @p2, `userlogin` = @p3, `userprofile` = @p4, `ishr` = @p5, `add` = @p6, `alter` = @p7, `hours` = @p8, `fname` = @p9, `lname` = @p10, `gender` = @p11, `dob` = @p12, `address` = @p13, `zip` = @p14, `city` = @p15, `country` = @p16, `cob` = @p17, `mdate` = @p18, `married` = @p19, `children` = @p20, `sdate` = @p21, `endate` = @p22, `job_type` = @p23, `wage_class` = @p24, `dcode` = @p25 WHERE ((`eid` = @p26) AND (`id` = @p27) AND (`passwd` = @p28) AND (`userlogin` = @p29) AND (`userprofile` = @p30) AND (`ishr` = @p31) AND (`add` = @p32) AND (`alter` = @p33) AND (`hours` = @p34) AND (`fname` = @p35) AND (`lname` = @p36) AND (`gender` = @p37) AND (`dob` = @p38) AND (`address` = @p39) AND (`zip` = @p40) AND (`city` = @p41) AND (`country` = @p42) AND (`cob` = @p43) AND ((@p44 = 1 AND `mdate` IS NULL) OR (`mdate` = @p45)) AND (`married` = @p46) AND (`children` = @p47) AND (`sdate` = @p48) AND ((@p49 = 1 AND `endate` IS NULL) OR (`endate` = @p50)) AND (`job_type` = @p51) AND (`wage_class` = @p52) AND (`dcode` = @p53))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `employees` SET `id` = @p1, `passwd` = @p2, `userlogin` = @p3, `userprofile` = @p4, `ishr` = @p5, `add` = @p6, `alter` = @p7, `hours` = @p8, `fname` = @p9, `lname` = @p10, `gender` = @p11, `dob` = @p12, `address` = @p13, `zip` = @p14, `city` = @p15, `country` = @p16, `cob` = @p17, `mdate` = @p18, `married` = @p19, `children` = @p20, `sdate` = @p21, `endate` = @p22, `job_type` = @p23, `wage_class` = @p24, `dcode` = @p25 WHERE ((`eid` = @p26) AND (`id` = @p27) AND (`userlogin` = @p28) AND (`userprofile` = @p29) AND (`ishr` = @p30) AND (`add` = @p31) AND (`alter` = @p32) AND (`hours` = @p33) AND (`fname` = @p34) AND (`lname` = @p35) AND (`gender` = @p36) AND ((@p37 = 1 AND `dob` IS NULL) OR (`dob` = @p38)) AND (`address` = @p39) AND (`zip` = @p40) AND (`city` = @p41) AND (`country` = @p42) AND (`cob` = @p43) AND ((@p44 = 1 AND `mdate` IS NULL) OR (`mdate` = @p45)) AND (`married` = @p46) AND (`children` = @p47) AND ((@p48 = 1 AND `sdate` IS NULL) OR (`sdate` = @p49)) AND ((@p50 = 1 AND `endate` IS NULL) OR (`endate` = @p51)) AND (`job_type` = @p52) AND (`wage_class` = @p53) AND (`dcode` = @p54))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -4898,8 +5046,8 @@ namespace GUI.hrDataSetTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p19";
-            param.DbType = global::System.Data.DbType.String;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
             param.SourceColumn = "married";
             this._adapter.UpdateCommand.Parameters.Add(param);
@@ -4963,13 +5111,6 @@ namespace GUI.hrDataSetTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p28";
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Text;
-            param.IsNullable = true;
-            param.SourceColumn = "passwd";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p29";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -4977,7 +5118,7 @@ namespace GUI.hrDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p30";
+            param.ParameterName = "@p29";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -4985,7 +5126,7 @@ namespace GUI.hrDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p31";
+            param.ParameterName = "@p30";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -4993,7 +5134,7 @@ namespace GUI.hrDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p32";
+            param.ParameterName = "@p31";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -5001,7 +5142,7 @@ namespace GUI.hrDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p33";
+            param.ParameterName = "@p32";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -5009,7 +5150,7 @@ namespace GUI.hrDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p34";
+            param.ParameterName = "@p33";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -5017,7 +5158,7 @@ namespace GUI.hrDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p35";
+            param.ParameterName = "@p34";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -5025,7 +5166,7 @@ namespace GUI.hrDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p36";
+            param.ParameterName = "@p35";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -5033,12 +5174,21 @@ namespace GUI.hrDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p37";
+            param.ParameterName = "@p36";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
             param.SourceColumn = "gender";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p37";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "dob";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p38";
@@ -5107,8 +5257,8 @@ namespace GUI.hrDataSetTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p46";
-            param.DbType = global::System.Data.DbType.String;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
             param.SourceColumn = "married";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
@@ -5123,6 +5273,15 @@ namespace GUI.hrDataSetTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p48";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "sdate";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p49";
             param.DbType = global::System.Data.DbType.Date;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
             param.IsNullable = true;
@@ -5130,7 +5289,7 @@ namespace GUI.hrDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p49";
+            param.ParameterName = "@p50";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -5139,7 +5298,7 @@ namespace GUI.hrDataSetTableAdapters {
             param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p50";
+            param.ParameterName = "@p51";
             param.DbType = global::System.Data.DbType.Date;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
             param.IsNullable = true;
@@ -5147,7 +5306,7 @@ namespace GUI.hrDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p51";
+            param.ParameterName = "@p52";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -5155,7 +5314,7 @@ namespace GUI.hrDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p52";
+            param.ParameterName = "@p53";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -5163,7 +5322,7 @@ namespace GUI.hrDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p53";
+            param.ParameterName = "@p54";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -5249,44 +5408,43 @@ namespace GUI.hrDataSetTableAdapters {
         public virtual int Delete(
                     long p1, 
                     long p2, 
-                    string p3, 
+                    int p3, 
                     int p4, 
                     int p5, 
                     int p6, 
                     int p7, 
                     int p8, 
-                    int p9, 
+                    string p9, 
                     string p10, 
                     string p11, 
-                    string p12, 
-                    System.DateTime p13, 
+                    global::System.Nullable<global::System.DateTime> p13, 
                     string p14, 
                     long p15, 
                     int p16, 
                     int p17, 
                     int p18, 
                     global::System.Nullable<global::System.DateTime> p20, 
-                    string p21, 
+                    int p21, 
                     int p22, 
-                    System.DateTime p23, 
-                    global::System.Nullable<global::System.DateTime> p25, 
-                    int p26, 
+                    global::System.Nullable<global::System.DateTime> p24, 
+                    global::System.Nullable<global::System.DateTime> p26, 
                     int p27, 
-                    int p28) {
+                    int p28, 
+                    int p29) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(p1));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((long)(p2));
-            if ((p3 == null)) {
-                throw new global::System.ArgumentNullException("p3");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(p3));
-            }
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(p3));
             this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(p4));
             this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(p5));
             this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(p6));
             this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(p7));
             this.Adapter.DeleteCommand.Parameters[7].Value = ((int)(p8));
-            this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(p9));
+            if ((p9 == null)) {
+                throw new global::System.ArgumentNullException("p9");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(p9));
+            }
             if ((p10 == null)) {
                 throw new global::System.ArgumentNullException("p10");
             }
@@ -5299,13 +5457,14 @@ namespace GUI.hrDataSetTableAdapters {
             else {
                 this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(p11));
             }
-            if ((p12 == null)) {
-                throw new global::System.ArgumentNullException("p12");
+            if ((p13.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((System.DateTime)(p13.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((string)(p12));
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            this.Adapter.DeleteCommand.Parameters[12].Value = ((System.DateTime)(p13));
             if ((p14 == null)) {
                 throw new global::System.ArgumentNullException("p14");
             }
@@ -5324,25 +5483,27 @@ namespace GUI.hrDataSetTableAdapters {
                 this.Adapter.DeleteCommand.Parameters[18].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
-            if ((p21 == null)) {
-                throw new global::System.ArgumentNullException("p21");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[20].Value = ((string)(p21));
-            }
+            this.Adapter.DeleteCommand.Parameters[20].Value = ((int)(p21));
             this.Adapter.DeleteCommand.Parameters[21].Value = ((int)(p22));
-            this.Adapter.DeleteCommand.Parameters[22].Value = ((System.DateTime)(p23));
-            if ((p25.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[23].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[24].Value = ((System.DateTime)(p25.Value));
+            if ((p24.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[22].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[23].Value = ((System.DateTime)(p24.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[23].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[24].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[22].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[23].Value = global::System.DBNull.Value;
             }
-            this.Adapter.DeleteCommand.Parameters[25].Value = ((int)(p26));
+            if ((p26.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[24].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[25].Value = ((System.DateTime)(p26.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[24].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[25].Value = global::System.DBNull.Value;
+            }
             this.Adapter.DeleteCommand.Parameters[26].Value = ((int)(p27));
             this.Adapter.DeleteCommand.Parameters[27].Value = ((int)(p28));
+            this.Adapter.DeleteCommand.Parameters[28].Value = ((int)(p29));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5375,16 +5536,16 @@ namespace GUI.hrDataSetTableAdapters {
                     string p9, 
                     string p10, 
                     string p11, 
-                    System.DateTime p12, 
+                    global::System.Nullable<global::System.DateTime> p12, 
                     string p13, 
                     long p14, 
                     int p15, 
                     int p16, 
                     int p17, 
                     global::System.Nullable<global::System.DateTime> p18, 
-                    string p19, 
+                    int p19, 
                     int p20, 
-                    System.DateTime p21, 
+                    global::System.Nullable<global::System.DateTime> p21, 
                     global::System.Nullable<global::System.DateTime> p22, 
                     int p23, 
                     int p24, 
@@ -5420,7 +5581,12 @@ namespace GUI.hrDataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[10].Value = ((string)(p11));
             }
-            this.Adapter.InsertCommand.Parameters[11].Value = ((System.DateTime)(p12));
+            if ((p12.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[11].Value = ((System.DateTime)(p12.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
             if ((p13 == null)) {
                 throw new global::System.ArgumentNullException("p13");
             }
@@ -5437,14 +5603,14 @@ namespace GUI.hrDataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
-            if ((p19 == null)) {
-                throw new global::System.ArgumentNullException("p19");
+            this.Adapter.InsertCommand.Parameters[18].Value = ((int)(p19));
+            this.Adapter.InsertCommand.Parameters[19].Value = ((int)(p20));
+            if ((p21.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[20].Value = ((System.DateTime)(p21.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[18].Value = ((string)(p19));
+                this.Adapter.InsertCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
-            this.Adapter.InsertCommand.Parameters[19].Value = ((int)(p20));
-            this.Adapter.InsertCommand.Parameters[20].Value = ((System.DateTime)(p21));
             if ((p22.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[21].Value = ((System.DateTime)(p22.Value));
             }
@@ -5486,46 +5652,45 @@ namespace GUI.hrDataSetTableAdapters {
                     string p9, 
                     string p10, 
                     string p11, 
-                    System.DateTime p12, 
+                    global::System.Nullable<global::System.DateTime> p12, 
                     string p13, 
                     long p14, 
                     int p15, 
                     int p16, 
                     int p17, 
                     global::System.Nullable<global::System.DateTime> p18, 
-                    string p19, 
+                    int p19, 
                     int p20, 
-                    System.DateTime p21, 
+                    global::System.Nullable<global::System.DateTime> p21, 
                     global::System.Nullable<global::System.DateTime> p22, 
                     int p23, 
                     int p24, 
                     int p25, 
                     long p26, 
                     long p27, 
-                    string p28, 
+                    int p28, 
                     int p29, 
                     int p30, 
                     int p31, 
                     int p32, 
                     int p33, 
-                    int p34, 
+                    string p34, 
                     string p35, 
                     string p36, 
-                    string p37, 
-                    System.DateTime p38, 
+                    global::System.Nullable<global::System.DateTime> p38, 
                     string p39, 
                     long p40, 
                     int p41, 
                     int p42, 
                     int p43, 
                     global::System.Nullable<global::System.DateTime> p45, 
-                    string p46, 
+                    int p46, 
                     int p47, 
-                    System.DateTime p48, 
-                    global::System.Nullable<global::System.DateTime> p50, 
-                    int p51, 
+                    global::System.Nullable<global::System.DateTime> p49, 
+                    global::System.Nullable<global::System.DateTime> p51, 
                     int p52, 
-                    int p53) {
+                    int p53, 
+                    int p54) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(p1));
             if ((p2 == null)) {
                 throw new global::System.ArgumentNullException("p2");
@@ -5557,7 +5722,12 @@ namespace GUI.hrDataSetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(p11));
             }
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((System.DateTime)(p12));
+            if ((p12.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((System.DateTime)(p12.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
             if ((p13 == null)) {
                 throw new global::System.ArgumentNullException("p13");
             }
@@ -5574,14 +5744,14 @@ namespace GUI.hrDataSetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
-            if ((p19 == null)) {
-                throw new global::System.ArgumentNullException("p19");
+            this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(p19));
+            this.Adapter.UpdateCommand.Parameters[19].Value = ((int)(p20));
+            if ((p21.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((System.DateTime)(p21.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(p19));
+                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[19].Value = ((int)(p20));
-            this.Adapter.UpdateCommand.Parameters[20].Value = ((System.DateTime)(p21));
             if ((p22.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[21].Value = ((System.DateTime)(p22.Value));
             }
@@ -5593,18 +5763,18 @@ namespace GUI.hrDataSetTableAdapters {
             this.Adapter.UpdateCommand.Parameters[24].Value = ((int)(p25));
             this.Adapter.UpdateCommand.Parameters[25].Value = ((long)(p26));
             this.Adapter.UpdateCommand.Parameters[26].Value = ((long)(p27));
-            if ((p28 == null)) {
-                throw new global::System.ArgumentNullException("p28");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((string)(p28));
-            }
+            this.Adapter.UpdateCommand.Parameters[27].Value = ((int)(p28));
             this.Adapter.UpdateCommand.Parameters[28].Value = ((int)(p29));
             this.Adapter.UpdateCommand.Parameters[29].Value = ((int)(p30));
             this.Adapter.UpdateCommand.Parameters[30].Value = ((int)(p31));
             this.Adapter.UpdateCommand.Parameters[31].Value = ((int)(p32));
             this.Adapter.UpdateCommand.Parameters[32].Value = ((int)(p33));
-            this.Adapter.UpdateCommand.Parameters[33].Value = ((int)(p34));
+            if ((p34 == null)) {
+                throw new global::System.ArgumentNullException("p34");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((string)(p34));
+            }
             if ((p35 == null)) {
                 throw new global::System.ArgumentNullException("p35");
             }
@@ -5617,13 +5787,14 @@ namespace GUI.hrDataSetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[35].Value = ((string)(p36));
             }
-            if ((p37 == null)) {
-                throw new global::System.ArgumentNullException("p37");
+            if ((p38.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((System.DateTime)(p38.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((string)(p37));
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[37].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[37].Value = ((System.DateTime)(p38));
             if ((p39 == null)) {
                 throw new global::System.ArgumentNullException("p39");
             }
@@ -5642,25 +5813,27 @@ namespace GUI.hrDataSetTableAdapters {
                 this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[44].Value = global::System.DBNull.Value;
             }
-            if ((p46 == null)) {
-                throw new global::System.ArgumentNullException("p46");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[45].Value = ((string)(p46));
-            }
+            this.Adapter.UpdateCommand.Parameters[45].Value = ((int)(p46));
             this.Adapter.UpdateCommand.Parameters[46].Value = ((int)(p47));
-            this.Adapter.UpdateCommand.Parameters[47].Value = ((System.DateTime)(p48));
-            if ((p50.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[48].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[49].Value = ((System.DateTime)(p50.Value));
+            if ((p49.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[47].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[48].Value = ((System.DateTime)(p49.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[48].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[49].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[47].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[48].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[50].Value = ((int)(p51));
+            if ((p51.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[49].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[50].Value = ((System.DateTime)(p51.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[49].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[50].Value = global::System.DBNull.Value;
+            }
             this.Adapter.UpdateCommand.Parameters[51].Value = ((int)(p52));
             this.Adapter.UpdateCommand.Parameters[52].Value = ((int)(p53));
+            this.Adapter.UpdateCommand.Parameters[53].Value = ((int)(p54));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

@@ -57,11 +57,10 @@ namespace GUI
             datatable = usersTable.GetData();
         }*/
 
-        private void LoadEmployees()
+        private DataTable LoadEmployees()
         {
             hrDataSetTableAdapters.employeesTableAdapter employeesTable = new hrDataSetTableAdapters.employeesTableAdapter();
-            datatable.Clear();
-            datatable = employeesTable.GetData();
+            return employeesTable.GetData();
         }
 
         public DataTable LoadCityCodes()
@@ -91,19 +90,7 @@ namespace GUI
 
         public bool LoginAuthentication(string username, string password)
         {
-            //LoadUsers();
-            //ImportTable($"select * from employees where id='{username}' or eid='{username}'");
-            //DataSet ds = new DataSet() { EnforceConstraints = false };
-
-            hrDataSetTableAdapters.employeesTableAdapter employees = new hrDataSetTableAdapters.employeesTableAdapter();
-
-            DataSet ds = new DataSet() { EnforceConstraints = false };
-            ds.Tables.Add(dt);
-
-            datatable.Clear();
-            datatable = employees.GetData();
-
-            foreach (DataRow dr in datatable.Rows)
+            foreach (DataRow dr in LoadEmployees().Rows)
             {
                 if (dr["id"].ToString() == username)
                 {
