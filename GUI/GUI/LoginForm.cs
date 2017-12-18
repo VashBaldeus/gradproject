@@ -48,7 +48,10 @@ namespace GUI
         {
             try
             {
-                
+                if (dh.ChkEID(textBoxID.Text) != true)
+                    throw new Exception("מספר עובד שגוי.");
+
+
             }
             catch (Exception err)
             {
@@ -60,7 +63,8 @@ namespace GUI
         {
             try
             {
-                
+                if (dh.ChkEID(textBoxID.Text) != true)
+                    throw new Exception("מספר עובד שגוי.");
             }
             catch (Exception err)
             {

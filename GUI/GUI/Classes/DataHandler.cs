@@ -52,6 +52,16 @@ namespace GUI
         }*/
         #endregion
 
+        public string GetCurTime()
+        {
+            return DateTime.Now.ToString("HH:mm:ss", System.Globalization.DateTimeFormatInfo.InvariantInfo);
+        }
+
+        public string GetCurDate()
+        {
+            return DateTime.Now.ToString("yyyy-MM-dd");
+        }
+
         private DataTable LoadEmployees()
         {
             hrDataSetTableAdapters.employeesTableAdapter employeesTable = new hrDataSetTableAdapters.employeesTableAdapter();
@@ -68,6 +78,12 @@ namespace GUI
         {
             hrDataSetTableAdapters.country_codesTableAdapter country_codesTable = new hrDataSetTableAdapters.country_codesTableAdapter();
             return country_codesTable.GetData();
+        }
+
+        public DataTable LoadReports()
+        {
+            hrDataSetTableAdapters.reportsTableAdapter reportsTable = new hrDataSetTableAdapters.reportsTableAdapter();
+            return reportsTable.GetData();
         }
 
         public string Hash512(string password)
@@ -91,6 +107,7 @@ namespace GUI
                     return true;
                 else return false;
             }
+
             return false;
         }
 
@@ -102,9 +119,46 @@ namespace GUI
                     return true;
                 else return false;
             }
+
             return false;
         }
         #endregion
+
+        public bool ChkEID(string id)
+        {
+            foreach (DataRow dr in LoadEmployees().Rows)
+            {
+                if (dr["id"].ToString() == id)
+                    return true;
+                else return false;
+            }
+
+            return false;
+        }
+
+        public bool ChkTKEnter(string id)
+        {
+            foreach(DataRow dr in LoadReports().Rows)
+            {
+                string[] time = dr["enter_time"].ToString().Split(':');
+                string[] curtime = GetCurTime().Split(':');
+
+                if (dr["eid"].ToString() == id && dr["enter_date"].ToString() != GetCurDate())
+                {
+                    if (int.Parse(curtime[0]) - int.Parse(time[0]) > 8 && !(int.Parse(curtime[1]) - int.Parse(time[0]) > 0) && dr["exit_date"].ToString() == null)
+                        return true;
+                    else return false;
+                }
+                else return false;
+            }
+
+            return false;
+        }
+
+        public bool ChkTKExit(string id)
+        {
+            return false;
+        }
 
     }
 }
