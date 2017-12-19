@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7CF1D8CF-AE06-47CC-B2AC-20525D2361CF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>GUI</RootNamespace>
+    <AssemblyName>GUI</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Google.Protobuf, Version=3.3.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.3.0\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.10.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.10.4\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.3.0\lib\netstandard1.1\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\DataHandler.cs" />
+    <Compile Include="Classes\HourCalcReport.cs" />
+    <Compile Include="Classes\LoadCityCountry.cs" />
+    <Compile Include="hrDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hrDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainMenu.Designer.cs">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menus\AddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menus\AddEmployee.Designer.cs">
+      <DependentUpon>AddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menus\Departments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menus\Departments.Designer.cs">
+      <DependentUpon>Departments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menus\EditEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menus\EditEmployee.Designer.cs">
+      <DependentUpon>EditEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menus\EditEmployeeSubForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menus\EditEmployeeSubForm.Designer.cs">
+      <DependentUpon>EditEmployeeSubForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menus\HourReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menus\HourReport.Designer.cs">
+      <DependentUpon>HourReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menus\Salary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menus\Salary.Designer.cs">
+      <DependentUpon>Salary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menus\UserProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menus\UserProfile.Designer.cs">
+      <DependentUpon>UserProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainMenu.resx">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menus\AddEmployee.resx">
+      <DependentUpon>AddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menus\EditEmployee.resx">
+      <DependentUpon>EditEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menus\EditEmployeeSubForm.resx">
+      <DependentUpon>EditEmployeeSubForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Reports\HourReportPrint.rdlc" />
+    <None Include="hrDataSet1.xsc">
+      <DependentUpon>hrDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="hrDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hrDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hrDataSet1.xss">
+      <DependentUpon>hrDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="docs\MySqlCommand.xml" />
+    <Content Include="docs\MySqlCommandBuilder.xml" />
+    <Content Include="docs\MySqlConnection.xml" />
+    <Content Include="docs\MySqlConnectionStringBuilder.xml" />
+    <Content Include="docs\MySqlDataAdapter.xml" />
+    <Content Include="docs\MySqlDataReader.xml" />
+    <Content Include="docs\MySqlException.xml" />
+    <Content Include="docs\MySqlHelper.xml" />
+    <Content Include="docs\MySqlParameter.xml" />
+    <Content Include="docs\MySqlParameterCollection.xml" />
+    <Content Include="docs\MySqlTransaction.xml" />
+    <Content Include="icon.ico" />
+    <None Include="Resources\1471127 - document .png" />
+    <None Include="Resources\1471126 - document .png" />
+    <None Include="Resources\1471125 - document .png" />
+    <None Include="Resources\1471124 - document .png" />
+    <None Include="Resources\1471123 - award cha.png" />
+    <None Include="Resources\1471122 - document .png" />
+    <None Include="Resources\1471121 - document .png" />
+    <None Include="Resources\1471120 - office pi.png" />
+    <None Include="Resources\1471119 - art brush.png" />
+    <None Include="Resources\1471118 - compose c.png" />
+    <None Include="Resources\1471117 - bookmark .png" />
+    <None Include="Resources\1471116 - attach at.png" />
+    <None Include="Resources\1471115 - employee .png" />
+    <None Include="Resources\1471114 - access ge.png" />
+    <None Include="Resources\1471113 - calendar .png" />
+    <None Include="Resources\1471112 - general k.png" />
+    <None Include="Resources\1471111 - alarm clo.png" />
+    <None Include="Resources\1471110 - general o.png" />
+    <None Include="Resources\1471109 - general o.png" />
+    <None Include="Resources\1471108 - crest cro.png" />
+    <None Include="Resources\1471107 - general h.png" />
+    <None Include="Resources\1471106 - general h.png" />
+    <None Include="Resources\1471105 - business .png" />
+    <None Include="Resources\1471104 - align emp.png" />
+    <None Include="Resources\1471103 - cog gear .png" />
+    <None Include="Resources\1471102 - cam camer.png" />
+    <None Include="Resources\1471101 - average i.png" />
+    <None Include="Resources\1471100 - compose c.png" />
+    <None Include="Resources\1471099 - demolish .png" />
+    <None Include="Resources\1471098 - document .png" />
+    <None Include="Resources\1471097 - award cha.png" />
+    <None Include="Resources\1471096 - cog gear .png" />
+    <None Include="Resources\1471095 - general r.png" />
+    <None Include="Resources\1471094 - general o.png" />
+    <None Include="Resources\1471093 - general o.png" />
+    <None Include="Resources\1471092 - general k.png" />
+    <None Include="Resources\1471091 - clock flo.png" />
+    <None Include="Resources\1471090 - calendar .png" />
+    <None Include="Resources\1471089 - alarm ala.png" />
+    <None Include="Resources\1471088 - compass d.png" />
+    <None Include="Resources\1471087 - general o.png" />
+    <None Include="Resources\1471086 - airplane .png" />
+    <None Include="Resources\1471085 - add user .png" />
+    <None Include="Resources\1471084 - avatar ge.png" />
+    <None Include="Resources\1471083 - general g.png" />
+    <None Include="Resources\1471082 - base data.png" />
+    <None Include="Resources\1471081 - compose c.png" />
+    <None Include="Resources\1471080 - burger ge.png" />
+    <None Include="Resources\1471079 - attach at.png" />
+    <None Include="Resources\1471078 - general g.png" />
+    <None Include="Resources\1471077 - accountin.png" />
+    <None Include="Resources\1471076 - garbage c.png" />
+    <None Include="Resources\1471075 - align arr.png" />
+    <None Include="Resources\1471074 - align ali.png" />
+    <None Include="Resources\1471073 - document .png" />
+    <None Include="Resources\1471072 - align arr.png" />
+    <None Include="Resources\1471071 - align cen.png" />
+    <None Include="Resources\1471070 - align ali.png" />
+    <None Include="Resources\1471069 - bag brief.png" />
+    <None Include="Resources\1471068 - general g.png" />
+    <None Include="Resources\1471067 - general i.png" />
+    <None Include="Resources\1471066 - document .png" />
+    <None Include="Resources\1471065 - documents.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
