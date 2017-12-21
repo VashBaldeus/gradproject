@@ -14,21 +14,20 @@ namespace GUI
     public partial class MainMenu : Form
     {
         DataHandler dh = new DataHandler();
-        LoadCityCountry lcc = new LoadCityCountry();
-        public DataTable city = new DataTable();
-        public DataTable country = new DataTable();
 
         public MainMenu()
         {
             InitializeComponent();
 
-            /*tabControl1.TabPages.Remove(tabPage1);
-            tabControl1.TabPages.Add(tabPage1);*/
-
-            city = dh.LoadCityCodes();//lcc.exceldata("city.xlsx");
-            country = dh.LoadCountryCodes();//lcc.exceldata("country.xlsx");
-
-
+            #region Menu Tab Selection Check
+            tabControl1.TabPages.Remove(tabPage1);
+            tabControl1.TabPages.Remove(tabPage2);
+            
+            if (dh.IsHRMember(Properties.Settings.Default.username))
+                tabControl1.TabPages.Add(tabPage1);
+            else tabControl1.TabPages.Add(tabPage2);
+            #endregion
+            
         }
 
         private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
@@ -36,20 +35,10 @@ namespace GUI
             Application.Exit();
         }
 
-        public DataTable GetCity()
-        {
-            return city;
-        }
-
-        public DataTable GetCountry()
-        {
-            return country;
-        }
-
         private void buttonAddEmployee_Click(object sender, EventArgs e)
         {
-            AddEmployee ae = new AddEmployee();
-            ae.ShowDialog();
+            using (var addemp = new AddEmployee())
+                addemp.ShowDialog();
         }
 
         private void buttonEditEmployee_Click(object sender, EventArgs e)

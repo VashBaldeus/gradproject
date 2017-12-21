@@ -11,29 +11,29 @@ namespace GUI
 {
     class DataHandler
     {
-        #region Manual Connection Strings (commented out)
-        /*private static string dbHost = "vps.vashbaldeus.pw";
+        #region Manual Connection Strings
+        private static string dbHost = "vps.vashbaldeus.pw";
         private static string dbUsername = "hr";
         private static string dbPassword = "3d1*M7dS4&Gy5f";
 
-        private static string dbHost = "localhost";
+        /*private static string dbHost = "localhost";
         private static string dbUsername = "root";
-        private static string dbPassword = "password";
+        private static string dbPassword = "password";*/
         
         private static string dbName = "hr";
 
         private static string dbString = $"Server={dbHost}; database={dbName}; UID={dbUsername}; password={dbPassword}";
     
-        MySqlConnection connection = new MySqlConnection(dbString);*/
+        MySqlConnection connection = new MySqlConnection(dbString);
         #endregion
 
         DataTable dt = new DataTable();
         DataTable datatable = new DataTable();
 
-        #region Manual Table Loading (commented out)
-        /*private void ImportTable(string query)
+        #region Manual Table Loading
+        private void ImportTable(string query)
         {
-            //dt.PrimaryKey = null;
+            dt.PrimaryKey = null;
             dt.Rows.Clear();
             dt.Columns.Clear();
 
@@ -49,7 +49,7 @@ namespace GUI
         {
             ImportTable(query);
             return dt;
-        }*/
+        }
         #endregion
 
         public string GetCurTime()
@@ -62,7 +62,8 @@ namespace GUI
             return DateTime.Now.ToString("yyyy-MM-dd");
         }
 
-        private DataTable LoadEmployees()
+        #region Old DataSet Code
+        /*private DataTable LoadEmployees()
         {
             hrDataSetTableAdapters.employeesTableAdapter employeesTable = new hrDataSetTableAdapters.employeesTableAdapter();
             return employeesTable.GetData();
@@ -84,7 +85,8 @@ namespace GUI
         {
             hrDataSetTableAdapters.reportsTableAdapter reportsTable = new hrDataSetTableAdapters.reportsTableAdapter();
             return reportsTable.GetData();
-        }
+        }*/
+        #endregion
 
         public string Hash512(string password)
         {
@@ -99,9 +101,21 @@ namespace GUI
         }
 
         #region LoginAuth
+        public bool IsHRMember(string name)
+        {
+            foreach (DataRow dr in GetTable($"SELECT id, ishr FROM employees WHERE id='{name}'").Rows)
+            {
+                if (dr["id"].ToString() == name && dr["ishr"].ToString() == "1")
+                    return true;
+                else return false;
+            }
+
+            return false;
+        }
+
         public bool UserLoginPermissionChk(string username, string password)
         {
-            foreach (DataRow dr in LoadEmployees().Rows)
+            foreach (DataRow dr in GetTable($"SELECT id, userlogin FROM employees WHERE id='{username}'").Rows)
             {
                 if (dr["id"].ToString() == username && dr["userlogin"].ToString() == "1")
                     return true;
@@ -113,7 +127,7 @@ namespace GUI
 
         public bool LoginAuthentication(string username, string password)
         {
-            foreach (DataRow dr in LoadEmployees().Rows)
+            foreach (DataRow dr in GetTable($"SELECT id, passwd FROM employees WHERE id='{username}'").Rows)//LoadEmployees().Rows)
             {
                 if (dr["id"].ToString() == username && dr["passwd"].ToString() == password)
                     return true;
@@ -126,9 +140,9 @@ namespace GUI
 
         public bool ChkEID(string id)
         {
-            foreach (DataRow dr in LoadEmployees().Rows)
+            foreach (DataRow dr in GetTable($"SELECT eid FROM employees WHERE eid='{id}'").Rows)
             {
-                if (dr["id"].ToString() == id)
+                if (dr["eid"].ToString() == id)
                     return true;
                 else return false;
             }
@@ -138,16 +152,13 @@ namespace GUI
 
         public bool ChkTKEnter(string id)
         {
-            foreach(DataRow dr in LoadReports().Rows)
-            {
-                string[] time = dr["enter_time"].ToString().Split(':');
-                string[] curtime = GetCurTime().Split(':');
+            DateTime now = DateTime.Now;
 
-                if (dr["eid"].ToString() == id && dr["enter_date"].ToString() != GetCurDate())
+            foreach(DataRow dr in GetTable($"SELECT eid, enter_time FROM reports WHERE eid='{id}'").Rows)
+            {
+                if (dr["eid"].ToString() == id)
                 {
-                    if (int.Parse(curtime[0]) - int.Parse(time[0]) > 8 && !(int.Parse(curtime[1]) - int.Parse(time[0]) > 0) && dr["exit_date"].ToString() == null)
-                        return true;
-                    else return false;
+                    return true;
                 }
                 else return false;
             }

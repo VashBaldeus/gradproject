@@ -31,16 +31,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBoxUsername = new System.Windows.Forms.TextBox();
+            this.buttonLogin = new System.Windows.Forms.Button();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.buttonLogin = new System.Windows.Forms.Button();
+            this.textBoxUsername = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.buttonTKExit = new System.Windows.Forms.Button();
+            this.buttonTKEenter = new System.Windows.Forms.Button();
             this.textBoxID = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.buttonTKEenter = new System.Windows.Forms.Button();
-            this.buttonTKExit = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -76,37 +76,15 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "התחבר";
             // 
-            // tabPage2
+            // buttonLogin
             // 
-            this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage2.Controls.Add(this.buttonTKExit);
-            this.tabPage2.Controls.Add(this.buttonTKEenter);
-            this.tabPage2.Controls.Add(this.textBoxID);
-            this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(196, 96);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "טיים קיפר";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(117, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "שם משתמש:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // textBoxUsername
-            // 
-            this.textBoxUsername.Location = new System.Drawing.Point(11, 10);
-            this.textBoxUsername.Name = "textBoxUsername";
-            this.textBoxUsername.Size = new System.Drawing.Size(100, 20);
-            this.textBoxUsername.TabIndex = 1;
-            this.textBoxUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.buttonLogin.Location = new System.Drawing.Point(11, 63);
+            this.buttonLogin.Name = "buttonLogin";
+            this.buttonLogin.Size = new System.Drawing.Size(171, 23);
+            this.buttonLogin.TabIndex = 4;
+            this.buttonLogin.Text = "התחבר";
+            this.buttonLogin.UseVisualStyleBackColor = true;
+            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
             // textBoxPassword
             // 
@@ -126,15 +104,57 @@
             this.label2.Text = "סיסמה:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // buttonLogin
+            // textBoxUsername
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(11, 63);
-            this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(171, 23);
-            this.buttonLogin.TabIndex = 4;
-            this.buttonLogin.Text = "התחבר";
-            this.buttonLogin.UseVisualStyleBackColor = true;
-            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
+            this.textBoxUsername.Location = new System.Drawing.Point(11, 10);
+            this.textBoxUsername.Name = "textBoxUsername";
+            this.textBoxUsername.Size = new System.Drawing.Size(100, 20);
+            this.textBoxUsername.TabIndex = 1;
+            this.textBoxUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(117, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "שם משתמש:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage2.Controls.Add(this.buttonTKExit);
+            this.tabPage2.Controls.Add(this.buttonTKEenter);
+            this.tabPage2.Controls.Add(this.textBoxID);
+            this.tabPage2.Controls.Add(this.label3);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(196, 96);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "טיים קיפר";
+            // 
+            // buttonTKExit
+            // 
+            this.buttonTKExit.Location = new System.Drawing.Point(12, 50);
+            this.buttonTKExit.Name = "buttonTKExit";
+            this.buttonTKExit.Size = new System.Drawing.Size(75, 23);
+            this.buttonTKExit.TabIndex = 5;
+            this.buttonTKExit.Text = "יציאה";
+            this.buttonTKExit.UseVisualStyleBackColor = true;
+            this.buttonTKExit.Click += new System.EventHandler(this.buttonTKExit_Click);
+            // 
+            // buttonTKEenter
+            // 
+            this.buttonTKEenter.Location = new System.Drawing.Point(106, 50);
+            this.buttonTKEenter.Name = "buttonTKEenter";
+            this.buttonTKEenter.Size = new System.Drawing.Size(75, 23);
+            this.buttonTKEenter.TabIndex = 4;
+            this.buttonTKEenter.Text = "כניסה";
+            this.buttonTKEenter.UseVisualStyleBackColor = true;
+            this.buttonTKEenter.Click += new System.EventHandler(this.buttonTKEenter_Click);
             // 
             // textBoxID
             // 
@@ -153,26 +173,6 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "מספר עובד:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // buttonTKEenter
-            // 
-            this.buttonTKEenter.Location = new System.Drawing.Point(106, 50);
-            this.buttonTKEenter.Name = "buttonTKEenter";
-            this.buttonTKEenter.Size = new System.Drawing.Size(75, 23);
-            this.buttonTKEenter.TabIndex = 4;
-            this.buttonTKEenter.Text = "כניסה";
-            this.buttonTKEenter.UseVisualStyleBackColor = true;
-            this.buttonTKEenter.Click += new System.EventHandler(this.buttonTKEenter_Click);
-            // 
-            // buttonTKExit
-            // 
-            this.buttonTKExit.Location = new System.Drawing.Point(12, 50);
-            this.buttonTKExit.Name = "buttonTKExit";
-            this.buttonTKExit.Size = new System.Drawing.Size(75, 23);
-            this.buttonTKExit.TabIndex = 5;
-            this.buttonTKExit.Text = "יציאה";
-            this.buttonTKExit.UseVisualStyleBackColor = true;
-            this.buttonTKExit.Click += new System.EventHandler(this.buttonTKExit_Click);
             // 
             // LoginForm
             // 

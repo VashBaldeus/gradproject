@@ -13,17 +13,18 @@ namespace GUI.Menus
     public partial class AddEmployee : Form
     {
         MainMenu main = new MainMenu();
+        DataHandler dh = new DataHandler();
 
         public AddEmployee()
         {
             InitializeComponent();
 
-            DataTable city = main.GetCity();
-            DataTable country = main.GetCountry();
+            DataTable city = dh.GetTable("SELECT * FROM city_codes");
+            DataTable country = dh.GetTable("SELECT * FROM country_codes");
 
-            foreach(DataRow dr in city.Rows)
+            foreach (DataRow dr in city.Rows)
             {
-                comboBoxCity.Items.Add(dr["city_name"].ToString());
+                comboBoxCity.Items.Add(dr[1].ToString());
             }
 
             foreach(DataRow dr in country.Rows)
@@ -31,6 +32,9 @@ namespace GUI.Menus
                 comboBoxCountry.Items.Add(dr["country_name"].ToString());
                 comboBoxCOB.Items.Add(dr["country_name"].ToString());
             }
+
+            city.Dispose();
+            country.Dispose();
         }
 
         private void buttonAddEmployee_Click(object sender, EventArgs e)
@@ -46,6 +50,19 @@ namespace GUI.Menus
         }
 
         private void buttonResetForm_Click(object sender, EventArgs e)
+        {
+            ResetForm();
+        }
+
+        private void textBoxID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void ResetForm()
         {
             textBoxFName.Clear();
             textBoxLName.Clear();
@@ -66,14 +83,6 @@ namespace GUI.Menus
             comboBoxJType.ResetText();
             comboBoxMarital.ResetText();
             comboBoxSalary.ResetText();
-        }
-
-        private void textBoxID_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
         }
     }
 }

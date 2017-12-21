@@ -41,7 +41,7 @@
             this.MinimizeBox = false;
             this.Name = "EditEmployeeSubForm";
             this.ShowInTaskbar = false;
-            this.Text = "EditEmployeeSubForm";
+            this.Text = "עריכת עובד תת-תפריט";
             this.ResumeLayout(false);
 
         }
