@@ -17,7 +17,7 @@ namespace GUI
         public LoginForm()
         {
             InitializeComponent();
-            this.Text = "";
+            this.Text = "Coeus Workforce Management";
 
             textBoxPassword.PasswordChar = '*';
         }

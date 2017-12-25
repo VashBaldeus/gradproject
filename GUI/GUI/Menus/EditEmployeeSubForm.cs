@@ -16,5 +16,10 @@ namespace GUI.Menus
         {
             InitializeComponent();
         }
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
