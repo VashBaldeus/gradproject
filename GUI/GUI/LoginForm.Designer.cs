@@ -90,9 +90,9 @@
             // 
             this.textBoxPassword.Location = new System.Drawing.Point(11, 36);
             this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBoxPassword.Size = new System.Drawing.Size(100, 20);
             this.textBoxPassword.TabIndex = 3;
-            this.textBoxPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label2
             // 
@@ -108,6 +108,7 @@
             // 
             this.textBoxUsername.Location = new System.Drawing.Point(11, 10);
             this.textBoxUsername.Name = "textBoxUsername";
+            this.textBoxUsername.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.textBoxUsername.Size = new System.Drawing.Size(100, 20);
             this.textBoxUsername.TabIndex = 1;
             this.textBoxUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;

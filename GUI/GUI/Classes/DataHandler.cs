@@ -11,7 +11,7 @@ namespace GUI
 {
     class DataHandler
     {
-        #region Manual Connection Strings
+        #region MySQL Connection String
         private static string dbHost = "vps.vashbaldeus.pw";
         private static string dbUsername = "hr";
         private static string dbPassword = "3d1*M7dS4&Gy5f";
@@ -30,8 +30,8 @@ namespace GUI
         DataTable dt = new DataTable();
         DataTable datatable = new DataTable();
 
-        #region Manual Table Loading
-        private void ImportTable(string query)
+        #region MySQL Query Processing
+        private void ImportTable(string query)//function recieves a query string using that to pull data into a DataTable;
         {
             dt.PrimaryKey = null;
             dt.Rows.Clear();
@@ -45,13 +45,32 @@ namespace GUI
 
         }
 
-        public DataTable GetTable(string query)
+        public DataTable GetTable(string query)//function returns a DataTable full of data that was pulled using the query;
         {
             ImportTable(query);
             return dt;
         }
+
+        public void ExecuteServerQuery(string query)//function recieves a string containing a query, and performs the query to the server;
+        {
+            using (MySqlConnection connection = new MySqlConnection(dbString))
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd = connection.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = query;
+
+                connection.Open();
+                cmd.ExecuteNonQuery();
+                connection.Close();
+
+                cmd.Dispose();
+            }
+        }
         #endregion
 
+        #region DateTime
         public string GetCurTime()
         {
             return DateTime.Now.ToString("HH:mm:ss", System.Globalization.DateTimeFormatInfo.InvariantInfo);
@@ -61,31 +80,6 @@ namespace GUI
         {
             return DateTime.Now.ToString("yyyy-MM-dd");
         }
-
-        #region Old DataSet Code
-        /*private DataTable LoadEmployees()
-        {
-            hrDataSetTableAdapters.employeesTableAdapter employeesTable = new hrDataSetTableAdapters.employeesTableAdapter();
-            return employeesTable.GetData();
-        }
-
-        public DataTable LoadCityCodes()
-        {
-            hrDataSetTableAdapters.city_codesTableAdapter city_codesTable = new hrDataSetTableAdapters.city_codesTableAdapter();
-            return city_codesTable.GetData();
-        }
-
-        public DataTable LoadCountryCodes()
-        {
-            hrDataSetTableAdapters.country_codesTableAdapter country_codesTable = new hrDataSetTableAdapters.country_codesTableAdapter();
-            return country_codesTable.GetData();
-        }
-
-        public DataTable LoadReports()
-        {
-            hrDataSetTableAdapters.reportsTableAdapter reportsTable = new hrDataSetTableAdapters.reportsTableAdapter();
-            return reportsTable.GetData();
-        }*/
         #endregion
 
         public string Hash512(string password)
@@ -138,6 +132,7 @@ namespace GUI
         }
         #endregion
 
+        #region TimeKeeper
         public bool ChkEID(string id)
         {
             foreach (DataRow dr in GetTable($"SELECT eid FROM employees WHERE eid='{id}'").Rows)
@@ -170,6 +165,6 @@ namespace GUI
         {
             return false;
         }
-
+        #endregion
     }
 }

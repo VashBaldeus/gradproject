@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <Body>
-    <Height>5.48958in</Height>
+    <Height>5.11458in</Height>
     <Style />
   </Body>
-  <Width>12.1875in</Width>
+  <Width>6.5in</Width>
   <Page>
-    <PageHeight>8.27in</PageHeight>
-    <PageWidth>11.69in</PageWidth>
     <LeftMargin>1in</LeftMargin>
     <RightMargin>1in</RightMargin>
     <TopMargin>1in</TopMargin>
@@ -15,6 +13,15 @@
     <Style />
   </Page>
   <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="GUIDataSets">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>7a6b29a0-520c-4749-b321-f08437be5791</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>73fb6e62-fb22-488e-9628-27bb2c1a2697</rd:ReportID>
+  <rd:ReportID>0c47b00b-d199-46cd-9a88-040117a86abb</rd:ReportID>
 </Report>

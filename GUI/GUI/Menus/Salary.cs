@@ -16,5 +16,20 @@ namespace GUI.Menus
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DataHandler dh = new DataHandler();
+
+            DataSets.reportsDataSet rds = new DataSets.reportsDataSet();
+
+            DataTable test = dh.GetTable("select * from reports");
+
+            rds.Tables["reports"].Merge(test);
+
+            HourReport hr = new HourReport();
+
+            hr.ShowDialog();
+        }
     }
 }
