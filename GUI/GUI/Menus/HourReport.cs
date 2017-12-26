@@ -19,9 +19,9 @@ namespace GUI.Menus
 
         private void HourReport_Load(object sender, EventArgs e)
         {
-            DataSets.reportsDataSet db = new DataSets.reportsDataSet();
+            /*DataSets.reportsDataSet db = new DataSets.reportsDataSet();
             reportsDataTableBindingSource.DataSource = db.reports.ToList();
-            this.reportViewer1.RefreshReport();
+            this.reportViewer1.RefreshReport();*/
         }
     }
 }

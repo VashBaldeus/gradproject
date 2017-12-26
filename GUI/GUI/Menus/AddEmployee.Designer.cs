@@ -172,7 +172,8 @@
             // 
             // dateTimePickerDOB
             // 
-            this.dateTimePickerDOB.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerDOB.CustomFormat = "yyyy-MM-dd";
+            this.dateTimePickerDOB.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerDOB.Location = new System.Drawing.Point(258, 112);
             this.dateTimePickerDOB.Name = "dateTimePickerDOB";
             this.dateTimePickerDOB.RightToLeftLayout = true;
@@ -278,7 +279,8 @@
             // 
             // dateTimePickerMigDate
             // 
-            this.dateTimePickerMigDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerMigDate.CustomFormat = "yyyy-MM-dd";
+            this.dateTimePickerMigDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerMigDate.Location = new System.Drawing.Point(48, 142);
             this.dateTimePickerMigDate.Name = "dateTimePickerMigDate";
             this.dateTimePickerMigDate.RightToLeftLayout = true;
@@ -328,7 +330,8 @@
             // 
             // dateTimePickerJStart
             // 
-            this.dateTimePickerJStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerJStart.CustomFormat = "yyyy-MM-dd";
+            this.dateTimePickerJStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerJStart.Location = new System.Drawing.Point(48, 168);
             this.dateTimePickerJStart.Name = "dateTimePickerJStart";
             this.dateTimePickerJStart.RightToLeftLayout = true;

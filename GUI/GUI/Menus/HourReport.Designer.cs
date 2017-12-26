@@ -50,7 +50,7 @@
             // 
             // reportsDataTableBindingSource
             // 
-            this.reportsDataTableBindingSource.DataSource = typeof(GUI.DataSets.reportsDataSet.reportsDataTable);
+            //this.reportsDataTableBindingSource.DataSource = typeof(GUI.DataSets.reportsDataSet.reportsDataTable);
             // 
             // HourReport
             // 

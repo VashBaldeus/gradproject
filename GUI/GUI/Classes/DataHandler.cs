@@ -22,7 +22,7 @@ namespace GUI
         
         private static string dbName = "hr";
 
-        private static string dbString = $"Server={dbHost}; database={dbName}; UID={dbUsername}; password={dbPassword}";
+        private static string dbString = $"Server={dbHost}; database={dbName}; UID={dbUsername}; password={dbPassword}; charset=hebrew;";
     
         MySqlConnection connection = new MySqlConnection(dbString);
         #endregion
@@ -60,6 +60,27 @@ namespace GUI
                 cmd.CommandType = CommandType.Text;
 
                 cmd.CommandText = query;
+
+                connection.Open();
+                cmd.ExecuteNonQuery();
+                connection.Close();
+
+                cmd.Dispose();
+            }
+        }
+
+        public void ExecuteServerQuery(string query, params object[] parameters)//function recieves a string containing a query, and performs the query to the server;
+        {
+            using (MySqlConnection connection = new MySqlConnection(dbString))
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd = connection.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = query;
+
+                for (var i = 0; i != parameters.Length; ++i)
+                    cmd.Parameters.AddWithValue(i.ToString(), parameters[i]);
 
                 connection.Open();
                 cmd.ExecuteNonQuery();

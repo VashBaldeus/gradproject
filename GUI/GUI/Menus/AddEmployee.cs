@@ -16,21 +16,23 @@ namespace GUI.Menus
         MainMenu main = new MainMenu();
         DataHandler dh = new DataHandler();
 
-        DataTable city = new DataTable();
+        DataTable city_codes = new DataTable();
         DataTable country = new DataTable();
         DataTable department = new DataTable();
 
         public AddEmployee()
         {
             InitializeComponent();
+
+
             
             LoadComboBox();
         }
 
         private void LoadComboBox()//function loads data from database and filld teh combo boxs;
         {
-            city = dh.GetTable("SELECT * FROM city_codes");
-            foreach (DataRow dr in city.Rows)
+            city_codes = dh.GetTable("SELECT * FROM city_codes");
+            foreach (DataRow dr in city_codes.Rows)
             {
                 comboBoxCityCode.Items.Add(dr[1].ToString());
             }
@@ -51,8 +53,8 @@ namespace GUI.Menus
 
         private void buttonAddEmployee_Click(object sender, EventArgs e)
         {
-            try
-            {
+            /*try
+            {*/
                 if (this.Controls.OfType<TextBox>().Any(t => string.IsNullOrEmpty(t.Text)) || this.Controls.OfType<ComboBox>().Any(t => string.IsNullOrEmpty(t.Text)))
                     throw new Exception("השארת שדות ריקים"); //condition checks whether the form fields are not left empty, if true sends a pop up message;
 
@@ -94,6 +96,7 @@ namespace GUI.Menus
                 }
                 #endregion
 
+                #region Data Covertion
                 if (comboBoxJType.Text == "מלאה")
                     jtype = 1;
                 else jtype = 0;
@@ -118,39 +121,45 @@ namespace GUI.Menus
                         break;
                 }
 
-                foreach(DataRow dr in city.Rows)
+                foreach(DataRow dr in city_codes.Rows)
                 {
-                    if (dr["city_name"].ToString() == comboBoxCityCode.Text)
-                        cityn = int.Parse(dr["city"].ToString());
+                    if (dr[1].ToString() == comboBoxCityCode.Text)
+                        cityn = int.Parse(dr[0].ToString());
                 }
 
                 foreach(DataRow dr in country.Rows)
                 {
-                    if (dr["country_name"].ToString() == comboBoxCountry.Text)
-                        countryn = int.Parse(dr["country"].ToString());
+                    if (dr[1].ToString() == comboBoxCountry.Text)
+                        countryn = int.Parse(dr[0].ToString());
 
-                    if (dr["country_name"].ToString() == comboBoxCOB.Text)
-                        cobn = int.Parse(dr["country"].ToString());
+                    if (dr[1].ToString() == comboBoxCOB.Text)
+                        cobn = int.Parse(dr[0].ToString());
                 }
 
                 foreach(DataRow dr in department.Rows)
                 {
-                    if (dr["dname"].ToString() == comboBoxDept.Text)
-                        dcode = int.Parse(dr["dcode"].ToString());
+                    if (dr[1].ToString() == comboBoxDept.Text)
+                        dcode = int.Parse(dr[0].ToString());
                 }
+            #endregion
 
-                string insert = "INSERT INTO employees(id,passwd,userlogin,ishr,add,alter,hours,fname,lname,gender,dob,address,zip,city,country,cob,mdate,married,children,sdate,job_type,wage_class,dcode) VALUES()";
-                string values = $"VALUES({long.Parse(textBoxID.Text)},'{textBoxPASSWD.Text}', {perms[2]}, {perms[1]}, {perms[0]}, {perms[3]}, {perms[4]}, {perms[5]}, '{textBoxFName.Text}', '{textBoxLName.Text}', '{comboBoxGender.Text}', '{dateTimePickerDOB.Text}',";
-                string values2 = $"'{textBoxStreet.Text}', {long.Parse(textBoxZIP.Text)}, {cityn}, {countryn}, {cobn}, '{dateTimePickerMigDate.Text}')";
+            /*string insert = "INSERT INTO employees(id,passwd,userlogin,userprofile,ishr,addp,alterp,hours,fname,lname,gender,dob,address,zip,city,country,cob,mdate,married,children,sdate,job_type,wage_class,dcode)";
+            string values = $"VALUES({long.Parse(textBoxID.Text)},'{dh.Hash512(textBoxPASSWD.Text)}', {perms[2]}, {perms[1]}, {perms[0]}, {perms[3]}, {perms[4]}, {perms[5]}, '{textBoxFName.Text}', '{textBoxLName.Text}', '{comboBoxGender.Text}', '{dateTimePickerDOB.Value.Date.ToString("yyyy-MM-dd")}',";
+            string values2 = $"'{textBoxStreet.Text}', {long.Parse(textBoxZIP.Text)}, {cityn}, {countryn}, {cobn}, '{dateTimePickerMigDate.Value.Date.ToString("yyyy-MM-dd")}', {marital}, {child}, '{dateTimePickerJStart.Value.Date.ToString("yyyy-MM-dd")}', {jtype}, {wtype}, {dcode})";
 
-                dh.ExecuteServerQuery($"{insert} {values}{values2}");
+            dh.ExecuteServerQuery($"{insert} {values}{values2}");*/
+
+            var time = dateTimePickerDOB.Value.Date.Millisecond * 1000;
+
+            dh.ExecuteServerQuery("INSERT INTO employees(id,passwd,userlogin,userprofile,ishr,addp,alterp,hours,fname,lname,gender,dob,address,zip,city,country,cob,mdate,married,children,sdate,job_type,wage_class,dcode) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+                long.Parse(textBoxID.Text), dh.Hash512(textBoxPASSWD.Text), perms[2], perms[1], perms[0], perms[3], perms[4], perms[5], textBoxFName.Text, textBoxLName.Text, comboBoxGender.Text, dateTimePickerDOB.Value.Date.ToString("yyyy-MM-dd"), textBoxStreet.Text, long.Parse(textBoxZIP.Text), cityn, countryn, cobn, dateTimePickerMigDate.Value.Date.ToString("yyyy-MM-dd"), marital, child, dateTimePickerJStart.Value.Date.ToString("yyyy-MM-dd"), jtype, wtype, dcode);
                 
                 ResetForm();
-            }
+            /*}
             catch (Exception err)
             {
                 MessageBox.Show(err.Message, "שגיאה", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            }*/
         }
 
         private void buttonResetForm_Click(object sender, EventArgs e)
@@ -206,7 +215,7 @@ namespace GUI.Menus
         private void AddEmployee_Load(object sender, EventArgs e)
         {
 
-            this.reportViewer1.RefreshReport();
+            //this.reportViewer1.RefreshReport();
         }
     }
 }

@@ -18,7 +18,7 @@ namespace GUI.Menus
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
+        {/*
             DataHandler dh = new DataHandler();
 
             DataSets.reportsDataSet rds = new DataSets.reportsDataSet();
@@ -29,7 +29,7 @@ namespace GUI.Menus
 
             HourReport hr = new HourReport();
 
-            hr.ShowDialog();
+            hr.ShowDialog();*/
         }
     }
 }
