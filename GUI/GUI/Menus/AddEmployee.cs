@@ -23,30 +23,31 @@ namespace GUI.Menus
         public AddEmployee()
         {
             InitializeComponent();
-            
+
             LoadComboBox();
         }
 
         private void LoadComboBox()//function loads data from database and filld teh combo boxs;
         {
-            city_codes = dh.GetTable("SELECT * FROM city_codes");
-            foreach (DataRow dr in city_codes.Rows)
-            {
-                comboBoxCityCode.Items.Add(dr[1].ToString());
-            }
+            comboBoxCityCode.DisplayMember = "city_name";
+            comboBoxCityCode.ValueMember = "city_name";
+            comboBoxCityCode.DataSource = main.GetCity();
+            comboBoxCityCode.SelectedIndex = -1;
 
-            country = dh.GetTable("SELECT * FROM country_codes");
-            foreach (DataRow dr in country.Rows)
-            {
-                comboBoxCountry.Items.Add(dr["country_name"].ToString());
-                comboBoxCOB.Items.Add(dr["country_name"].ToString());
-            }
+            comboBoxCountry.DisplayMember = "country_name";
+            comboBoxCountry.ValueMember = "country_name";
+            comboBoxCountry.DataSource = main.GetCountry();
+            comboBoxCountry.SelectedIndex = -1;
 
-            department = dh.GetTable("select * from departments");
-            foreach (DataRow dr in department.Rows)
-            {
-                comboBoxDept.Items.Add(dr[1].ToString());
-            }
+            comboBoxCOB.DisplayMember = "country_name";
+            comboBoxCOB.ValueMember = "country_name";
+            comboBoxCOB.DataSource = main.GetCountry();
+            comboBoxCOB.SelectedIndex = -1;
+
+            comboBoxDept.DisplayMember = "dname";
+            comboBoxDept.ValueMember = "dname";
+            comboBoxDept.DataSource = main.GetDepartments();
+            comboBoxDept.SelectedIndex = -1;
         }
 
         private void buttonAddEmployee_Click(object sender, EventArgs e)
@@ -59,8 +60,6 @@ namespace GUI.Menus
                 foreach (DataRow dr in dh.GetTable("select id,fname,lname from employees").Rows)
                     if (dr["id"].ToString() == textBoxID.Text && dr["fname"].ToString() == textBoxFName.Text && dr["lname"].ToString() == textBoxLName.Text)
                         throw new Exception("עובד תחת השם הזה קיים במסד נתונים");//function checks whether employee under said ID, Name, or Lastname exists in the database.
-
-                int jtype=-1, wtype=-1, dcode=-1, marital=-1, child=-1, cityn=0, countryn=0, cobn=0;
 
                 #region Permissions Settings
                 int[] perms = new int[6];
@@ -94,76 +93,12 @@ namespace GUI.Menus
                 }
                 #endregion
 
-                
+                dh.ExecuteServerQuery("INSERT INTO employees(id,passwd,userlogin,userprofile,ishr,addp,alterp,hours,fname,lname,gender,dob,address,zip,city,country,cob,mdate,married,children,sdate,job_type,wage_class,dcode) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                    long.Parse(textBoxID.Text), dh.Hash512(textBoxPASSWD.Text), perms[2], perms[1], perms[0], perms[3], perms[4], perms[5],
+                    textBoxFName.Text, textBoxLName.Text, comboBoxGender.Text, dateTimePickerDOB.Value.Date.ToString("yyyy-MM-dd"),
+                    textBoxStreet.Text, textBoxZIP.Text, comboBoxCityCode.SelectedIndex + 1, comboBoxCountry.SelectedIndex + 1, comboBoxCOB.SelectedIndex + 1, dateTimePickerMigDate.Value.Date.ToString("yyyy-MM-dd"),
+                    comboBoxMarital.SelectedIndex, comboBoxChildren.SelectedIndex, dateTimePickerJStart.Value.Date.ToString("yyyy-MM-dd"), comboBoxJType.SelectedIndex, comboBoxSalary.SelectedIndex, comboBoxDept.SelectedIndex+1);
 
-                #region Data Covertion
-                if (comboBoxJType.SelectedIndex == 0)
-                    jtype = 1;
-                else jtype = 0;
-
-                if (comboBoxSalary.SelectedIndex == 0)
-                    wtype = 1;
-                else wtype = 0;
-
-                /*switch (comboBoxMarital.Text)
-                {
-                    case "רווק/ה":
-                        marital = 0;
-                        break;
-                    case "נשוי/אה":
-                        marital = 1;
-                        break;
-                    case "גרוש/ה":
-                        marital = 2;
-                        break;
-                    case "עלמנ/ה":
-                        marital = 3;
-                        break;
-                }*/
-
-                if (comboBoxMarital.Text == "רווק/ה")
-                    marital = 0;
-                else if (comboBoxMarital.Text == "נשוי/אה")
-                    marital = 1;
-                else if (comboBoxMarital.Text == "גרוש/ה")
-                    marital = 2;
-                else marital = 3;
-
-                child = int.Parse(comboBoxChildren.Text);
-
-                foreach (DataRow dr in city_codes.Rows)
-                {
-                    if (dr[1].ToString() == comboBoxCityCode.Text)
-                        cityn = int.Parse(dr[0].ToString());
-                }
-
-                foreach(DataRow dr in country.Rows)
-                {
-                    if (dr[1].ToString() == comboBoxCountry.Text)
-                        countryn = int.Parse(dr[0].ToString());
-
-                    if (dr[1].ToString() == comboBoxCOB.Text)
-                        cobn = int.Parse(dr[0].ToString());
-                }
-
-                department.PrimaryKey = null;
-                department.Clear();
-                department = dh.GetTable("select * from departments");
-                foreach(DataRow dr in department.Rows)
-                {
-                    if (dr["dname"].ToString() == comboBoxDept.Text)
-                        dcode = int.Parse(dr["dcode"].ToString());
-                }
-                #endregion
-
-                MessageBox.Show(comboBoxCityCode.SelectedIndex.ToString());
-
-                //var time = dateTimePickerDOB.Value.Date.Millisecond * 1000;
-
-                dh.ExecuteServerQuery("INSERT INTO employees(id,passwd,userlogin,userprofile,ishr,addp,alterp,hours,fname,lname,gender,dob,address,zip,city,country,cob,mdate,married,children,sdate,job_type,wage_class,dcode) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
-                    long.Parse(textBoxID.Text), dh.Hash512(textBoxPASSWD.Text), perms[2], perms[1], perms[0], perms[3], perms[4], perms[5], textBoxFName.Text, textBoxLName.Text, comboBoxGender.Text, dateTimePickerDOB.Value.Date.ToString("yyyy-MM-dd"), textBoxStreet.Text, long.Parse(textBoxZIP.Text), cityn,
-                    countryn, cobn, dateTimePickerMigDate.Value.Date.ToString("yyyy-MM-dd"), marital, child, dateTimePickerJStart.Value.Date.ToString("yyyy-MM-dd"), jtype, wtype, dcode);
-                
                 ResetForm();
             }
             catch (Exception err)
@@ -208,7 +143,7 @@ namespace GUI.Menus
 
             textBoxPASSWD.Clear();
             for (int i = 0; i < checkedListBoxUserPerms.Items.Count; i++)
-               checkedListBoxUserPerms.SetItemChecked(i, false);
+                checkedListBoxUserPerms.SetItemChecked(i, false);
         }
 
         private void textBoxPASSWD_KeyPress(object sender, KeyPressEventArgs e)

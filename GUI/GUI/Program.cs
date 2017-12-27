@@ -16,8 +16,8 @@ namespace GUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new LoginForm());
-            Application.Run(new Menus.EditEmployee());
+            Application.Run(new LoginForm());
+            //Application.Run(new Menus.AddEmployee());
         }
     }
 }

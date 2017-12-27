@@ -385,11 +385,11 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(179, 196);
+            this.label17.Location = new System.Drawing.Point(198, 195);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(72, 13);
+            this.label17.Size = new System.Drawing.Size(53, 13);
             this.label17.TabIndex = 33;
-            this.label17.Text = "סוג משכורת:";
+            this.label17.Text = "סוג שכר:";
             // 
             // comboBoxDept
             // 

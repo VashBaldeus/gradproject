@@ -35,6 +35,7 @@ namespace GUI
                     throw new Exception("אין לך הרשאה להתחבר למערכת.");
 
                 if (dh.LoginAuthentication(textBoxUsername.Text, dh.Hash512(textBoxPassword.Text))){
+                    Properties.Settings.Default.username = textBoxUsername.Text;
                     MainMenu main = new MainMenu();
                     main.Show();
                     this.Hide();

@@ -25,28 +25,9 @@ namespace GUI.Menus
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             try
-            {/*
-                dtEditEmployee.PrimaryKey = null;
-                dtEditEmployee.Rows.Clear();
-                dtEditEmployee.Columns.Clear();
-
-                dtEditEmployee = dh.GetTable($"SELECT * FROM employees WHERE eid={textBoxSearchField.Text} OR id={textBoxSearchField.Text}");
-
-                if (dtEditEmployee != null)
-                {
-                    MessageBox.Show("עובד לא נמצא!", "שגיאה", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                }
-                else
-                {
-                    MessageBox.Show("עובד נמצא!", "שגיאה", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                    EditEmployeeSubForm eesb = new EditEmployeeSubForm();
-                    eesb.Show();
-                    this.Hide();
-                }*/
-
+            {
                 searchfield = textBoxSearchField.Text;
                 Properties.Settings.Default.temp = textBoxSearchField.Text;
-                MessageBox.Show(searchfield);
 
                 dtEditEmployee = dh.GetTable($"SELECT * FROM employees WHERE eid={textBoxSearchField.Text} OR id={textBoxSearchField.Text}");
 

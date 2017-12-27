@@ -58,7 +58,7 @@
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(231, 23);
             this.buttonSearch.TabIndex = 2;
-            this.buttonSearch.Text = "הרץ חיפוש";
+            this.buttonSearch.Text = "חפש";
             this.buttonSearch.UseVisualStyleBackColor = true;
             this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 

@@ -68,12 +68,16 @@
             this.comboBoxDpt = new System.Windows.Forms.ComboBox();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.comboBoxGender = new System.Windows.Forms.ComboBox();
+            this.textBoxPASSWD = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.checkedListBoxPermissions = new System.Windows.Forms.CheckedListBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(228, 9);
+            this.label1.Location = new System.Drawing.Point(228, 7);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label1.Size = new System.Drawing.Size(66, 13);
@@ -82,7 +86,7 @@
             // 
             // textBoxEID
             // 
-            this.textBoxEID.Location = new System.Drawing.Point(111, 9);
+            this.textBoxEID.Location = new System.Drawing.Point(111, 7);
             this.textBoxEID.Name = "textBoxEID";
             this.textBoxEID.ReadOnly = true;
             this.textBoxEID.Size = new System.Drawing.Size(100, 20);
@@ -90,7 +94,7 @@
             // 
             // textBoxID
             // 
-            this.textBoxID.Location = new System.Drawing.Point(111, 35);
+            this.textBoxID.Location = new System.Drawing.Point(111, 33);
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(100, 20);
             this.textBoxID.TabIndex = 3;
@@ -98,7 +102,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(230, 35);
+            this.label2.Location = new System.Drawing.Point(230, 33);
             this.label2.Name = "label2";
             this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label2.Size = new System.Drawing.Size(64, 13);
@@ -107,7 +111,7 @@
             // 
             // textBoxFName
             // 
-            this.textBoxFName.Location = new System.Drawing.Point(111, 61);
+            this.textBoxFName.Location = new System.Drawing.Point(111, 59);
             this.textBoxFName.Name = "textBoxFName";
             this.textBoxFName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.textBoxFName.Size = new System.Drawing.Size(100, 20);
@@ -116,7 +120,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(240, 61);
+            this.label3.Location = new System.Drawing.Point(240, 59);
             this.label3.Name = "label3";
             this.label3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label3.Size = new System.Drawing.Size(54, 13);
@@ -125,7 +129,7 @@
             // 
             // textBoxLName
             // 
-            this.textBoxLName.Location = new System.Drawing.Point(111, 87);
+            this.textBoxLName.Location = new System.Drawing.Point(111, 85);
             this.textBoxLName.Name = "textBoxLName";
             this.textBoxLName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.textBoxLName.Size = new System.Drawing.Size(100, 20);
@@ -134,7 +138,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(228, 87);
+            this.label4.Location = new System.Drawing.Point(228, 85);
             this.label4.Name = "label4";
             this.label4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label4.Size = new System.Drawing.Size(66, 13);
@@ -144,7 +148,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(267, 113);
+            this.label5.Location = new System.Drawing.Point(267, 111);
             this.label5.Name = "label5";
             this.label5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label5.Size = new System.Drawing.Size(27, 13);
@@ -155,7 +159,7 @@
             // 
             this.dateTimePickerDOB.CustomFormat = "yyyy-MM-dd";
             this.dateTimePickerDOB.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerDOB.Location = new System.Drawing.Point(111, 139);
+            this.dateTimePickerDOB.Location = new System.Drawing.Point(111, 137);
             this.dateTimePickerDOB.Name = "dateTimePickerDOB";
             this.dateTimePickerDOB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dateTimePickerDOB.Size = new System.Drawing.Size(100, 20);
@@ -164,7 +168,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(222, 139);
+            this.label6.Location = new System.Drawing.Point(222, 137);
             this.label6.Name = "label6";
             this.label6.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label6.Size = new System.Drawing.Size(72, 13);
@@ -173,7 +177,7 @@
             // 
             // textBoxStreet
             // 
-            this.textBoxStreet.Location = new System.Drawing.Point(11, 165);
+            this.textBoxStreet.Location = new System.Drawing.Point(11, 163);
             this.textBoxStreet.Name = "textBoxStreet";
             this.textBoxStreet.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.textBoxStreet.Size = new System.Drawing.Size(200, 20);
@@ -182,7 +186,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(259, 165);
+            this.label7.Location = new System.Drawing.Point(259, 163);
             this.label7.Name = "label7";
             this.label7.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label7.Size = new System.Drawing.Size(35, 13);
@@ -191,7 +195,7 @@
             // 
             // textBoxZIP
             // 
-            this.textBoxZIP.Location = new System.Drawing.Point(90, 191);
+            this.textBoxZIP.Location = new System.Drawing.Point(90, 189);
             this.textBoxZIP.Name = "textBoxZIP";
             this.textBoxZIP.Size = new System.Drawing.Size(121, 20);
             this.textBoxZIP.TabIndex = 15;
@@ -199,7 +203,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(253, 191);
+            this.label8.Location = new System.Drawing.Point(253, 189);
             this.label8.Name = "label8";
             this.label8.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label8.Size = new System.Drawing.Size(41, 13);
@@ -209,15 +213,16 @@
             // comboBoxCity
             // 
             this.comboBoxCity.FormattingEnabled = true;
-            this.comboBoxCity.Location = new System.Drawing.Point(90, 217);
+            this.comboBoxCity.Location = new System.Drawing.Point(90, 215);
             this.comboBoxCity.Name = "comboBoxCity";
+            this.comboBoxCity.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.comboBoxCity.Size = new System.Drawing.Size(121, 21);
             this.comboBoxCity.TabIndex = 16;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(266, 217);
+            this.label9.Location = new System.Drawing.Point(266, 215);
             this.label9.Name = "label9";
             this.label9.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label9.Size = new System.Drawing.Size(28, 13);
@@ -227,7 +232,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(262, 243);
+            this.label10.Location = new System.Drawing.Point(262, 241);
             this.label10.Name = "label10";
             this.label10.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label10.Size = new System.Drawing.Size(32, 13);
@@ -237,15 +242,16 @@
             // comboBoxCountry
             // 
             this.comboBoxCountry.FormattingEnabled = true;
-            this.comboBoxCountry.Location = new System.Drawing.Point(90, 244);
+            this.comboBoxCountry.Location = new System.Drawing.Point(90, 242);
             this.comboBoxCountry.Name = "comboBoxCountry";
+            this.comboBoxCountry.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.comboBoxCountry.Size = new System.Drawing.Size(121, 21);
             this.comboBoxCountry.TabIndex = 18;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(233, 271);
+            this.label11.Location = new System.Drawing.Point(233, 269);
             this.label11.Name = "label11";
             this.label11.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label11.Size = new System.Drawing.Size(61, 13);
@@ -255,15 +261,16 @@
             // comboBoxCOB
             // 
             this.comboBoxCOB.FormattingEnabled = true;
-            this.comboBoxCOB.Location = new System.Drawing.Point(90, 271);
+            this.comboBoxCOB.Location = new System.Drawing.Point(90, 269);
             this.comboBoxCOB.Name = "comboBoxCOB";
+            this.comboBoxCOB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.comboBoxCOB.Size = new System.Drawing.Size(121, 21);
             this.comboBoxCOB.TabIndex = 20;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(217, 298);
+            this.label12.Location = new System.Drawing.Point(217, 296);
             this.label12.Name = "label12";
             this.label12.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label12.Size = new System.Drawing.Size(77, 13);
@@ -274,7 +281,7 @@
             // 
             this.dateTimePickerMigration.CustomFormat = "yyyy-MM-dd";
             this.dateTimePickerMigration.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerMigration.Location = new System.Drawing.Point(90, 298);
+            this.dateTimePickerMigration.Location = new System.Drawing.Point(90, 296);
             this.dateTimePickerMigration.Name = "dateTimePickerMigration";
             this.dateTimePickerMigration.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dateTimePickerMigration.Size = new System.Drawing.Size(121, 20);
@@ -283,7 +290,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(218, 327);
+            this.label13.Location = new System.Drawing.Point(218, 325);
             this.label13.Name = "label13";
             this.label13.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label13.Size = new System.Drawing.Size(76, 13);
@@ -293,15 +300,21 @@
             // comboBoxMarital
             // 
             this.comboBoxMarital.FormattingEnabled = true;
-            this.comboBoxMarital.Location = new System.Drawing.Point(90, 324);
+            this.comboBoxMarital.Items.AddRange(new object[] {
+            "רווק/ה",
+            "נשוי/אה",
+            "גרוש/ה",
+            "עלמנ/ה"});
+            this.comboBoxMarital.Location = new System.Drawing.Point(90, 322);
             this.comboBoxMarital.Name = "comboBoxMarital";
+            this.comboBoxMarital.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.comboBoxMarital.Size = new System.Drawing.Size(121, 21);
             this.comboBoxMarital.TabIndex = 24;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(253, 354);
+            this.label14.Location = new System.Drawing.Point(253, 352);
             this.label14.Name = "label14";
             this.label14.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label14.Size = new System.Drawing.Size(41, 13);
@@ -311,15 +324,28 @@
             // comboBoxKids
             // 
             this.comboBoxKids.FormattingEnabled = true;
-            this.comboBoxKids.Location = new System.Drawing.Point(90, 351);
+            this.comboBoxKids.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.comboBoxKids.Location = new System.Drawing.Point(90, 349);
             this.comboBoxKids.Name = "comboBoxKids";
+            this.comboBoxKids.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.comboBoxKids.Size = new System.Drawing.Size(121, 21);
             this.comboBoxKids.TabIndex = 26;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(215, 378);
+            this.label15.Location = new System.Drawing.Point(215, 376);
             this.label15.Name = "label15";
             this.label15.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label15.Size = new System.Drawing.Size(79, 13);
@@ -330,7 +356,7 @@
             // 
             this.dateTimePickerJStart.CustomFormat = "yyyy-MM-dd";
             this.dateTimePickerJStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerJStart.Location = new System.Drawing.Point(90, 378);
+            this.dateTimePickerJStart.Location = new System.Drawing.Point(90, 376);
             this.dateTimePickerJStart.Name = "dateTimePickerJStart";
             this.dateTimePickerJStart.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dateTimePickerJStart.Size = new System.Drawing.Size(121, 20);
@@ -339,7 +365,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(224, 404);
+            this.label16.Location = new System.Drawing.Point(224, 402);
             this.label16.Name = "label16";
             this.label16.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label16.Size = new System.Drawing.Size(70, 13);
@@ -350,7 +376,7 @@
             // 
             this.dateTimePickerJEnd.CustomFormat = "yyyy-MM-dd";
             this.dateTimePickerJEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerJEnd.Location = new System.Drawing.Point(90, 404);
+            this.dateTimePickerJEnd.Location = new System.Drawing.Point(90, 402);
             this.dateTimePickerJEnd.Name = "dateTimePickerJEnd";
             this.dateTimePickerJEnd.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dateTimePickerJEnd.Size = new System.Drawing.Size(121, 20);
@@ -359,7 +385,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(234, 433);
+            this.label17.Location = new System.Drawing.Point(234, 431);
             this.label17.Name = "label17";
             this.label17.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label17.Size = new System.Drawing.Size(60, 13);
@@ -369,15 +395,19 @@
             // comboBoxJType
             // 
             this.comboBoxJType.FormattingEnabled = true;
-            this.comboBoxJType.Location = new System.Drawing.Point(90, 430);
+            this.comboBoxJType.Items.AddRange(new object[] {
+            "מלאה",
+            "חלקית"});
+            this.comboBoxJType.Location = new System.Drawing.Point(90, 428);
             this.comboBoxJType.Name = "comboBoxJType";
+            this.comboBoxJType.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.comboBoxJType.Size = new System.Drawing.Size(121, 21);
             this.comboBoxJType.TabIndex = 32;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(241, 460);
+            this.label18.Location = new System.Drawing.Point(241, 458);
             this.label18.Name = "label18";
             this.label18.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label18.Size = new System.Drawing.Size(53, 13);
@@ -387,15 +417,19 @@
             // comboBoxSalary
             // 
             this.comboBoxSalary.FormattingEnabled = true;
-            this.comboBoxSalary.Location = new System.Drawing.Point(90, 457);
+            this.comboBoxSalary.Items.AddRange(new object[] {
+            "שעתי",
+            "גלובאלי"});
+            this.comboBoxSalary.Location = new System.Drawing.Point(90, 455);
             this.comboBoxSalary.Name = "comboBoxSalary";
+            this.comboBoxSalary.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.comboBoxSalary.Size = new System.Drawing.Size(121, 21);
             this.comboBoxSalary.TabIndex = 34;
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(249, 487);
+            this.label19.Location = new System.Drawing.Point(249, 485);
             this.label19.Name = "label19";
             this.label19.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label19.Size = new System.Drawing.Size(45, 13);
@@ -405,17 +439,18 @@
             // comboBoxDpt
             // 
             this.comboBoxDpt.FormattingEnabled = true;
-            this.comboBoxDpt.Location = new System.Drawing.Point(90, 484);
+            this.comboBoxDpt.Location = new System.Drawing.Point(90, 482);
             this.comboBoxDpt.Name = "comboBoxDpt";
+            this.comboBoxDpt.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.comboBoxDpt.Size = new System.Drawing.Size(121, 21);
             this.comboBoxDpt.TabIndex = 36;
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.Location = new System.Drawing.Point(11, 512);
+            this.buttonUpdate.Location = new System.Drawing.Point(11, 657);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(279, 23);
-            this.buttonUpdate.TabIndex = 38;
+            this.buttonUpdate.TabIndex = 39;
             this.buttonUpdate.Text = "עדכן פרופיל עובד";
             this.buttonUpdate.UseVisualStyleBackColor = true;
             this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
@@ -426,16 +461,64 @@
             this.comboBoxGender.Items.AddRange(new object[] {
             "זכר",
             "נקבה"});
-            this.comboBoxGender.Location = new System.Drawing.Point(90, 113);
+            this.comboBoxGender.Location = new System.Drawing.Point(90, 111);
             this.comboBoxGender.Name = "comboBoxGender";
+            this.comboBoxGender.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.comboBoxGender.Size = new System.Drawing.Size(121, 21);
             this.comboBoxGender.TabIndex = 39;
+            // 
+            // textBoxPASSWD
+            // 
+            this.textBoxPASSWD.Location = new System.Drawing.Point(90, 512);
+            this.textBoxPASSWD.Name = "textBoxPASSWD";
+            this.textBoxPASSWD.Size = new System.Drawing.Size(121, 20);
+            this.textBoxPASSWD.TabIndex = 37;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(248, 512);
+            this.label20.Name = "label20";
+            this.label20.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label20.Size = new System.Drawing.Size(43, 13);
+            this.label20.TabIndex = 41;
+            this.label20.Text = "סיסמה:";
+            // 
+            // checkedListBoxPermissions
+            // 
+            this.checkedListBoxPermissions.FormattingEnabled = true;
+            this.checkedListBoxPermissions.Items.AddRange(new object[] {
+            "חלק מכח אדם",
+            "יכול לשנות סיסמה",
+            "יכול להתחבר למערכת",
+            "יכול להוסיף עובדים",
+            "יכול לעשות שינויים לעובדים קיימים",
+            "יכול לצפות בדו\"ח שעות"});
+            this.checkedListBoxPermissions.Location = new System.Drawing.Point(67, 557);
+            this.checkedListBoxPermissions.Name = "checkedListBoxPermissions";
+            this.checkedListBoxPermissions.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.checkedListBoxPermissions.Size = new System.Drawing.Size(221, 94);
+            this.checkedListBoxPermissions.TabIndex = 38;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(197, 541);
+            this.label21.Name = "label21";
+            this.label21.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label21.Size = new System.Drawing.Size(94, 13);
+            this.label21.TabIndex = 43;
+            this.label21.Text = "הרשאות משתמש:";
             // 
             // EditEmployeeSubForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(305, 544);
+            this.ClientSize = new System.Drawing.Size(305, 686);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.checkedListBoxPermissions);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.textBoxPASSWD);
             this.Controls.Add(this.comboBoxGender);
             this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.label19);
@@ -528,5 +611,9 @@
         private System.Windows.Forms.ComboBox comboBoxDpt;
         private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.ComboBox comboBoxGender;
+        private System.Windows.Forms.TextBox textBoxPASSWD;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.CheckedListBox checkedListBoxPermissions;
+        private System.Windows.Forms.Label label21;
     }
 }

@@ -28,7 +28,6 @@ namespace GUI
         #endregion
 
         DataTable dt = new DataTable();
-        DataTable datatable = new DataTable();
 
         #region MySQL Query Processing
         private void ImportTable(string query)//function recieves a query string using that to pull data into a DataTable;
@@ -48,7 +47,7 @@ namespace GUI
         public DataTable GetTable(string query)//function returns a DataTable full of data that was pulled using the query;
         {
             ImportTable(query);
-            return dt;
+            return dt.Copy();
         }
 
         public void ExecuteServerQuery(string query)//function recieves a string containing a query, and performs the query to the server;
@@ -187,5 +186,65 @@ namespace GUI
             return false;
         }
         #endregion
+
+        #region Permissions
+        public bool GetPermAdd()
+        {
+            foreach(DataRow dr in GetTable($"SELECT id, addp FROM employees WHERE id={Properties.Settings.Default.username}").Rows)
+            {
+                if (dr["id"].ToString() == Properties.Settings.Default.username && dr["addp"].ToString() == "1")
+                    return true;
+                else return false;
+            }
+
+            return false;
+        }
+
+        public bool GetPermAlter()
+        {
+            foreach (DataRow dr in GetTable($"SELECT id, alterp FROM employees WHERE id={Properties.Settings.Default.username}").Rows)
+            {
+                if (dr["alterp"].ToString() == "1")
+                    return true;
+                else return false;
+            }
+
+            return false;
+        }
+
+        public bool GetPermHours()
+        {
+            foreach (DataRow dr in GetTable($"SELECT id, hours FROM employees WHERE id={Properties.Settings.Default.username}").Rows)
+            {
+                if (dr["id"].ToString() == Properties.Settings.Default.username && dr["hours"].ToString() == "1")
+                    return true;
+                else return false;
+            }
+
+            return false;
+        }
+
+        public bool GetPermUserPrpfile()
+        {
+            foreach (DataRow dr in GetTable($"SELECT id, userprofile FROM employees WHERE id={Properties.Settings.Default.username}").Rows)
+            {
+                if (dr["id"].ToString() == Properties.Settings.Default.username && dr["userprofile"].ToString() == "1")
+                    return true;
+                else return false;
+            }
+
+            return false;
+        }
+        #endregion
+
+        public int GetDepartmentCode(string username)
+        {
+            foreach (DataRow dr in GetTable($"SELECT id, dcode FROM employees WHERE id={username}").Rows)
+                if (dr["id"].ToString() == username)
+                    return int.Parse(dr["dcode"].ToString());
+                else return -1;
+
+            return -1;
+        }
     }
 }
