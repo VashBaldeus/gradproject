@@ -102,7 +102,7 @@ namespace GUI
         }
         #endregion
 
-        public string Hash512(string password)
+        public string Hash512(string password)//encrypts a recieved string as SHA512 and returns it;
         {
             var bytes = new UTF8Encoding().GetBytes(password);
             byte[] hashBytes;
@@ -115,7 +115,7 @@ namespace GUI
         }
 
         #region LoginAuth
-        public bool IsHRMember(string name)
+        public bool IsHRMember(string name)//checks whether a use is member of Human Resources;
         {
             foreach (DataRow dr in GetTable($"SELECT id, ishr FROM employees WHERE id='{name}'").Rows)
             {
@@ -127,7 +127,7 @@ namespace GUI
             return false;
         }
 
-        public bool UserLoginPermissionChk(string username, string password)
+        public bool UserLoginPermissionChk(string username, string password)//recieves user data to check whether he has a permission to login into sytstem;
         {
             foreach (DataRow dr in GetTable($"SELECT id, userlogin FROM employees WHERE id='{username}'").Rows)
             {
@@ -139,7 +139,7 @@ namespace GUI
             return false;
         }
 
-        public bool LoginAuthentication(string username, string password)
+        public bool LoginAuthentication(string username, string password)//checks user credentials in order to approve a login or deny it;
         {
             foreach (DataRow dr in GetTable($"SELECT id, passwd FROM employees WHERE id='{username}'").Rows)//LoadEmployees().Rows)
             {
@@ -245,6 +245,22 @@ namespace GUI
                 else return -1;
 
             return -1;
+        }
+
+        public bool CheckDuplicateDepartment(string dname)
+        {
+            using (DataTable d = GetTable($"SELECT dname FROM departments WHERE dname='{dname}'"))
+            {
+                if (d.Rows != null)
+                    foreach (DataRow dr in d.Rows)
+                    {
+                        if (dr["dname"].ToString() == dname)
+                            return true;
+                    }
+                else return false;
+            }
+
+            return false;
         }
     }
 }

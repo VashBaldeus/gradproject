@@ -12,9 +12,23 @@ namespace GUI.Menus
 {
     public partial class UserProfile : Form
     {
+        DataHandler dh = new DataHandler();
+
         public UserProfile()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "שגיאה", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

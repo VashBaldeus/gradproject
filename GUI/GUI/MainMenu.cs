@@ -124,6 +124,8 @@ namespace GUI
 
                 using (Departments dpt = new Departments())
                     dpt.ShowDialog();
+
+                deptCodes = dh.GetTable("SELECT dname FROM departments");
             }
             catch (Exception err)
             {

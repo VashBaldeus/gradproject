@@ -123,6 +123,7 @@
             this.buttonAddDpt.TabIndex = 6;
             this.buttonAddDpt.Text = "הוסף מחלקה";
             this.buttonAddDpt.UseVisualStyleBackColor = true;
+            this.buttonAddDpt.Click += new System.EventHandler(this.buttonAddDpt_Click);
             // 
             // buttonResetForm
             // 
@@ -132,11 +133,13 @@
             this.buttonResetForm.TabIndex = 7;
             this.buttonResetForm.Text = "אפס טופס";
             this.buttonResetForm.UseVisualStyleBackColor = true;
+            this.buttonResetForm.Click += new System.EventHandler(this.buttonResetForm_Click);
             // 
             // comboBoxDptList
             // 
             this.comboBoxDptList.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBoxDptList.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBoxDptList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDptList.FormattingEnabled = true;
             this.comboBoxDptList.Location = new System.Drawing.Point(13, 14);
             this.comboBoxDptList.Name = "comboBoxDptList";
@@ -152,6 +155,7 @@
             this.buttonDelDpt.TabIndex = 1;
             this.buttonDelDpt.Text = "מחק מחלקה";
             this.buttonDelDpt.UseVisualStyleBackColor = true;
+            this.buttonDelDpt.Click += new System.EventHandler(this.buttonDelDpt_Click);
             // 
             // Departments
             // 

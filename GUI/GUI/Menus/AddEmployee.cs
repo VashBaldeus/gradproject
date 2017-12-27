@@ -16,10 +16,6 @@ namespace GUI.Menus
         MainMenu main = new MainMenu();
         DataHandler dh = new DataHandler();
 
-        DataTable city_codes = new DataTable();
-        DataTable country = new DataTable();
-        DataTable department = new DataTable();
-
         public AddEmployee()
         {
             InitializeComponent();
@@ -99,7 +95,10 @@ namespace GUI.Menus
                     textBoxStreet.Text, textBoxZIP.Text, comboBoxCityCode.SelectedIndex + 1, comboBoxCountry.SelectedIndex + 1, comboBoxCOB.SelectedIndex + 1, dateTimePickerMigDate.Value.Date.ToString("yyyy-MM-dd"),
                     comboBoxMarital.SelectedIndex, comboBoxChildren.SelectedIndex, dateTimePickerJStart.Value.Date.ToString("yyyy-MM-dd"), comboBoxJType.SelectedIndex, comboBoxSalary.SelectedIndex, comboBoxDept.SelectedIndex+1);
 
-                ResetForm();
+                DialogResult result = MessageBox.Show("הוספת עובד התבצעה בהצלחה, מעוניין להוסיף עוד עובד?", "אישור", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                    ResetForm();
+                else this.Close();
             }
             catch (Exception err)
             {
@@ -131,15 +130,15 @@ namespace GUI.Menus
             dateTimePickerDOB.ResetText();
             dateTimePickerJStart.ResetText();
             dateTimePickerMigDate.ResetText();
-            comboBoxChildren.ResetText();
-            comboBoxCityCode.ResetText();
-            comboBoxCOB.ResetText();
-            comboBoxCountry.ResetText();
-            comboBoxDept.ResetText();
-            comboBoxGender.ResetText();
-            comboBoxJType.ResetText();
-            comboBoxMarital.ResetText();
-            comboBoxSalary.ResetText();
+            comboBoxChildren.SelectedIndex = -1;
+            comboBoxCityCode.SelectedIndex = -1;
+            comboBoxCOB.SelectedIndex = -1;
+            comboBoxCountry.SelectedIndex = -1;
+            comboBoxDept.SelectedIndex = -1;
+            comboBoxGender.SelectedIndex = -1;
+            comboBoxJType.SelectedIndex = -1;
+            comboBoxMarital.SelectedIndex = -1;
+            comboBoxSalary.SelectedIndex = -1;
 
             textBoxPASSWD.Clear();
             for (int i = 0; i < checkedListBoxUserPerms.Items.Count; i++)
