@@ -23,8 +23,6 @@ namespace GUI.Menus
         public AddEmployee()
         {
             InitializeComponent();
-
-
             
             LoadComboBox();
         }
@@ -53,8 +51,8 @@ namespace GUI.Menus
 
         private void buttonAddEmployee_Click(object sender, EventArgs e)
         {
-            /*try
-            {*/
+            try
+            {
                 if (this.Controls.OfType<TextBox>().Any(t => string.IsNullOrEmpty(t.Text)) || this.Controls.OfType<ComboBox>().Any(t => string.IsNullOrEmpty(t.Text)))
                     throw new Exception("השארת שדות ריקים"); //condition checks whether the form fields are not left empty, if true sends a pop up message;
 
@@ -96,16 +94,18 @@ namespace GUI.Menus
                 }
                 #endregion
 
+                
+
                 #region Data Covertion
-                if (comboBoxJType.Text == "מלאה")
+                if (comboBoxJType.SelectedIndex == 0)
                     jtype = 1;
                 else jtype = 0;
 
-                if (comboBoxSalary.Text == "שעתי")
+                if (comboBoxSalary.SelectedIndex == 0)
                     wtype = 1;
                 else wtype = 0;
 
-                switch (comboBoxMarital.Text)
+                /*switch (comboBoxMarital.Text)
                 {
                     case "רווק/ה":
                         marital = 0;
@@ -119,9 +119,19 @@ namespace GUI.Menus
                     case "עלמנ/ה":
                         marital = 3;
                         break;
-                }
+                }*/
 
-                foreach(DataRow dr in city_codes.Rows)
+                if (comboBoxMarital.Text == "רווק/ה")
+                    marital = 0;
+                else if (comboBoxMarital.Text == "נשוי/אה")
+                    marital = 1;
+                else if (comboBoxMarital.Text == "גרוש/ה")
+                    marital = 2;
+                else marital = 3;
+
+                child = int.Parse(comboBoxChildren.Text);
+
+                foreach (DataRow dr in city_codes.Rows)
                 {
                     if (dr[1].ToString() == comboBoxCityCode.Text)
                         cityn = int.Parse(dr[0].ToString());
@@ -136,30 +146,30 @@ namespace GUI.Menus
                         cobn = int.Parse(dr[0].ToString());
                 }
 
+                department.PrimaryKey = null;
+                department.Clear();
+                department = dh.GetTable("select * from departments");
                 foreach(DataRow dr in department.Rows)
                 {
-                    if (dr[1].ToString() == comboBoxDept.Text)
-                        dcode = int.Parse(dr[0].ToString());
+                    if (dr["dname"].ToString() == comboBoxDept.Text)
+                        dcode = int.Parse(dr["dcode"].ToString());
                 }
-            #endregion
+                #endregion
 
-            /*string insert = "INSERT INTO employees(id,passwd,userlogin,userprofile,ishr,addp,alterp,hours,fname,lname,gender,dob,address,zip,city,country,cob,mdate,married,children,sdate,job_type,wage_class,dcode)";
-            string values = $"VALUES({long.Parse(textBoxID.Text)},'{dh.Hash512(textBoxPASSWD.Text)}', {perms[2]}, {perms[1]}, {perms[0]}, {perms[3]}, {perms[4]}, {perms[5]}, '{textBoxFName.Text}', '{textBoxLName.Text}', '{comboBoxGender.Text}', '{dateTimePickerDOB.Value.Date.ToString("yyyy-MM-dd")}',";
-            string values2 = $"'{textBoxStreet.Text}', {long.Parse(textBoxZIP.Text)}, {cityn}, {countryn}, {cobn}, '{dateTimePickerMigDate.Value.Date.ToString("yyyy-MM-dd")}', {marital}, {child}, '{dateTimePickerJStart.Value.Date.ToString("yyyy-MM-dd")}', {jtype}, {wtype}, {dcode})";
+                MessageBox.Show(comboBoxCityCode.SelectedIndex.ToString());
 
-            dh.ExecuteServerQuery($"{insert} {values}{values2}");*/
+                //var time = dateTimePickerDOB.Value.Date.Millisecond * 1000;
 
-            var time = dateTimePickerDOB.Value.Date.Millisecond * 1000;
-
-            dh.ExecuteServerQuery("INSERT INTO employees(id,passwd,userlogin,userprofile,ishr,addp,alterp,hours,fname,lname,gender,dob,address,zip,city,country,cob,mdate,married,children,sdate,job_type,wage_class,dcode) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
-                long.Parse(textBoxID.Text), dh.Hash512(textBoxPASSWD.Text), perms[2], perms[1], perms[0], perms[3], perms[4], perms[5], textBoxFName.Text, textBoxLName.Text, comboBoxGender.Text, dateTimePickerDOB.Value.Date.ToString("yyyy-MM-dd"), textBoxStreet.Text, long.Parse(textBoxZIP.Text), cityn, countryn, cobn, dateTimePickerMigDate.Value.Date.ToString("yyyy-MM-dd"), marital, child, dateTimePickerJStart.Value.Date.ToString("yyyy-MM-dd"), jtype, wtype, dcode);
+                dh.ExecuteServerQuery("INSERT INTO employees(id,passwd,userlogin,userprofile,ishr,addp,alterp,hours,fname,lname,gender,dob,address,zip,city,country,cob,mdate,married,children,sdate,job_type,wage_class,dcode) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+                    long.Parse(textBoxID.Text), dh.Hash512(textBoxPASSWD.Text), perms[2], perms[1], perms[0], perms[3], perms[4], perms[5], textBoxFName.Text, textBoxLName.Text, comboBoxGender.Text, dateTimePickerDOB.Value.Date.ToString("yyyy-MM-dd"), textBoxStreet.Text, long.Parse(textBoxZIP.Text), cityn,
+                    countryn, cobn, dateTimePickerMigDate.Value.Date.ToString("yyyy-MM-dd"), marital, child, dateTimePickerJStart.Value.Date.ToString("yyyy-MM-dd"), jtype, wtype, dcode);
                 
                 ResetForm();
-            /*}
+            }
             catch (Exception err)
             {
                 MessageBox.Show(err.Message, "שגיאה", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }*/
+            }
         }
 
         private void buttonResetForm_Click(object sender, EventArgs e)
@@ -215,7 +225,6 @@ namespace GUI.Menus
         private void AddEmployee_Load(object sender, EventArgs e)
         {
 
-            //this.reportViewer1.RefreshReport();
         }
     }
 }

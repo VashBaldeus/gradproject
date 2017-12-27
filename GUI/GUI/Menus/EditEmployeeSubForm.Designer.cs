@@ -37,7 +37,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxLName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBoxGender = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.dateTimePickerDOB = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
@@ -68,6 +67,7 @@
             this.label19 = new System.Windows.Forms.Label();
             this.comboBoxDpt = new System.Windows.Forms.ComboBox();
             this.buttonUpdate = new System.Windows.Forms.Button();
+            this.comboBoxGender = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -141,14 +141,6 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "שם משפחה:";
             // 
-            // textBoxGender
-            // 
-            this.textBoxGender.Location = new System.Drawing.Point(111, 113);
-            this.textBoxGender.Name = "textBoxGender";
-            this.textBoxGender.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBoxGender.Size = new System.Drawing.Size(100, 20);
-            this.textBoxGender.TabIndex = 9;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -161,9 +153,11 @@
             // 
             // dateTimePickerDOB
             // 
-            this.dateTimePickerDOB.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerDOB.CustomFormat = "yyyy-MM-dd";
+            this.dateTimePickerDOB.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerDOB.Location = new System.Drawing.Point(111, 139);
             this.dateTimePickerDOB.Name = "dateTimePickerDOB";
+            this.dateTimePickerDOB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dateTimePickerDOB.Size = new System.Drawing.Size(100, 20);
             this.dateTimePickerDOB.TabIndex = 10;
             // 
@@ -278,9 +272,11 @@
             // 
             // dateTimePickerMigration
             // 
-            this.dateTimePickerMigration.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerMigration.CustomFormat = "yyyy-MM-dd";
+            this.dateTimePickerMigration.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerMigration.Location = new System.Drawing.Point(90, 298);
             this.dateTimePickerMigration.Name = "dateTimePickerMigration";
+            this.dateTimePickerMigration.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dateTimePickerMigration.Size = new System.Drawing.Size(121, 20);
             this.dateTimePickerMigration.TabIndex = 22;
             // 
@@ -332,9 +328,11 @@
             // 
             // dateTimePickerJStart
             // 
-            this.dateTimePickerJStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerJStart.CustomFormat = "yyyy-MM-dd";
+            this.dateTimePickerJStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerJStart.Location = new System.Drawing.Point(90, 378);
             this.dateTimePickerJStart.Name = "dateTimePickerJStart";
+            this.dateTimePickerJStart.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dateTimePickerJStart.Size = new System.Drawing.Size(121, 20);
             this.dateTimePickerJStart.TabIndex = 28;
             // 
@@ -350,9 +348,11 @@
             // 
             // dateTimePickerJEnd
             // 
-            this.dateTimePickerJEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerJEnd.CustomFormat = "yyyy-MM-dd";
+            this.dateTimePickerJEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerJEnd.Location = new System.Drawing.Point(90, 404);
             this.dateTimePickerJEnd.Name = "dateTimePickerJEnd";
+            this.dateTimePickerJEnd.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dateTimePickerJEnd.Size = new System.Drawing.Size(121, 20);
             this.dateTimePickerJEnd.TabIndex = 30;
             // 
@@ -420,11 +420,23 @@
             this.buttonUpdate.UseVisualStyleBackColor = true;
             this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
+            // comboBoxGender
+            // 
+            this.comboBoxGender.FormattingEnabled = true;
+            this.comboBoxGender.Items.AddRange(new object[] {
+            "זכר",
+            "נקבה"});
+            this.comboBoxGender.Location = new System.Drawing.Point(90, 113);
+            this.comboBoxGender.Name = "comboBoxGender";
+            this.comboBoxGender.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxGender.TabIndex = 39;
+            // 
             // EditEmployeeSubForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(305, 544);
+            this.Controls.Add(this.comboBoxGender);
             this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.comboBoxDpt);
@@ -454,7 +466,6 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.dateTimePickerDOB);
-            this.Controls.Add(this.textBoxGender);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBoxLName);
             this.Controls.Add(this.label4);
@@ -469,6 +480,7 @@
             this.MinimizeBox = false;
             this.Name = "EditEmployeeSubForm";
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "עריכת עובד - ";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -485,7 +497,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxLName;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBoxGender;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dateTimePickerDOB;
         private System.Windows.Forms.Label label6;
@@ -516,5 +527,6 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.ComboBox comboBoxDpt;
         private System.Windows.Forms.Button buttonUpdate;
+        private System.Windows.Forms.ComboBox comboBoxGender;
     }
 }

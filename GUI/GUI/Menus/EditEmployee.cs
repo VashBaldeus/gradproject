@@ -13,7 +13,9 @@ namespace GUI.Menus
     public partial class EditEmployee : Form
     {
         DataHandler dh = new DataHandler();
-        DataTable dtEditEmployee = new DataTable();
+        public DataTable dtEditEmployee = new DataTable();
+
+        public string searchfield = "";
 
         public EditEmployee()
         {
@@ -22,28 +24,56 @@ namespace GUI.Menus
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            dtEditEmployee.PrimaryKey = null;
-            dtEditEmployee.Rows.Clear();
-            dtEditEmployee.Columns.Clear();
+            try
+            {/*
+                dtEditEmployee.PrimaryKey = null;
+                dtEditEmployee.Rows.Clear();
+                dtEditEmployee.Columns.Clear();
 
-            //dtEditEmployee = dh.GetTable($"SELECT * FROM employees WHERE eid={textBoxSearchField.Text} OR id={textBoxSearchField.Text}");
+                dtEditEmployee = dh.GetTable($"SELECT * FROM employees WHERE eid={textBoxSearchField.Text} OR id={textBoxSearchField.Text}");
 
-            if (dtEditEmployee != null)
-            {
-                MessageBox.Show("עובד לא נמצא!", "שגיאה", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                if (dtEditEmployee != null)
+                {
+                    MessageBox.Show("עובד לא נמצא!", "שגיאה", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                }
+                else
+                {
+                    MessageBox.Show("עובד נמצא!", "שגיאה", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    EditEmployeeSubForm eesb = new EditEmployeeSubForm();
+                    eesb.Show();
+                    this.Hide();
+                }*/
+
+                searchfield = textBoxSearchField.Text;
+                Properties.Settings.Default.temp = textBoxSearchField.Text;
+                MessageBox.Show(searchfield);
+
+                dtEditEmployee = dh.GetTable($"SELECT * FROM employees WHERE eid={textBoxSearchField.Text} OR id={textBoxSearchField.Text}");
+
+                if (dtEditEmployee != null)
+                {
+                    if (dtEditEmployee.Rows.Count > 0)
+                    {
+                        EditEmployeeSubForm eesf = new EditEmployeeSubForm();
+                        eesf.ShowDialog();
+                    }
+                }
+                else throw new Exception("מספר עובד או תעודת זהות שגויים");
             }
-            else
+            catch (Exception err)
             {
-                MessageBox.Show("עובד נמצא!", "שגיאה", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                EditEmployeeSubForm eesb = new EditEmployeeSubForm();
-                eesb.Show();
-                this.Hide();
+                MessageBox.Show(err.Message, "שגיאה", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         public DataTable GetEmployee()
         {
             return dtEditEmployee;
+        }
+
+        public string GetSearchData()
+        {
+            return searchfield;
         }
 
         private void textBoxSearchField_KeyPress(object sender, KeyPressEventArgs e)

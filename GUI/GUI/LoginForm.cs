@@ -26,7 +26,7 @@ namespace GUI
         {
             try
             {
-                Properties.Settings.Default.username = textBoxUsername.Text;
+                Properties.Settings.Default.temp = textBoxUsername.Text;
 
                 if (textBoxUsername.Text == "" || textBoxPassword.Text == "")
                     throw new Exception("השארת שדות ריקים.");
@@ -77,7 +77,7 @@ namespace GUI
 
         public string GetName()
         {
-            return Properties.Settings.Default.username;
+            return Properties.Settings.Default.temp;
         }
     }
 }

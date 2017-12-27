@@ -23,7 +23,7 @@ namespace GUI
             tabControl1.TabPages.Remove(tabPage1);
             tabControl1.TabPages.Remove(tabPage2);
             
-            if (dh.IsHRMember(Properties.Settings.Default.username))
+            if (dh.IsHRMember(Properties.Settings.Default.temp))
                 tabControl1.TabPages.Add(tabPage1);
             else tabControl1.TabPages.Add(tabPage2);
             #endregion

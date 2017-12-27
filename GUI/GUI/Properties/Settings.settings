@@ -10,7 +10,7 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">server=vps.vashbaldeus.pw;user id=hr;password=3d1*M7dS4&amp;Gy5f;persistsecurityinfo=True;database=hr</Value>
     </Setting>
-    <Setting Name="username" Type="System.String" Scope="User">
+    <Setting Name="temp" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>
