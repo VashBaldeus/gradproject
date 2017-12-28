@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="salaryDataSet" targetNamespace="http://tempuri.org/salaryDataSet.xsd" xmlns:mstns="http://tempuri.org/salaryDataSet.xsd" xmlns="http://tempuri.org/salaryDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="salaryDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="salaryDataSet" msprop:Generator_UserDSName="salaryDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="salaryDataTable" msprop:Generator_TableClassName="salaryDataTableDataTable" msprop:Generator_TableVarName="tablesalaryDataTable" msprop:Generator_TablePropName="salaryDataTable" msprop:Generator_RowDeletingName="salaryDataTableRowDeleting" msprop:Generator_RowChangingName="salaryDataTableRowChanging" msprop:Generator_RowEvHandlerName="salaryDataTableRowChangeEventHandler" msprop:Generator_RowDeletedName="salaryDataTableRowDeleted" msprop:Generator_UserTableName="salaryDataTable" msprop:Generator_RowChangedName="salaryDataTableRowChanged" msprop:Generator_RowEvArgName="salaryDataTableRowChangeEvent" msprop:Generator_RowClassName="salaryDataTableRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="salary" msprop:Generator_ColumnVarNameInTable="columnsalary" msprop:Generator_ColumnPropNameInRow="salary" msprop:Generator_ColumnPropNameInTable="salaryColumn" msprop:Generator_UserColumnName="salary" type="xs:double" minOccurs="0" />
+              <xs:element name="salary125" msprop:Generator_ColumnVarNameInTable="columnsalary125" msprop:Generator_ColumnPropNameInRow="salary125" msprop:Generator_ColumnPropNameInTable="salary125Column" msprop:Generator_UserColumnName="salary125" type="xs:double" minOccurs="0" />
+              <xs:element name="salary150" msprop:Generator_ColumnVarNameInTable="columnsalary150" msprop:Generator_ColumnPropNameInRow="salary150" msprop:Generator_ColumnPropNameInTable="salary150Column" msprop:Generator_UserColumnName="salary150" type="xs:double" minOccurs="0" />
+              <xs:element name="salary175" msprop:Generator_ColumnVarNameInTable="columnsalary175" msprop:Generator_ColumnPropNameInRow="salary175" msprop:Generator_ColumnPropNameInTable="salary175Column" msprop:Generator_UserColumnName="salary175" type="xs:double" minOccurs="0" />
+              <xs:element name="salary200" msprop:Generator_ColumnVarNameInTable="columnsalary200" msprop:Generator_ColumnPropNameInRow="salary200" msprop:Generator_ColumnPropNameInTable="salary200Column" msprop:Generator_UserColumnName="salary200" type="xs:double" minOccurs="0" />
+              <xs:element name="salary_pay" msprop:Generator_ColumnVarNameInTable="columnsalary_pay" msprop:Generator_ColumnPropNameInRow="salary_pay" msprop:Generator_ColumnPropNameInTable="salary_payColumn" msprop:Generator_UserColumnName="salary_pay" type="xs:double" minOccurs="0" />
+              <xs:element name="salary125_pay" msprop:Generator_ColumnVarNameInTable="columnsalary125_pay" msprop:Generator_ColumnPropNameInRow="salary125_pay" msprop:Generator_ColumnPropNameInTable="salary125_payColumn" msprop:Generator_UserColumnName="salary125_pay" type="xs:double" minOccurs="0" />
+              <xs:element name="salary150_pay" msprop:Generator_ColumnVarNameInTable="columnsalary150_pay" msprop:Generator_ColumnPropNameInRow="salary150_pay" msprop:Generator_ColumnPropNameInTable="salary150_payColumn" msprop:Generator_UserColumnName="salary150_pay" type="xs:double" minOccurs="0" />
+              <xs:element name="salary175_pay" msprop:Generator_ColumnVarNameInTable="columnsalary175_pay" msprop:Generator_ColumnPropNameInRow="salary175_pay" msprop:Generator_ColumnPropNameInTable="salary175_payColumn" msprop:Generator_UserColumnName="salary175_pay" type="xs:double" minOccurs="0" />
+              <xs:element name="salary200_pay" msprop:Generator_ColumnVarNameInTable="columnsalary200_pay" msprop:Generator_ColumnPropNameInRow="salary200_pay" msprop:Generator_ColumnPropNameInTable="salary200_payColumn" msprop:Generator_UserColumnName="salary200_pay" type="xs:double" minOccurs="0" />
+              <xs:element name="social_security" msprop:Generator_ColumnVarNameInTable="columnsocial_security" msprop:Generator_ColumnPropNameInRow="social_security" msprop:Generator_ColumnPropNameInTable="social_securityColumn" msprop:Generator_UserColumnName="social_security" type="xs:double" minOccurs="0" />
+              <xs:element name="health_tax" msprop:Generator_ColumnVarNameInTable="columnhealth_tax" msprop:Generator_ColumnPropNameInRow="health_tax" msprop:Generator_ColumnPropNameInTable="health_taxColumn" msprop:Generator_UserColumnName="health_tax" type="xs:double" minOccurs="0" />
+              <xs:element name="salaryBruto" msprop:Generator_ColumnVarNameInTable="columnsalaryBruto" msprop:Generator_ColumnPropNameInRow="salaryBruto" msprop:Generator_ColumnPropNameInTable="salaryBrutoColumn" msprop:Generator_UserColumnName="salaryBruto" type="xs:double" minOccurs="0" />
+              <xs:element name="salaryNeto" msprop:Generator_ColumnVarNameInTable="columnsalaryNeto" msprop:Generator_ColumnPropNameInRow="salaryNeto" msprop:Generator_ColumnPropNameInTable="salaryNetoColumn" msprop:Generator_UserColumnName="salaryNeto" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

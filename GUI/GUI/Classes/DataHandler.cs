@@ -168,12 +168,17 @@ namespace GUI
         public bool ChkTKEnter(string id)//checks employee enter time, to prevent duplicates;
         {
             DateTime now = DateTime.Now;
-
-            foreach(DataRow dr in GetTable($"SELECT eid, enter_time FROM reports WHERE eid='{id}'").Rows)
-            {
-                if (dr["eid"].ToString() == id)
+            using (DataTable dt2 = GetTable($"SELECT eid, enter_time FROM reports WHERE eid='{id}'")) {
+                if (dt2 != null && dt2.Rows.Count > 0)
                 {
-                    return true;
+                    foreach (DataRow dr in dt2.Rows)
+                    {
+                        if (dr["eid"].ToString() == id)
+                        {
+                            return true;
+                        }
+                        else return false;
+                    }
                 }
                 else return false;
             }

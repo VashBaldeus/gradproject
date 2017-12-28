@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +20,13 @@ namespace GUI.Menus
 
         private void button1_Click(object sender, EventArgs e)
         {
-            HourReport hr = new HourReport();
+            Properties.Settings.Default.temp = textBoxID.Text;
 
-            hr.ShowDialog();
+            using (SalarySheet sals = new SalarySheet())
+                sals.ShowDialog();
+                
+            /*var image = Classes.ScreenCapture.CaptureActiveWindow();
+            image.Save(@"C:\Users\xcast\Pictures\snippetsource.jpg", ImageFormat.Jpeg);*/
         }
     }
 }
