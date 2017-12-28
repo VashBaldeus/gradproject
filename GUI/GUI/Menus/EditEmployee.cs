@@ -13,9 +13,6 @@ namespace GUI.Menus
     public partial class EditEmployee : Form
     {
         DataHandler dh = new DataHandler();
-        public DataTable dtEditEmployee = new DataTable();
-
-        public string searchfield = "";
 
         public EditEmployee()
         {
@@ -26,20 +23,20 @@ namespace GUI.Menus
         {
             try
             {
-                searchfield = textBoxSearchField.Text;
-                Properties.Settings.Default.temp = textBoxSearchField.Text;
+                Properties.Settings.Default.temp = textBoxSearchField.Text;//saves textBoxSearchField to later use in EditEmployeeSubForm;
 
-                dtEditEmployee = dh.GetTable($"SELECT * FROM employees WHERE eid={textBoxSearchField.Text} OR id={textBoxSearchField.Text}");
-
-                if (dtEditEmployee != null)
+                using (DataTable dtEditEmployee = dh.GetTable($"SELECT * FROM employees WHERE eid={textBoxSearchField.Text} OR id={textBoxSearchField.Text}"))
                 {
-                    if (dtEditEmployee.Rows.Count > 0)
+                    if (dtEditEmployee != null)//makes sure DataTable is not empty;
                     {
-                        EditEmployeeSubForm eesf = new EditEmployeeSubForm();
-                        eesf.ShowDialog();
+                        if (dtEditEmployee.Rows.Count > 0)//makes sure DataTable has Rows;
+                        {
+                            using (EditEmployeeSubForm eesf = new EditEmployeeSubForm())
+                                eesf.ShowDialog();//opens the EditEmployeeSubForm in order to load the employee data for editing;
+                        }
                     }
+                    else throw new Exception("מספר עובד או תעודת זהות שגויים");
                 }
-                else throw new Exception("מספר עובד או תעודת זהות שגויים");
             }
             catch (Exception err)
             {
@@ -47,18 +44,8 @@ namespace GUI.Menus
             }
         }
 
-        public DataTable GetEmployee()
-        {
-            return dtEditEmployee;
-        }
-
-        public string GetSearchData()
-        {
-            return searchfield;
-        }
-
         private void textBoxSearchField_KeyPress(object sender, KeyPressEventArgs e)
-        {
+        {//function keeps track that only digits are types into the search field;
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;

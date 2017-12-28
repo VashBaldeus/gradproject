@@ -140,11 +140,23 @@
     <Compile Include="Menus\HourReport.Designer.cs">
       <DependentUpon>HourReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Menus\HourReportSheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menus\HourReportSheet.Designer.cs">
+      <DependentUpon>HourReportSheet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Menus\Salary.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Menus\Salary.Designer.cs">
       <DependentUpon>Salary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menus\SalarySheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menus\SalarySheet.Designer.cs">
+      <DependentUpon>SalarySheet.cs</DependentUpon>
     </Compile>
     <Compile Include="Menus\UserProfile.cs">
       <SubType>Form</SubType>
@@ -175,8 +187,14 @@
     <EmbeddedResource Include="Menus\HourReport.resx">
       <DependentUpon>HourReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Menus\HourReportSheet.resx">
+      <DependentUpon>HourReportSheet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Menus\Salary.resx">
       <DependentUpon>Salary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menus\SalarySheet.resx">
+      <DependentUpon>SalarySheet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menus\UserProfile.resx">
       <DependentUpon>UserProfile.cs</DependentUpon>
@@ -192,6 +210,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Reports\hourReport.rdlc" />
+    <EmbeddedResource Include="Reports\salaryReport.rdlc" />
     <None Include="hrDataSet1.xsc">
       <DependentUpon>hrDataSet1.xsd</DependentUpon>
     </None>
@@ -233,6 +252,7 @@
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
     <Content Include="icon.ico" />
+    <Content Include="Resources\logo.png" />
     <None Include="Resources\1471127 - document .png" />
     <None Include="Resources\1471126 - document .png" />
     <None Include="Resources\1471125 - document .png" />

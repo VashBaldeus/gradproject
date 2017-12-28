@@ -32,19 +32,19 @@ namespace GUI.Menus
         {
             comboBoxCity.DisplayMember = "city_name";
             comboBoxCity.ValueMember = "city_name";
-            comboBoxCity.DataSource = main.GetCity();
+            comboBoxCity.DataSource = main.GetCity();//pulls CityCode DataTable from MainMenu form;
 
             comboBoxCountry.DisplayMember = "country_name";
             comboBoxCountry.ValueMember = "country_name";
-            comboBoxCountry.DataSource = main.GetCountry();
+            comboBoxCountry.DataSource = main.GetCountry();//pulls CountryCode DataTable from MainMenu form;
 
             comboBoxCOB.DisplayMember = "country_name";
             comboBoxCOB.ValueMember = "country_name";
-            comboBoxCOB.DataSource = main.GetBCountry();
+            comboBoxCOB.DataSource = main.GetBCountry();//pulls CountryCode DataTable from MainMenu form;
 
             comboBoxDpt.DisplayMember = "dname";
             comboBoxDpt.ValueMember = "dname";
-            comboBoxDpt.DataSource = main.GetDepartments();
+            comboBoxDpt.DataSource = main.GetDepartments();//pulls DepartmentCode DataTable from MainMenu form;
         }
 
         private void LoadFormData()
@@ -126,7 +126,7 @@ namespace GUI.Menus
                     perms[i] = 0;
 
                 foreach (int index in checkedListBoxPermissions.CheckedIndices)
-                {
+                {//checks each selection, assigns proper digit on 'perms' array;
                     switch (index)
                     {
                         case 0://חלק מכח אדם

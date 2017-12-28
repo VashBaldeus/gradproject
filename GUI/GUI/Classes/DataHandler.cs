@@ -16,7 +16,7 @@ namespace GUI
         private static string dbUsername = "hr";
         private static string dbPassword = "3d1*M7dS4&Gy5f";
 
-        /*private static string dbHost = "localhost";
+        /*private static string dbHost = "localhost";//kept here just in case there's internet issues to easily switch to local mysql server;
         private static string dbUsername = "root";
         private static string dbPassword = "password";*/
         
@@ -91,18 +91,18 @@ namespace GUI
         #endregion
 
         #region DateTime
-        public string GetCurTime()
+        public string GetCurTime()//returns current time in the following format HH:mm:ss i.e. 14:13:45;
         {
             return DateTime.Now.ToString("HH:mm:ss", System.Globalization.DateTimeFormatInfo.InvariantInfo);
         }
 
-        public string GetCurDate()
+        public string GetCurDate()//returns current date in the following format yyyy-MM-dd i.e. 2017-12-31;
         {
             return DateTime.Now.ToString("yyyy-MM-dd");
         }
         #endregion
 
-        public string Hash512(string password)//encrypts a recieved string as SHA512 and returns it;
+        public string Hash512(string password)//recieves a string, encrypts it in SHA512 and returns it back;
         {
             var bytes = new UTF8Encoding().GetBytes(password);
             byte[] hashBytes;
@@ -152,8 +152,8 @@ namespace GUI
         }
         #endregion
 
-        #region TimeKeeper
-        public bool ChkEID(string id)
+        #region TimeKeeper & Data Verification
+        public bool ChkEID(string id)//verifies employee id exists in the database;
         {
             foreach (DataRow dr in GetTable($"SELECT eid FROM employees WHERE eid='{id}'").Rows)
             {
@@ -165,7 +165,7 @@ namespace GUI
             return false;
         }
 
-        public bool ChkTKEnter(string id)
+        public bool ChkTKEnter(string id)//checks employee enter time, to prevent duplicates;
         {
             DateTime now = DateTime.Now;
 
@@ -181,63 +181,12 @@ namespace GUI
             return false;
         }
 
-        public bool ChkTKExit(string id)
+        public bool ChkTKExit(string id)//checks empoloyee exit time to prevent duplicates;
         {
             return false;
         }
-        #endregion
 
-        #region Permissions
-        public bool GetPermAdd()
-        {
-            foreach(DataRow dr in GetTable($"SELECT id, addp FROM employees WHERE id={Properties.Settings.Default.username}").Rows)
-            {
-                if (dr["id"].ToString() == Properties.Settings.Default.username && dr["addp"].ToString() == "1")
-                    return true;
-                else return false;
-            }
-
-            return false;
-        }
-
-        public bool GetPermAlter()
-        {
-            foreach (DataRow dr in GetTable($"SELECT id, alterp FROM employees WHERE id={Properties.Settings.Default.username}").Rows)
-            {
-                if (dr["alterp"].ToString() == "1")
-                    return true;
-                else return false;
-            }
-
-            return false;
-        }
-
-        public bool GetPermHours()
-        {
-            foreach (DataRow dr in GetTable($"SELECT id, hours FROM employees WHERE id={Properties.Settings.Default.username}").Rows)
-            {
-                if (dr["id"].ToString() == Properties.Settings.Default.username && dr["hours"].ToString() == "1")
-                    return true;
-                else return false;
-            }
-
-            return false;
-        }
-
-        public bool GetPermUserPrpfile()
-        {
-            foreach (DataRow dr in GetTable($"SELECT id, userprofile FROM employees WHERE id={Properties.Settings.Default.username}").Rows)
-            {
-                if (dr["id"].ToString() == Properties.Settings.Default.username && dr["userprofile"].ToString() == "1")
-                    return true;
-                else return false;
-            }
-
-            return false;
-        }
-        #endregion
-
-        public int GetDepartmentCode(string username)
+        public int GetDepartmentCode(string username)//pulls department code in order to allow a user who is not HR to view only his department employees;
         {
             foreach (DataRow dr in GetTable($"SELECT id, dcode FROM employees WHERE id={username}").Rows)
                 if (dr["id"].ToString() == username)
@@ -247,7 +196,7 @@ namespace GUI
             return -1;
         }
 
-        public bool CheckDuplicateDepartment(string dname)
+        public bool CheckDuplicateDepartment(string dname)//checks whether there is a duplicate department;
         {
             using (DataTable d = GetTable($"SELECT dname FROM departments WHERE dname='{dname}'"))
             {
@@ -262,5 +211,57 @@ namespace GUI
 
             return false;
         }
+        #endregion
+
+        #region Permissions
+        public bool GetPermAdd()//performs a check if user has AddEmployee permissions;
+        {
+            foreach(DataRow dr in GetTable($"SELECT id, addp FROM employees WHERE id={Properties.Settings.Default.username}").Rows)
+            {
+                if (dr["id"].ToString() == Properties.Settings.Default.username && dr["addp"].ToString() == "1")
+                    return true;
+                else return false;
+            }
+
+            return false;
+        }
+
+        public bool GetPermAlter()//performs a check if user has EditEmployee permissions;
+        {
+            foreach (DataRow dr in GetTable($"SELECT id, alterp FROM employees WHERE id={Properties.Settings.Default.username}").Rows)
+            {
+                if (dr["alterp"].ToString() == "1")
+                    return true;
+                else return false;
+            }
+
+            return false;
+        }
+
+        public bool GetPermHours()//performs a check if user has Hour Reports permissions;
+        {
+            foreach (DataRow dr in GetTable($"SELECT id, hours FROM employees WHERE id={Properties.Settings.Default.username}").Rows)
+            {
+                if (dr["id"].ToString() == Properties.Settings.Default.username && dr["hours"].ToString() == "1")
+                    return true;
+                else return false;
+            }
+
+            return false;
+        }
+
+        public bool GetPermUserPrpfile()//performs a check if user has permissions to change his own password;
+        {
+            foreach (DataRow dr in GetTable($"SELECT id, userprofile FROM employees WHERE id={Properties.Settings.Default.username}").Rows)
+            {
+                if (dr["id"].ToString() == Properties.Settings.Default.username && dr["userprofile"].ToString() == "1")
+                    return true;
+                else return false;
+            }
+
+            return false;
+        }
+        #endregion
+        
     }
 }

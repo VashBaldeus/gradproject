@@ -23,26 +23,26 @@ namespace GUI.Menus
             LoadComboBox();
         }
 
-        private void LoadComboBox()//function loads data from database and filld teh combo boxs;
+        private void LoadComboBox()//function loads data from database and fills the comboBox's;
         {
             comboBoxCityCode.DisplayMember = "city_name";
             comboBoxCityCode.ValueMember = "city_name";
-            comboBoxCityCode.DataSource = main.GetCity();
+            comboBoxCityCode.DataSource = main.GetCity();//pulls CityCode DataTable from MainMenu form;
             comboBoxCityCode.SelectedIndex = -1;
 
             comboBoxCountry.DisplayMember = "country_name";
             comboBoxCountry.ValueMember = "country_name";
-            comboBoxCountry.DataSource = main.GetCountry();
+            comboBoxCountry.DataSource = main.GetCountry();//pulls CountryCode DataTable from MainMenu form;
             comboBoxCountry.SelectedIndex = -1;
 
             comboBoxCOB.DisplayMember = "country_name";
             comboBoxCOB.ValueMember = "country_name";
-            comboBoxCOB.DataSource = main.GetCountry();
+            comboBoxCOB.DataSource = main.GetCountry();//pulls CountryCode DataTable from MainMenu form;
             comboBoxCOB.SelectedIndex = -1;
 
             comboBoxDept.DisplayMember = "dname";
             comboBoxDept.ValueMember = "dname";
-            comboBoxDept.DataSource = main.GetDepartments();
+            comboBoxDept.DataSource = main.GetDepartments();//pulls DepartmentCode DataTable from MainMenu form;
             comboBoxDept.SelectedIndex = -1;
         }
 
@@ -61,10 +61,10 @@ namespace GUI.Menus
                 int[] perms = new int[6];
 
                 for (int i = 0; i < 6; i++)
-                    perms[i] = 0;
+                    perms[i] = 0;//initiates the perms array with 0 values;
 
                 foreach (int index in checkedListBoxUserPerms.CheckedIndices)
-                {
+                {//checks each selection, assigns proper digit on 'perms' array;
                     switch (index)
                     {
                         case 0://חלק מכח אדם
@@ -89,6 +89,7 @@ namespace GUI.Menus
                 }
                 #endregion
 
+                //dh.ExecuteServerQuery - pushes a query via DataHandler class;
                 dh.ExecuteServerQuery("INSERT INTO employees(id,passwd,userlogin,userprofile,ishr,addp,alterp,hours,fname,lname,gender,dob,address,zip,city,country,cob,mdate,married,children,sdate,job_type,wage_class,dcode) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                     long.Parse(textBoxID.Text), dh.Hash512(textBoxPASSWD.Text), perms[2], perms[1], perms[0], perms[3], perms[4], perms[5],
                     textBoxFName.Text, textBoxLName.Text, comboBoxGender.Text, dateTimePickerDOB.Value.Date.ToString("yyyy-MM-dd"),
@@ -97,7 +98,7 @@ namespace GUI.Menus
 
                 DialogResult result = MessageBox.Show("הוספת עובד התבצעה בהצלחה, מעוניין להוסיף עוד עובד?", "אישור", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
-                    ResetForm();
+                    ResetForm();//resets the form if user selected Yes on MessageBox;
                 else this.Close();
             }
             catch (Exception err)
@@ -108,13 +109,13 @@ namespace GUI.Menus
 
         private void buttonResetForm_Click(object sender, EventArgs e)
         {
-            ResetForm();
+            ResetForm();//calls the function that clears the form fields;
         }
 
         private void textBoxID_KeyPress(object sender, KeyPressEventArgs e)//function verifies that only digits are allowed in textBoxID field;
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
+            {//makes sure that textBoxID field can not receive nothing except digits;
                 e.Handled = true;
             }
         }
@@ -148,7 +149,7 @@ namespace GUI.Menus
         private void textBoxPASSWD_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && !char.IsLetter(e.KeyChar) && char.IsPunctuation(e.KeyChar))
-            {
+            {//function watches textBoxPASSWD field for non-english characters;
                 e.Handled = true;
                 return;
             }

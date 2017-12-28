@@ -17,7 +17,7 @@ namespace GUI
         public LoginForm()
         {
             InitializeComponent();
-            this.Text = "Coeus Workforce Management";
+            this.Text = "Coeus Workforce Management";//renames form title text;
 
             textBoxPassword.PasswordChar = '*';
         }
@@ -26,16 +26,15 @@ namespace GUI
         {
             try
             {
-                Properties.Settings.Default.temp = textBoxUsername.Text;
-
-                if (textBoxUsername.Text == "" || textBoxPassword.Text == "")
+                if (textBoxUsername.Text == "" || textBoxPassword.Text == "")//checks whether fields are left empty;
                     throw new Exception("השארת שדות ריקים.");
 
                 if (dh.UserLoginPermissionChk(textBoxUsername.Text, dh.Hash512(textBoxPassword.Text)) != true)
-                    throw new Exception("אין לך הרשאה להתחבר למערכת.");
+                    throw new Exception("אין לך הרשאה להתחבר למערכת.");//checks whether the user has permission to login;
 
                 if (dh.LoginAuthentication(textBoxUsername.Text, dh.Hash512(textBoxPassword.Text))){
-                    Properties.Settings.Default.username = textBoxUsername.Text;
+                    //^ condition checks username and password are correct, comparing them to database data;
+                    Properties.Settings.Default.username = textBoxUsername.Text;//saves input of user for later use within the program;
                     MainMenu main = new MainMenu();
                     main.Show();
                     this.Hide();
@@ -69,6 +68,8 @@ namespace GUI
             {
                 if (dh.ChkEID(textBoxID.Text) != true)
                     throw new Exception("מספר עובד שגוי.");
+
+
             }
             catch (Exception err)
             {

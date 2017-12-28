@@ -10,18 +10,11 @@ using System.Windows.Forms;
 
 namespace GUI.Menus
 {
-    public partial class Salary : Form
+    public partial class SalarySheet : Form
     {
-        public Salary()
+        public SalarySheet()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            HourReport hr = new HourReport();
-
-            hr.ShowDialog();
         }
     }
 }

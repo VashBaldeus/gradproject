@@ -19,12 +19,12 @@ namespace GUI
             InitializeComponent();
 
             #region Menu Tab Selection Check
-            tabControl1.TabPages.Remove(tabPage1);
+            tabControl1.TabPages.Remove(tabPage1);//removal of both tabs;
             tabControl1.TabPages.Remove(tabPage2);
             
-            if (dh.IsHRMember(Properties.Settings.Default.temp))
-                tabControl1.TabPages.Add(tabPage1);
-            else tabControl1.TabPages.Add(tabPage2);
+            if (dh.IsHRMember(Properties.Settings.Default.username))//checks if user Human Resources member; 
+                tabControl1.TabPages.Add(tabPage1);//makes tab 1 visible
+            else tabControl1.TabPages.Add(tabPage2);//makes tab 2 visible according to result;
             #endregion
 
             LoadDataTables();
@@ -38,6 +38,8 @@ namespace GUI
         #region DataTable Load and Get Functions
         private void LoadDataTables()
         {
+            //calls DataHandler class, pulling data according to query;
+            //using this data later in order to load menu forms faster;
             cityCodes = dh.GetTable("SELECT city_name FROM city_codes");
             countryCodes = dh.GetTable("SELECT country_name FROM country_codes");
             bcountryCodes = dh.GetTable("SELECT country_name FROM country_codes");
@@ -69,10 +71,10 @@ namespace GUI
         {
             try
             {
-                if (dh.GetPermAdd() != true)
+                if (dh.GetPermAdd() != true)//checks if user has Add permission;
                     throw new Exception("אין לך הרשאה להוסיף עובדים");
 
-                using (var addemp = new AddEmployee())
+                using (var addemp = new AddEmployee())//opens AddEmployee form;
                     addemp.ShowDialog();
             }
             catch (Exception err)
@@ -86,10 +88,10 @@ namespace GUI
         {
             try
             {
-                if (dh.GetPermAlter() != true)
+                if (dh.GetPermAlter() != true)//checks if user has Alter permission;
                     throw new Exception("אין לך הרשאה לערוך עובדים");
                     
-                using (EditEmployee ee = new EditEmployee())
+                using (EditEmployee ee = new EditEmployee())//opens EditEmployee form;
                     ee.ShowDialog();
             }
             catch (Exception err)
@@ -103,10 +105,10 @@ namespace GUI
         {
             try
             {
-                if (dh.GetPermAlter() != true)
-                    throw new Exception("אין לך הרשאה לערוך עובדים");
+                /*if (dh.GetPermHours() != true)//checks if user has Hours permission;
+                    throw new Exception("אין לך הרשאה לערוך עובדים");*/
 
-                using (HourReport hr = new HourReport())
+                using (HourReport hr = new HourReport())//opens HourReport form;
                     hr.ShowDialog();
             }
             catch (Exception err)
@@ -119,12 +121,13 @@ namespace GUI
         {
             try
             {
-                if (dh.GetPermAlter() != true)
-                    throw new Exception("אין לך הרשאה לערוך עובדים");
+                /*if (dh.IsHRMember(Properties.Settings.Default.username) != true)//checks if user member of Human Resources;
+                    throw new Exception("אין לך הרשאה לערוך עובדים");*/
 
-                using (Departments dpt = new Departments())
+                using (Departments dpt = new Departments())//opens Departments form;
                     dpt.ShowDialog();
 
+                deptCodes.Clear();
                 deptCodes = dh.GetTable("SELECT dname FROM departments");
             }
             catch (Exception err)
@@ -150,10 +153,10 @@ namespace GUI
         {
             try
             {
-                if (dh.GetPermUserPrpfile() != true)
+                if (dh.GetPermUserPrpfile() != true)//check if user can change his own password;
                     throw new Exception("אין לך הרשאה לערוך את הפרופיל משתמש שלך");
 
-                using (UserProfile up = new UserProfile())
+                using (UserProfile up = new UserProfile())//open UserProfile form;
                     up.ShowDialog();
             }
             catch (Exception err)
