@@ -20,13 +20,10 @@ namespace GUI.Menus
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.temp = textBoxID.Text;
+            Properties.Settings.Default.temp = textBoxID.Text;//saves user input for further select query in SalarySheet class;
 
             using (SalarySheet sals = new SalarySheet())
-                sals.ShowDialog();
-                
-            /*var image = Classes.ScreenCapture.CaptureActiveWindow();
-            image.Save(@"C:\Users\xcast\Pictures\snippetsource.jpg", ImageFormat.Jpeg);*/
+                sals.ShowDialog();//opens the SalarySheet class using the data to display according the query;
         }
     }
 }
