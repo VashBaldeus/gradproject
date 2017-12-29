@@ -51,7 +51,7 @@ namespace GUI
         {
             try
             {
-                if (dh.ChkEID(textBoxID.Text) != true)
+                if (dh.ChkEID(textBoxID.Text) != true)//checks if employee types correct employee number or id;
                     throw new Exception("מספר עובד שגוי.");
 
 
@@ -66,7 +66,7 @@ namespace GUI
         {
             try
             {
-                if (dh.ChkEID(textBoxID.Text) != true)
+                if (dh.ChkEID(textBoxID.Text) != true)//checks if employee types correct employee number or id;
                     throw new Exception("מספר עובד שגוי.");
 
 
@@ -75,11 +75,6 @@ namespace GUI
             {
                 MessageBox.Show(err.Message, "שגיאה", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        public string GetName()
-        {
-            return Properties.Settings.Default.temp;
         }
     }
 }
