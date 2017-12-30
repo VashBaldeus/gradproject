@@ -155,9 +155,9 @@ namespace GUI
         #region TimeKeeper & Data Verification
         public bool ChkEID(string id)//verifies employee id exists in the database;
         {
-            foreach (DataRow dr in GetTable($"SELECT eid FROM employees WHERE eid='{id}'").Rows)
+            foreach (DataRow dr in GetTable($"SELECT eid,id FROM employees WHERE eid={id} OR id={id}").Rows)
             {
-                if (dr["eid"].ToString() == id)
+                if (dr["eid"].ToString() == id || dr["id"].ToString() == id)
                     return true;
                 else return false;
             }
@@ -167,28 +167,75 @@ namespace GUI
 
         public bool ChkTKEnter(string id)//checks employee enter time, to prevent duplicates;
         {
-            DateTime now = DateTime.Now;
-            using (DataTable dt2 = GetTable($"SELECT eid, enter_time FROM reports WHERE eid='{id}'")) {
-                if (dt2 != null && dt2.Rows.Count > 0)
+            using(DataTable dt = GetTable($"SELECT * FROM reports WHERE eid={id}"))
+            {
+                if (dt.Rows.Count > 0)
                 {
-                    foreach (DataRow dr in dt2.Rows)
+                    DataRow dr = dt.Rows[dt.Rows.Count - 1];//select last row from DataTable;
+                    DateTime exitTime = new DateTime();
+
+                    if (dr["exit_time"].ToString() != "")
                     {
-                        if (dr["eid"].ToString() == id)
+                        exitTime = Convert.ToDateTime(dr["exit_time"].ToString());
+
+                        if (DateTime.Now.Subtract(exitTime).TotalHours > 8)
                         {
                             return true;
                         }
                         else return false;
                     }
+                    else
+                    {
+                        if(dr["enter_time"].ToString() != "")
+                        {
+                            return false;
+                        }
+                    }
                 }
-                else return false;
+                else return true;//in case table empty so person can perform entry at TimeKeeper;
             }
-
             return false;
         }
 
         public bool ChkTKExit(string id)//checks empoloyee exit time to prevent duplicates;
         {
+            using (DataTable dt = GetTable($"SELECT * FROM reports WHERE eid={id} OR id={id}"))
+            {
+                if(dt.Rows.Count > 0)
+                {
+                    DataRow dr = dt.Rows[dt.Rows.Count - 1];//select last row from DataTable;
+
+                    if (dr["exit_time"].ToString() != "" && dr["enter_time"].ToString() != "")
+                    {
+                        return false;
+                    }
+                    else return true;
+                }
+            }
             return false;
+        }
+
+        public double TotalHours(DateTime date, string id)
+        {
+            using(DataTable dt = GetTable($"SELECT enter_time FROM reports WHERE eid={id} OR id={id}"))
+            {
+                DataRow dr = dt.Rows[dt.Rows.Count - 1];//selects last row in DataTable;
+
+                DateTime enterDate = Convert.ToDateTime(dr["enter_time"].ToString());//converts the enter_time string into DateTime;
+                double temp = date.Subtract(enterDate).TotalHours;
+                return temp;//calculates 
+            }
+        }
+
+        public long GetID(string id)
+        {
+            foreach(DataRow dr in GetTable($"SELECT eid,id FROM employees WHERE eid={id} Or id={id}").Rows)
+            {
+                if (dr["eid"].ToString() == id)
+                    return long.Parse(dr["id"].ToString());//return the id of the user according to employee id;
+            }
+
+            return 0;
         }
 
         public int GetDepartmentCode(string username)//pulls department code in order to allow a user who is not HR to view only his department employees;

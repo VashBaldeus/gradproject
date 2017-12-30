@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace GUI
 {
@@ -54,6 +55,16 @@ namespace GUI
                 if (dh.ChkEID(textBoxID.Text) != true)//checks if employee types correct employee number or id;
                     throw new Exception("מספר עובד שגוי.");
 
+                if (dh.ChkTKEnter(textBoxID.Text) != false)
+                {
+                    DateTime date = new DateTime();
+
+                    date = DateTime.Now;
+
+                    dh.ExecuteServerQuery($"INSERT INTO reports(eid,id,enter_time) values(?,?,?);",
+                            textBoxID.Text, dh.GetID(textBoxID.Text), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                }
+                else throw new Exception("כניסה נדחתה, מהסיבות הבאות:\n1. אתה מנסה להכנס למערכת מוקדם מדי, חובה הפרש של מינימום 8 שעות בין משמרות.\n2. אתה כבר נכנסת.");
 
             }
             catch (Exception err)
@@ -69,7 +80,13 @@ namespace GUI
                 if (dh.ChkEID(textBoxID.Text) != true)//checks if employee types correct employee number or id;
                     throw new Exception("מספר עובד שגוי.");
 
-
+                if (dh.ChkTKExit(textBoxID.Text) != false)
+                {
+                    DateTime now = DateTime.Now;
+                    dh.ExecuteServerQuery($"UPDATE reports SET exit_time=?, total_hours=? WHERE eid={textBoxID.Text} OR id={textBoxID.Text}",
+                        DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), dh.TotalHours(now, textBoxID.Text));
+                }
+                else throw new Exception("ביצעת יציאה כבר.");
             }
             catch (Exception err)
             {
