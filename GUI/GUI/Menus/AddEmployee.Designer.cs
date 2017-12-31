@@ -185,7 +185,7 @@
             this.textBoxZIP.Location = new System.Drawing.Point(48, 34);
             this.textBoxZIP.Name = "textBoxZIP";
             this.textBoxZIP.Size = new System.Drawing.Size(121, 20);
-            this.textBoxZIP.TabIndex = 8;
+            this.textBoxZIP.TabIndex = 9;
             // 
             // label7
             // 
@@ -204,7 +204,7 @@
             this.comboBoxCityCode.Location = new System.Drawing.Point(48, 60);
             this.comboBoxCityCode.Name = "comboBoxCityCode";
             this.comboBoxCityCode.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxCityCode.TabIndex = 9;
+            this.comboBoxCityCode.TabIndex = 10;
             // 
             // label8
             // 
@@ -223,7 +223,7 @@
             this.comboBoxCountry.Location = new System.Drawing.Point(48, 87);
             this.comboBoxCountry.Name = "comboBoxCountry";
             this.comboBoxCountry.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxCountry.TabIndex = 10;
+            this.comboBoxCountry.TabIndex = 11;
             // 
             // label9
             // 
@@ -242,7 +242,7 @@
             this.comboBoxCOB.Location = new System.Drawing.Point(48, 115);
             this.comboBoxCOB.Name = "comboBoxCOB";
             this.comboBoxCOB.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxCOB.TabIndex = 11;
+            this.comboBoxCOB.TabIndex = 12;
             // 
             // label10
             // 
@@ -285,7 +285,7 @@
             this.dateTimePickerMigDate.Name = "dateTimePickerMigDate";
             this.dateTimePickerMigDate.RightToLeftLayout = true;
             this.dateTimePickerMigDate.Size = new System.Drawing.Size(121, 20);
-            this.dateTimePickerMigDate.TabIndex = 12;
+            this.dateTimePickerMigDate.TabIndex = 13;
             // 
             // label12
             // 
@@ -336,7 +336,7 @@
             this.dateTimePickerJStart.Name = "dateTimePickerJStart";
             this.dateTimePickerJStart.RightToLeftLayout = true;
             this.dateTimePickerJStart.Size = new System.Drawing.Size(121, 20);
-            this.dateTimePickerJStart.TabIndex = 13;
+            this.dateTimePickerJStart.TabIndex = 14;
             // 
             // label14
             // 
@@ -358,7 +358,7 @@
             this.comboBoxJType.Location = new System.Drawing.Point(258, 192);
             this.comboBoxJType.Name = "comboBoxJType";
             this.comboBoxJType.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxJType.TabIndex = 14;
+            this.comboBoxJType.TabIndex = 15;
             // 
             // label16
             // 
@@ -380,7 +380,7 @@
             this.comboBoxSalary.Location = new System.Drawing.Point(48, 194);
             this.comboBoxSalary.Name = "comboBoxSalary";
             this.comboBoxSalary.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxSalary.TabIndex = 15;
+            this.comboBoxSalary.TabIndex = 16;
             // 
             // label17
             // 
@@ -399,7 +399,7 @@
             this.comboBoxDept.Location = new System.Drawing.Point(258, 219);
             this.comboBoxDept.Name = "comboBoxDept";
             this.comboBoxDept.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxDept.TabIndex = 16;
+            this.comboBoxDept.TabIndex = 17;
             // 
             // label18
             // 
@@ -415,7 +415,7 @@
             this.buttonAddEmployee.Location = new System.Drawing.Point(339, 294);
             this.buttonAddEmployee.Name = "buttonAddEmployee";
             this.buttonAddEmployee.Size = new System.Drawing.Size(75, 23);
-            this.buttonAddEmployee.TabIndex = 19;
+            this.buttonAddEmployee.TabIndex = 20;
             this.buttonAddEmployee.Text = "הוסף עובד";
             this.buttonAddEmployee.UseVisualStyleBackColor = true;
             this.buttonAddEmployee.Click += new System.EventHandler(this.buttonAddEmployee_Click);
@@ -425,7 +425,7 @@
             this.buttonResetForm.Location = new System.Drawing.Point(258, 294);
             this.buttonResetForm.Name = "buttonResetForm";
             this.buttonResetForm.Size = new System.Drawing.Size(75, 23);
-            this.buttonResetForm.TabIndex = 20;
+            this.buttonResetForm.TabIndex = 21;
             this.buttonResetForm.Text = "אפס טופס";
             this.buttonResetForm.UseVisualStyleBackColor = true;
             this.buttonResetForm.Click += new System.EventHandler(this.buttonResetForm_Click);
@@ -443,7 +443,7 @@
             this.checkedListBoxUserPerms.Location = new System.Drawing.Point(27, 238);
             this.checkedListBoxUserPerms.Name = "checkedListBoxUserPerms";
             this.checkedListBoxUserPerms.Size = new System.Drawing.Size(221, 94);
-            this.checkedListBoxUserPerms.TabIndex = 18;
+            this.checkedListBoxUserPerms.TabIndex = 19;
             // 
             // label15
             // 
@@ -460,7 +460,7 @@
             this.textBoxPASSWD.MaxLength = 32;
             this.textBoxPASSWD.Name = "textBoxPASSWD";
             this.textBoxPASSWD.Size = new System.Drawing.Size(121, 20);
-            this.textBoxPASSWD.TabIndex = 17;
+            this.textBoxPASSWD.TabIndex = 18;
             this.textBoxPASSWD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPASSWD_KeyPress);
             // 
             // label19

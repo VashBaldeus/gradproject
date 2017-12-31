@@ -48,22 +48,22 @@ namespace GUI
 
         public DataTable GetCity()
         {
-            return cityCodes;
+            return cityCodes.Copy();
         }
 
         public DataTable GetCountry()
         {
-            return countryCodes;
+            return countryCodes.Copy();
         }
 
         public DataTable GetBCountry()
         {
-            return bcountryCodes;
+            return bcountryCodes.Copy();
         }
 
         public DataTable GetDepartments()
         {
-            return deptCodes;
+            return deptCodes.Copy();
         }
     #endregion
 

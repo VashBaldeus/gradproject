@@ -63,6 +63,8 @@ namespace GUI
 
                     dh.ExecuteServerQuery($"INSERT INTO reports(eid,id,enter_time) values(?,?,?);",
                             textBoxID.Text, dh.GetID(textBoxID.Text), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+
+                    MessageBox.Show("ביצעת כניסה בהצלחה.", "אישור", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else throw new Exception("כניסה נדחתה, מהסיבות הבאות:\n1. אתה מנסה להכנס למערכת מוקדם מדי, חובה הפרש של מינימום 8 שעות בין משמרות.\n2. אתה כבר נכנסת.");
 
@@ -85,6 +87,8 @@ namespace GUI
                     DateTime now = DateTime.Now;
                     dh.ExecuteServerQuery($"UPDATE reports SET exit_time=?, total_hours=? WHERE eid={textBoxID.Text} OR id={textBoxID.Text}",
                         DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), dh.TotalHours(now, textBoxID.Text));
+
+                    MessageBox.Show("ביצעת יציאה בהצלחה.", "אישור", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else throw new Exception("ביצעת יציאה כבר.");
             }

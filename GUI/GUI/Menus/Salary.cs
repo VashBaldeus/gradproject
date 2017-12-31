@@ -20,6 +20,9 @@ namespace GUI.Menus
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (textBoxID.Text == "")
+                throw new Exception("השארת שדות ריקים");
+
             Properties.Settings.Default.temp = textBoxID.Text;//saves user input for further select query in SalarySheet class;
 
             using (SalarySheet sals = new SalarySheet())
