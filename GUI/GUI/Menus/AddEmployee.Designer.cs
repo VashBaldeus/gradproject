@@ -161,6 +161,7 @@
             // 
             this.comboBoxGender.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.comboBoxGender.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBoxGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxGender.FormattingEnabled = true;
             this.comboBoxGender.Items.AddRange(new object[] {
             "זכר",
@@ -257,6 +258,7 @@
             // 
             this.comboBoxMarital.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.comboBoxMarital.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBoxMarital.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMarital.FormattingEnabled = true;
             this.comboBoxMarital.Items.AddRange(new object[] {
             "רווק/ה",
@@ -300,6 +302,7 @@
             // 
             this.comboBoxChildren.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.comboBoxChildren.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBoxChildren.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxChildren.FormattingEnabled = true;
             this.comboBoxChildren.Items.AddRange(new object[] {
             "0",
@@ -351,6 +354,7 @@
             // 
             this.comboBoxJType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.comboBoxJType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBoxJType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxJType.FormattingEnabled = true;
             this.comboBoxJType.Items.AddRange(new object[] {
             "מלאה",
@@ -373,6 +377,7 @@
             // 
             this.comboBoxSalary.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.comboBoxSalary.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBoxSalary.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSalary.FormattingEnabled = true;
             this.comboBoxSalary.Items.AddRange(new object[] {
             "שעתי",
@@ -395,6 +400,7 @@
             // 
             this.comboBoxDept.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.comboBoxDept.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBoxDept.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDept.FormattingEnabled = true;
             this.comboBoxDept.Location = new System.Drawing.Point(258, 219);
             this.comboBoxDept.Name = "comboBoxDept";

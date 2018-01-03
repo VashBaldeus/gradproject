@@ -299,6 +299,7 @@
             // 
             // comboBoxMarital
             // 
+            this.comboBoxMarital.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMarital.FormattingEnabled = true;
             this.comboBoxMarital.Items.AddRange(new object[] {
             "רווק/ה",
@@ -323,6 +324,7 @@
             // 
             // comboBoxKids
             // 
+            this.comboBoxKids.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxKids.FormattingEnabled = true;
             this.comboBoxKids.Items.AddRange(new object[] {
             "0",
@@ -394,6 +396,7 @@
             // 
             // comboBoxJType
             // 
+            this.comboBoxJType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxJType.FormattingEnabled = true;
             this.comboBoxJType.Items.AddRange(new object[] {
             "מלאה",
@@ -416,6 +419,7 @@
             // 
             // comboBoxSalary
             // 
+            this.comboBoxSalary.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSalary.FormattingEnabled = true;
             this.comboBoxSalary.Items.AddRange(new object[] {
             "שעתי",
@@ -438,6 +442,7 @@
             // 
             // comboBoxDpt
             // 
+            this.comboBoxDpt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDpt.FormattingEnabled = true;
             this.comboBoxDpt.Location = new System.Drawing.Point(90, 482);
             this.comboBoxDpt.Name = "comboBoxDpt";
@@ -457,6 +462,7 @@
             // 
             // comboBoxGender
             // 
+            this.comboBoxGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxGender.FormattingEnabled = true;
             this.comboBoxGender.Items.AddRange(new object[] {
             "זכר",

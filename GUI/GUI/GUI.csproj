@@ -91,13 +91,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\DataHandler.cs" />
-    <Compile Include="Classes\LoadCityCountry.cs" />
-    <Compile Include="Classes\SalaryCalc.cs" />
     <Compile Include="Classes\ScreenCapture.cs" />
-    <Compile Include="hrDataSet1.Designer.cs">
+    <Compile Include="hrDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>hrDataSet1.xsd</DependentUpon>
+      <DependentUpon>hrDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -215,21 +213,19 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Reports\OLDsalaryReport.rdlc" />
     <EmbeddedResource Include="Reports\hourReport.rdlc" />
     <EmbeddedResource Include="Reports\salaryReport.rdlc" />
-    <None Include="hrDataSet1.xsc">
-      <DependentUpon>hrDataSet1.xsd</DependentUpon>
+    <None Include="hrDataSet.xsc">
+      <DependentUpon>hrDataSet.xsd</DependentUpon>
     </None>
-    <None Include="hrDataSet1.xsd">
+    <None Include="hrDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>hrDataSet1.Designer.cs</LastGenOutput>
+      <LastGenOutput>hrDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="hrDataSet1.xss">
-      <DependentUpon>hrDataSet1.xsd</DependentUpon>
+    <None Include="hrDataSet.xss">
+      <DependentUpon>hrDataSet.xsd</DependentUpon>
     </None>
-    <None Include="LoadCityCountry.datasource" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -259,17 +255,6 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="docs\MySqlCommand.xml" />
-    <Content Include="docs\MySqlCommandBuilder.xml" />
-    <Content Include="docs\MySqlConnection.xml" />
-    <Content Include="docs\MySqlConnectionStringBuilder.xml" />
-    <Content Include="docs\MySqlDataAdapter.xml" />
-    <Content Include="docs\MySqlDataReader.xml" />
-    <Content Include="docs\MySqlException.xml" />
-    <Content Include="docs\MySqlHelper.xml" />
-    <Content Include="docs\MySqlParameter.xml" />
-    <Content Include="docs\MySqlParameterCollection.xml" />
-    <Content Include="docs\MySqlTransaction.xml" />
     <Content Include="icon.ico" />
     <Content Include="Resources\logo.png" />
     <None Include="Resources\1471127 - document .png" />

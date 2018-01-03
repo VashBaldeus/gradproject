@@ -15,11 +15,10 @@ namespace GUI.Menus
         public HourReport()
         {
             InitializeComponent();
-        }
 
-        private void HourReport_Load(object sender, EventArgs e)
-        {
-
+            ToolTip toolTip = new ToolTip();//adds a note on hover for the button explaining what it does;
+            toolTip.SetToolTip(dateTimePickerArchiveDate, "בחירת חודש ושנה רצויים");
+            toolTip.SetToolTip(checkBoxArchive, "הפעל סימון ובחר תאריך");
         }
 
         private void buttonRunReport_Click(object sender, EventArgs e)

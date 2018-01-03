@@ -133,7 +133,6 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "דו\"ח שעות";
-            this.Load += new System.EventHandler(this.HourReport_Load);
             ((System.ComponentModel.ISupportInitialize)(this.hrDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource)).EndInit();
