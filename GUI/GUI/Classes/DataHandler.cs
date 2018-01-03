@@ -229,7 +229,7 @@ namespace GUI
 
         public long GetID(string id)
         {
-            foreach(DataRow dr in GetTable($"SELECT eid,id FROM employees WHERE eid={id} Or id={id}").Rows)
+            foreach(DataRow dr in GetTable($"SELECT eid,id FROM employees WHERE eid={id}").Rows)
             {
                 if (dr["eid"].ToString() == id)
                     return long.Parse(dr["id"].ToString());//return the id of the user according to employee id;

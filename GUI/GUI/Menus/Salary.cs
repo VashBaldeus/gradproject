@@ -23,7 +23,14 @@ namespace GUI.Menus
             if (textBoxID.Text == "")
                 throw new Exception("השארת שדות ריקים");
 
-            Properties.Settings.Default.temp = textBoxID.Text;//saves user input for further select query in SalarySheet class;
+            Properties.Settings.Default.tempid = textBoxID.Text;//saves user input for further select query in SalarySheet class;
+
+            if (checkBoxArchive.Checked == true)
+            {//checks if user wants to access the Archive table or not;
+                Properties.Settings.Default.temp = $"enter_time LIKE '{dateTimePickerArchiveDate.Value.Year.ToString()}-{dateTimePickerArchiveDate.Value.Month.ToString()}-%' AND (eid={textBoxID.Text} OR id={textBoxID.Text})";//saves the search query parameters for the report;
+                Properties.Settings.Default.archive = true;
+            }
+            else Properties.Settings.Default.temp = $"eid={textBoxID.Text} OR id={textBoxID.Text}";//saves the search query parameters for the report;
 
             using (SalarySheet sals = new SalarySheet())
                 sals.ShowDialog();//opens the SalarySheet class using the data to display according the query;

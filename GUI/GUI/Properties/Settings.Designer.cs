@@ -57,5 +57,29 @@ namespace GUI.Properties {
                 this["username"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool archive {
+            get {
+                return ((bool)(this["archive"]));
+            }
+            set {
+                this["archive"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string tempid {
+            get {
+                return ((string)(this["tempid"]));
+            }
+            set {
+                this["tempid"] = value;
+            }
+        }
     }
 }

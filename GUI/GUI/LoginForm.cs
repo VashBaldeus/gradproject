@@ -52,7 +52,7 @@ namespace GUI
         {
             try
             {
-                if (dh.ChkEID(textBoxID.Text) != true)//checks if employee types correct employee number or id;
+                if (dh.ChkEID(textBoxID.Text) == false)//checks if employee types correct employee number or id;
                     throw new Exception("מספר עובד שגוי.");
 
                 if (dh.ChkTKEnter(textBoxID.Text) != false)
@@ -85,7 +85,7 @@ namespace GUI
                 if (dh.ChkTKExit(textBoxID.Text) != false)
                 {
                     DateTime now = DateTime.Now;
-                    dh.ExecuteServerQuery($"UPDATE reports SET exit_time=?, total_hours=? WHERE eid={textBoxID.Text} OR id={textBoxID.Text}",
+                    dh.ExecuteServerQuery($"UPDATE reports SET exit_time=?, total_hours=? WHERE eid={textBoxID.Text}",
                         DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), dh.TotalHours(now, textBoxID.Text));
 
                     MessageBox.Show("ביצעת יציאה בהצלחה.", "אישור", MessageBoxButtons.OK, MessageBoxIcon.Information);
