@@ -56,11 +56,13 @@ namespace GUI.Menus
                             sdt.Columns.Add("health_tax");
                             sdt.Columns.Add("salaryBruto");
                             sdt.Columns.Add("salaryNeto");
+                            sdt.Columns.Add("retirement");
+                            sdt.Columns.Add("income_tax");
                             #endregion
 
                             double salary = 0, salary125 = 0, salary150 = 0, salary175 = 0, salary200 = 0, salary_pay = 0,
                                 salary125_pay = 0, salary150_pay = 0, salary175_pay = 0, salary200_pay = 0, social_security = 0, health_tax = 0,
-                                salaryBruto = 0, salaryNeto = 0;//variables for salary arithmetic calculations;
+                                salaryBruto = 0, salaryNeto = 0, income_tax = 0, retirement = 0;//variables for salary arithmetic calculations;
 
                             foreach (DataRow dr in dt.Select(Properties.Settings.Default.temp))
                             {
@@ -87,13 +89,41 @@ namespace GUI.Menus
                             }
                             salaryBruto = salary_pay + salary125_pay + salary150_pay;//calculate salary bruto
 
-                            social_security = salaryBruto * 0.035;//calculate social security total
-                            health_tax = salaryBruto * 0.035;//calculate health tax total
+                            retirement = salaryBruto * 0.06;
 
-                            salaryNeto = salaryBruto - social_security - health_tax;//calculate salary Neto;
+                            if (salaryBruto <= 5450)
+                            {
+                                social_security = salaryBruto * 0.004;//calculate social security total
+                                health_tax = salaryBruto * 0.031;//calculate health tax total
+                            }
+                            else
+                            {
+                                social_security = ((salaryBruto - 5450) * 0.07) + ((salaryBruto - (salaryBruto - 5450)) * 0.004);//calculate social security total
+                                health_tax = ((salaryBruto - 5450) * 0.05) + ((salaryBruto - (salaryBruto - 5450)) * 0.031);//calculate health tax total
+                            }
+
+                            if (salaryBruto > 53333)
+                                income_tax += (salaryBruto - 53333) * 0.5;
+
+                            if (salaryBruto > 41410)
+                                income_tax += 5605.22;
+
+                            if (salaryBruto > 19900)
+                                income_tax += 7528.15;
+
+                            if (salaryBruto > 14320)
+                                income_tax += 1729.49;
+
+                            if (salaryBruto > 8920)
+                                income_tax += 1079.8;
+
+                            if (salaryBruto > 6220)
+                                income_tax += 377.86;
+
+                            salaryNeto = salaryBruto - social_security - health_tax - income_tax - retirement;//calculate salary Neto;
 
                             sdt.Rows.Add(salary, salary125, salary150, salary175, salary200, salary_pay, salary125_pay, salary150_pay,
-                                    salary175_pay, salary200_pay, social_security, health_tax, salaryBruto, salaryNeto);//inputs the data into the DataTable;
+                                    salary175_pay, salary200_pay, social_security, health_tax, salaryBruto, salaryNeto, retirement, income_tax);//inputs the data into the DataTable;
                             salaryDataTableBindingSource.DataSource = sdt;//links the DataTable to the DataSet in order to properly show it on the report;
                         }
                     }
@@ -170,6 +200,13 @@ namespace GUI.Menus
             }
 
             this.reportViewer1.RefreshReport();//reload the report to take effect of changes to DataSet data;
+        }
+
+        private void SalarySheet_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.archive = false;//reset the statement of the variables for repeat use;
+            Properties.Settings.Default.tempid = "";
+            Properties.Settings.Default.temp = "";
         }
     }
 }
