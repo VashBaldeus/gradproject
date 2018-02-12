@@ -27,7 +27,7 @@ namespace GUI.Menus
             this.reportsTableAdapter.Fill(this.hrDataSet.reports);
 
 
-            if (Properties.Settings.Default.archive != false)//checks if user wants to search Archive or not;
+            if (Properties.Settings.Default.archive == false)//checks if user wants to search Archive or not;
             {
                 using (hrDataSetTableAdapters.reportsTableAdapter db = new hrDataSetTableAdapters.reportsTableAdapter())
                 {//pulls the data of the reports table from the database;
@@ -39,7 +39,7 @@ namespace GUI.Menus
             }
             else
             {
-                using(hrDataSetTableAdapters.archived_reportsTableAdapter db = new hrDataSetTableAdapters.archived_reportsTableAdapter())
+                using (hrDataSetTableAdapters.archived_reportsTableAdapter db = new hrDataSetTableAdapters.archived_reportsTableAdapter())
                 {//pulls the data of archived_reports table from the databasel
                     using (DataTable dt = db.GetData())
                     {

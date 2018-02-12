@@ -18,8 +18,10 @@ namespace GUI
 
         /*private static string dbHost = "localhost";//kept here just in case there's internet issues to easily switch to local mysql server;
         private static string dbUsername = "root";
-        private static string dbPassword = "password";*/
-        
+        private static string dbPassword = "Ap1425";*/
+
+        //server=localhost;user id=root;password=Ap1425;persistsecurityinfo=True;database=hr;
+
         private static string dbName = "hr";
 
         private static string dbString = $"Server={dbHost}; database={dbName}; UID={dbUsername}; password={dbPassword}; charset=hebrew;";

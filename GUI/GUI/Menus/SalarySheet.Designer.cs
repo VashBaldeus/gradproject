@@ -33,21 +33,46 @@
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SalarySheet));
+            this.reportsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.hrDataSet = new GUI.hrDataSet();
+            this.employeesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.salaryDataTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.salaryDataSet = new GUI.salaryDataSet();
             this.archived_reportsTableAdapter1 = new GUI.hrDataSetTableAdapters.archived_reportsTableAdapter();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.hrDataSet = new GUI.hrDataSet();
-            this.reportsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reportsTableAdapter = new GUI.hrDataSetTableAdapters.reportsTableAdapter();
-            this.employeesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.employeesTableAdapter = new GUI.hrDataSetTableAdapters.employeesTableAdapter();
-            this.salaryDataSet = new GUI.salaryDataSet();
-            this.salaryDataTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.hrDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hrDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.salaryDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.salaryDataTableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.salaryDataSet)).BeginInit();
             this.SuspendLayout();
+            // 
+            // reportsBindingSource
+            // 
+            this.reportsBindingSource.DataMember = "reports";
+            this.reportsBindingSource.DataSource = this.hrDataSet;
+            // 
+            // hrDataSet
+            // 
+            this.hrDataSet.DataSetName = "hrDataSet";
+            this.hrDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // employeesBindingSource
+            // 
+            this.employeesBindingSource.DataMember = "employees";
+            this.employeesBindingSource.DataSource = this.hrDataSet;
+            // 
+            // salaryDataTableBindingSource
+            // 
+            this.salaryDataTableBindingSource.DataMember = "salaryDataTable";
+            this.salaryDataTableBindingSource.DataSource = this.salaryDataSet;
+            // 
+            // salaryDataSet
+            // 
+            this.salaryDataSet.DataSetName = "salaryDataSet";
+            this.salaryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // archived_reportsTableAdapter1
             // 
@@ -68,60 +93,37 @@
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "GUI.Reports.salaryReport.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(659, 861);
+            this.reportViewer1.Size = new System.Drawing.Size(659, 749);
             this.reportViewer1.TabIndex = 0;
-            // 
-            // hrDataSet
-            // 
-            this.hrDataSet.DataSetName = "hrDataSet";
-            this.hrDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // reportsBindingSource
-            // 
-            this.reportsBindingSource.DataMember = "reports";
-            this.reportsBindingSource.DataSource = this.hrDataSet;
             // 
             // reportsTableAdapter
             // 
             this.reportsTableAdapter.ClearBeforeFill = true;
             // 
-            // employeesBindingSource
-            // 
-            this.employeesBindingSource.DataMember = "employees";
-            this.employeesBindingSource.DataSource = this.hrDataSet;
-            // 
             // employeesTableAdapter
             // 
             this.employeesTableAdapter.ClearBeforeFill = true;
-            // 
-            // salaryDataSet
-            // 
-            this.salaryDataSet.DataSetName = "salaryDataSet";
-            this.salaryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // salaryDataTableBindingSource
-            // 
-            this.salaryDataTableBindingSource.DataMember = "salaryDataTable";
-            this.salaryDataTableBindingSource.DataSource = this.salaryDataSet;
             // 
             // SalarySheet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(659, 861);
+            this.ClientSize = new System.Drawing.Size(659, 749);
             this.Controls.Add(this.reportViewer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SalarySheet";
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "דו\"ח שכר";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SalarySheet_FormClosing);
             this.Load += new System.EventHandler(this.SalarySheet_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.hrDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hrDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.salaryDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.salaryDataTableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.salaryDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -307,6 +307,10 @@ namespace GUI {
             
             private global::System.Data.DataColumn columnsalaryNeto;
             
+            private global::System.Data.DataColumn columnretirement;
+            
+            private global::System.Data.DataColumn columnincome_tax;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public salaryDataTableDataTable() {
@@ -454,6 +458,22 @@ namespace GUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn retirementColumn {
+                get {
+                    return this.columnretirement;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn income_taxColumn {
+                get {
+                    return this.columnincome_tax;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -489,7 +509,23 @@ namespace GUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public salaryDataTableRow AddsalaryDataTableRow(double salary, double salary125, double salary150, double salary175, double salary200, double salary_pay, double salary125_pay, double salary150_pay, double salary175_pay, double salary200_pay, double social_security, double health_tax, double salaryBruto, double salaryNeto) {
+            public salaryDataTableRow AddsalaryDataTableRow(
+                        double salary, 
+                        double salary125, 
+                        double salary150, 
+                        double salary175, 
+                        double salary200, 
+                        double salary_pay, 
+                        double salary125_pay, 
+                        double salary150_pay, 
+                        double salary175_pay, 
+                        double salary200_pay, 
+                        double social_security, 
+                        double health_tax, 
+                        double salaryBruto, 
+                        double salaryNeto, 
+                        string retirement, 
+                        string income_tax) {
                 salaryDataTableRow rowsalaryDataTableRow = ((salaryDataTableRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         salary,
@@ -505,7 +541,9 @@ namespace GUI {
                         social_security,
                         health_tax,
                         salaryBruto,
-                        salaryNeto};
+                        salaryNeto,
+                        retirement,
+                        income_tax};
                 rowsalaryDataTableRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowsalaryDataTableRow);
                 return rowsalaryDataTableRow;
@@ -542,6 +580,8 @@ namespace GUI {
                 this.columnhealth_tax = base.Columns["health_tax"];
                 this.columnsalaryBruto = base.Columns["salaryBruto"];
                 this.columnsalaryNeto = base.Columns["salaryNeto"];
+                this.columnretirement = base.Columns["retirement"];
+                this.columnincome_tax = base.Columns["income_tax"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -575,6 +615,10 @@ namespace GUI {
                 base.Columns.Add(this.columnsalaryBruto);
                 this.columnsalaryNeto = new global::System.Data.DataColumn("salaryNeto", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnsalaryNeto);
+                this.columnretirement = new global::System.Data.DataColumn("retirement", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnretirement);
+                this.columnincome_tax = new global::System.Data.DataColumn("income_tax", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnincome_tax);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -941,6 +985,38 @@ namespace GUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string retirement {
+                get {
+                    try {
+                        return ((string)(this[this.tablesalaryDataTable.retirementColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'retirement\' in table \'salaryDataTable\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesalaryDataTable.retirementColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string income_tax {
+                get {
+                    try {
+                        return ((string)(this[this.tablesalaryDataTable.income_taxColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'income_tax\' in table \'salaryDataTable\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesalaryDataTable.income_taxColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IssalaryNull() {
                 return this.IsNull(this.tablesalaryDataTable.salaryColumn);
             }
@@ -1105,6 +1181,30 @@ namespace GUI {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetsalaryNetoNull() {
                 this[this.tablesalaryDataTable.salaryNetoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsretirementNull() {
+                return this.IsNull(this.tablesalaryDataTable.retirementColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetretirementNull() {
+                this[this.tablesalaryDataTable.retirementColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isincome_taxNull() {
+                return this.IsNull(this.tablesalaryDataTable.income_taxColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setincome_taxNull() {
+                this[this.tablesalaryDataTable.income_taxColumn] = global::System.Convert.DBNull;
             }
         }
         
