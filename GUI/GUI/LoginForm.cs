@@ -85,8 +85,9 @@ namespace GUI
                 if (dh.ChkTKExit(textBoxID.Text) != false)
                 {
                     DateTime now = DateTime.Now;
-                    dh.ExecuteServerQuery($"UPDATE reports SET exit_time=?, total_hours=? WHERE eid={textBoxID.Text}",
-                        DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), dh.TotalHours(now, textBoxID.Text));
+
+                    dh.ExecuteServerQuery($"UPDATE reports SET exit_time=?, total_hours=?, exitcheck=? WHERE eid={textBoxID.Text} AND exitcheck=0",
+                        DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), dh.TotalHours(now, textBoxID.Text), 1);
 
                     MessageBox.Show("ביצעת יציאה בהצלחה.", "אישור", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

@@ -91,11 +91,11 @@ namespace GUI.Menus
 
                 //dh.ExecuteServerQuery - pushes a query via DataHandler class;
 				//dh.ExecuteServerQuery("INSERT INTO .... (id,passwd,number) values(?,?,?)", parm1, parm2, parm3);
-                dh.ExecuteServerQuery("INSERT INTO employees(id,passwd,userlogin,userprofile,ishr,addp,alterp,hours,fname,lname,gender,dob,address,zip,city,country,cob,mdate,married,children,sdate,job_type,wage_class,dcode) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                dh.ExecuteServerQuery("INSERT INTO employees(id,passwd,userlogin,userprofile,ishr,addp,alterp,hours,fname,lname,gender,dob,address,zip,city,country,cob,mdate,married,children,sdate,endate,job_type,wage_class,dcode) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                     long.Parse(textBoxID.Text), dh.Hash512(textBoxPASSWD.Text), perms[2], perms[1], perms[0], perms[3], perms[4], perms[5],
                     textBoxFName.Text, textBoxLName.Text, comboBoxGender.Text, dateTimePickerDOB.Value.Date.ToString("yyyy-MM-dd"),
                     textBoxStreet.Text, textBoxZIP.Text, comboBoxCityCode.SelectedIndex + 1, comboBoxCountry.SelectedIndex + 1, comboBoxCOB.SelectedIndex + 1, dateTimePickerMigDate.Value.Date.ToString("yyyy-MM-dd"),
-                    comboBoxMarital.SelectedIndex, comboBoxChildren.SelectedIndex, dateTimePickerJStart.Value.Date.ToString("yyyy-MM-dd"), comboBoxJType.SelectedIndex, comboBoxSalary.SelectedIndex, comboBoxDept.SelectedIndex+1);
+                    comboBoxMarital.SelectedIndex, comboBoxChildren.SelectedIndex, dateTimePickerJStart.Value.Date.ToString("yyyy-MM-dd"), dateTimePickerJStart.Value.Date.ToString("yyyy-MM-dd"), comboBoxJType.SelectedIndex, comboBoxSalary.SelectedIndex, comboBoxDept.SelectedIndex+1);
 
                 DialogResult result = MessageBox.Show("הוספת עובד התבצעה בהצלחה, מעוניין להוסיף עוד עובד?", "אישור", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
